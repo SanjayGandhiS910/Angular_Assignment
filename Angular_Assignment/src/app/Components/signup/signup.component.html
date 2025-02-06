@@ -1,0 +1,59 @@
+<div class="screen"></div>
+
+<form action="" (ngSubmit)="onSignUp(SignupForm)" #SignupForm="ngForm">
+
+    <p-card [style]="{ width: '360px' }">
+        <div class="header">
+            <img src="https://itorizon.com/wp-content/uploads/2020/10/Logo-Itorizon-2017.png" 
+                alt="" height="80px" width="250px">
+            <h2>Sign Up</h2>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="username">User Name</label>
+            <br>
+            <input type="text" name="username" ngModel required/>
+            <br>
+            <small *ngIf="false">Enter your username to reset your password.</small>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="password">Password</label>
+            <br>
+            <input type="password" name="password" ngModel required/>
+            <br>
+            <small *ngIf="false">Enter your username to reset your password.</small>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="password">Confirm Password</label>
+            <br>
+            <input type="password" name="confirmpassword" ngModel required/>
+            <br>
+            <small *ngIf="false">Enter your username to reset your password.</small>
+        </div>
+
+        <br>
+
+        <div>
+            <button type="submit"
+                    [disabled]="SignupForm.invalid">
+                    Sign Up
+            </button>
+        </div>
+
+        <div>
+            <p>Do have an account? <span class="login" routerLink="/login">Login</span></p>
+        </div>
+
+    </p-card>
+</form>
+
+<p-toast />
+

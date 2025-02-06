@@ -1,0 +1,54 @@
+input{
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+button{
+    background-color: lightskyblue;
+    width: 100%;
+    height: 30px;
+    border-radius: 2px;
+    border: none;
+    color: white;
+}
+
+.header{
+    text-align: center;
+}
+.header h2{
+    margin: 10px;
+}
+
+form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.screen{
+    position: relative;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to top, rgb(211, 238, 255), rgb(211, 238, 255),white);
+    width: 100%;
+    height: 746px;
+}
+
+.forgetpassword{
+    color: blue;
+    cursor: pointer;
+}
+
+.login{
+    color: lightskyblue;
+    cursor: pointer;
+}

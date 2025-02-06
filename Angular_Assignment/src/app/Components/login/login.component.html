@@ -1,0 +1,48 @@
+<div class="screen"></div>
+
+<form  (ngSubmit)="toLogin(LoginForm)" #LoginForm="ngForm">
+
+    <p-card [style]="{ width: '360px' }">
+        <div class="header">
+            <img src="https://itorizon.com/wp-content/uploads/2020/10/Logo-Itorizon-2017.png" 
+                alt="" height="80px" width="250px">
+            <h2>Welcome</h2>
+            <p>Please use Registered Username and Password to Login your account</p>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="username">User Name</label>
+            <br>
+            <input type="text" name="username" ngModel required/>
+            <br>
+            <small *ngIf="false">Enter your username to reset your password.</small>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="password">Password</label>
+            <br>
+            <input type="password" name="password" ngModel required/>
+            <span class="forgetpassword">Forget Password?</span>
+            <br>
+            <small *ngIf="false">Enter your username to reset your password.</small>
+        </div>
+
+        <br>
+
+        <div>
+            <button type="submit" [disabled]="LoginForm.invalid">
+                    LogIn
+            </button>
+        </div>
+
+        <div>
+            <p>Don't have an account? <span class="signup" routerLink="/signup">Sign up</span></p>
+        </div>
+    </p-card>
+</form>
+
+<p-toast />
