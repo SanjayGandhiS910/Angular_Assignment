@@ -26,7 +26,7 @@ export class SignupComponent {
     if(password !== cpassword){
       this.showError('Password','Password do not match');
     }else{
-      let msg = this.user.signuptoHome(username,password,cpassword)
+      let msg = this.user.signuptoDashBoard(username,password,cpassword)
       if(msg === 'User Name Already Exits'){
         this.showError('User Name','User Name Already  Exists');
       }

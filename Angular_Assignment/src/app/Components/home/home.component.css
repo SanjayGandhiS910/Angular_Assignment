@@ -1,0 +1,9 @@
+.header{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.div1{
+    grid-column: span 2;
+}
+

@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
-import { ReactiveFormsModule } from "@angular/forms";
 
 //Components
-import { AppComponent } from "./app.component";
-import { LoginComponent } from "./Components/login/login.component";
-import { SignupComponent } from "./Components/signup/signup.component";
+import { DashboardComponent } from "../Components/dashboard/dashboard.component";
+import { HeaderComponent } from "../Components/header/header.component";
+import { MenubarComponent } from "../Components/menubar/menubar.component";
+import { HomeComponent } from "../Components/home/home.component";
 
 //PrimeNg Modules
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -15,7 +15,6 @@ import Aura from '@primeng/themes/aura';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { AppRoutesModule } from "./Modules/route.module";
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
@@ -23,19 +22,19 @@ import { Ripple } from 'primeng/ripple';
 import { DrawerModule } from 'primeng/drawer';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
-import { MenuRouteModule } from "./Modules/menuroute.module";
+import { MenuRouteModule } from "./menuroute.module";
 
 @NgModule({
     declarations: [
-        AppComponent,
-        LoginComponent,
-        SignupComponent
+        DashboardComponent,
+        HeaderComponent,
+        MenubarComponent,
+        HomeComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
-        ReactiveFormsModule,
-        AppRoutesModule,
+        MenuRouteModule,
         CardModule,
         InputTextModule,
         ButtonModule,
@@ -44,8 +43,7 @@ import { MenuRouteModule } from "./Modules/menuroute.module";
         Ripple,
         DrawerModule,
         AvatarModule,
-        AvatarGroupModule,
-        MenuRouteModule
+        AvatarGroupModule
     ],
     providers: [
         provideAnimationsAsync(),
@@ -56,6 +54,6 @@ import { MenuRouteModule } from "./Modules/menuroute.module";
         }),
         MessageService
     ],
-    bootstrap: [AppComponent]
+    exports: [ MenuRouteModule]
 })
-export class AppModule{}
+export class HomeModule{}

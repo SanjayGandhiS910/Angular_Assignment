@@ -12,7 +12,7 @@ export class AuthService{
     router: Router = inject(Router)
 
 
-    logintoHome(username: string, password: string){
+    logintoDashBoard(username: string, password: string){
         this.user = this.users.users.find( data =>
              data.username === username &&  data.password === password )
         if(this.user === undefined){
@@ -25,13 +25,13 @@ export class AuthService{
         }
     }
 
-    signuptoHome(username: string, password: string, confirmpassword: string){
+    signuptoDashBoard(username: string, password: string, confirmpassword: string){
         this.user = this.users.users.find( data =>
             data.username === username)
         if(this.user !== undefined){
             return 'User Name Already Exits'
         }else{
-            this.router.navigate(['/home']);
+            this.router.navigate(['/dashboard']);
             return "SignUp Succussfully"
         }
     }

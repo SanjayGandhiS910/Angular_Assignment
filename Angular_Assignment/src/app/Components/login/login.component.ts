@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
 import { MessageService } from 'primeng/api';
@@ -19,7 +19,7 @@ export class LoginComponent{
   toLogin(LoginForm: NgForm){
     let username = LoginForm.controls['username'].value
     let password = LoginForm.controls['password'].value
-    let msg = this.user.logintoHome(username,password)
+    let msg = this.user.logintoDashBoard(username,password)
     if(msg === 'Wrong Credentials'){
       this.showError(msg,'Invalid username or password')
     }

@@ -1,0 +1,45 @@
+section{
+    background-color: #f8f6f5;
+    width: 300px;
+    height: 92vh;
+}
+.div{
+    margin-left: 70px;
+}
+.div0{
+    padding-top: 15%;
+    margin-left: 0;
+    text-align: center;
+}
+.div1{
+    display: flex;
+    padding-top: 15%;
+}
+.div2, .div3{
+    display: flex;
+    margin-top: 30px;
+}
+.div4{
+    margin-top: 120px;
+    margin-left: 0px;
+    text-align: center;
+}
+h3{
+    color: #9e4a6f;
+}
+p{
+    color: #cc99b5;
+}
+a{
+    text-decoration: none;
+    color: #cc99b5;
+    font-weight: 500;
+    margin-left: 10px;
+}
+i{
+    color: #cc99b5;
+}
+.active{
+    color: #9e4a6f;
+    font-weight: 800;
+}
