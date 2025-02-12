@@ -1,9 +1,9 @@
 .header{
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
+    column-gap: 20px;
 }
 
-.div1{
-    grid-column: span 2;
+.div2{
+    margin-top: 20px;
 }
 

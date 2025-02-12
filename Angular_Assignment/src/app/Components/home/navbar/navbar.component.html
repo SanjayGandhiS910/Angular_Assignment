@@ -8,7 +8,7 @@
             <i class="fa-brands fa-microsoft"></i>
         </div>
         <div>
-            <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">DASH BOARD</a>
+            <a routerLink="/hrportal/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">DASH BOARD</a>
         </div>
     </div>
     <div class="div div2">
@@ -16,22 +16,22 @@
             <i class="fa-solid fa-user-group"></i>
         </div>
         <div>
-            <a routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">EMPLOYEE LIST</a>
+            <a routerLink="/hrportal/employeelist" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">EMPLOYEE LIST</a>
         </div>
     </div>
         <div class="div div3"><div>
-            <i class="fa-solid fa-list"></i>
+            <i class="fa-solid fa-building"></i>
         </div>
         <div>
-            <a routerLink="/signup" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">DEPARTMENT LIST</a>
+            <a routerLink="/hrportal/departmentlist" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">DEPARTMENT LIST</a>
         </div>
     </div>
 
     <div class="div div4">
         <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="mr-2" size="xlarge" shape="circle" />
-        <br><br>
-        <h3>User Name</h3>
         <br>
+        <h3>{{ username }}</h3>
         <p>ROLE</p>
     </div>
 </section>
+

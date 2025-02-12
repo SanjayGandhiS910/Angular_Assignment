@@ -4,15 +4,15 @@ header{
 }
 
 .div1{
-    background: rgb(23, 23, 23);
+    background: #3b3c45;
     padding: 5px;
     padding-top: 12px;
 }
 
 .div2{
     padding: 20px;
-    color: rgb(163, 163, 163);
-    background: rgb(52, 52, 52);
+    color: #a8abb5;
+    background: #555761;
     width: 100%;
     height: 100%;
 }

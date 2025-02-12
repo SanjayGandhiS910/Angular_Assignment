@@ -1,15 +1,17 @@
-import { inject, Injectable } from "@angular/core";
-import { UserDetailsService } from "../practice";
+import { Injectable } from "@angular/core";
+import { UserDetailsService } from "../user.details";
 import { Router } from "@angular/router";
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
-export class AuthService{
+export class AuthenticationService{
     isCorrectUserName = true;
     user: any;
-    users: UserDetailsService = inject(UserDetailsService);
-    router: Router = inject(Router)
+    username!: string;
+
+    constructor(private users: UserDetailsService,private router: Router)
+                {}
 
 
     logintoDashBoard(username: string, password: string){
@@ -19,7 +21,8 @@ export class AuthService{
             this.isCorrectUserName = false
             return 'Wrong Credentials'
         }else{
-            this.router.navigate(['/home'])
+            this.username = username;
+            this.router.navigate(['/hrportal'])
             this.isCorrectUserName = true
             return
         }

@@ -1,8 +1,9 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../Services/auth.service';
+import { AuthenticationService } from '../../Services/authentication.service';
 import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-signup',
@@ -11,12 +12,11 @@ import { MessageService } from 'primeng/api';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
-  
   @ViewChild('SignupForm') SignupForm!: NgForm;
-  router: Router = inject(Router);
-  user: AuthService = inject(AuthService);
   
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService,private router: Router,
+    private user: AuthenticationService
+  ) {}
 
   onSignUp(SignupForm: NgForm){
     let username = SignupForm.controls['username'].value

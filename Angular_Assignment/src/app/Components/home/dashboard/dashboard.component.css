@@ -1,0 +1,27 @@
+.search input{
+    float: right;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+.search input:focus{
+    outline: 1px solid gray;
+    border: 1px solid gray;
+}
+
+::ng-deep p-sortIcon {
+    float: right;
+}
+
+.card{
+    width: 550px;
+    overflow-x: scroll;
+    border: 1px solid lightgray;
+}
+
+.card::-webkit-scrollbar{
+    display: none;
+}
+
+

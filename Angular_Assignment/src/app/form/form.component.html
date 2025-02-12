@@ -1,0 +1,20 @@
+
+<form action="" #AddEmplyeeForm="ngForm">
+    <h2>Add New User</h2>
+    <hr>
+    <div class="flex">
+        <div class="div1">
+            <i class="fa-solid fa-circle-user"></i>
+            <p-fileupload mode="basic" name="demo[]" chooseIcon="pi pi-upload" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000" [auto]="true" chooseLabel="button" />
+        </div>
+        <div>
+            <i class="pi-check" style="font-size: 1rem"></i>
+        </div>
+    </div>
+</form>
+
+
+<!-- <div class="card flex justify-center">
+    <p-toast />
+    <p-fileupload mode="basic" name="demo[]" chooseIcon="pi pi-upload" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Browse" />
+</div> -->

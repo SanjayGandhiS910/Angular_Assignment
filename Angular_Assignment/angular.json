@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-assignment": {
+    "Angular_Assignment": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -21,7 +21,7 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/asset",
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-assignment:build:production"
+              "buildTarget": "Angular_Assignment:build:production"
             },
             "development": {
-              "buildTarget": "angular-assignment:build:development"
+              "buildTarget": "Angular_Assignment:build:development"
             }
           },
           "defaultConfiguration": "development"

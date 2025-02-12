@@ -1,0 +1,15 @@
+::ng-deep p-sortIcon {
+    float: right;
+}
+
+.card{
+    width: 76vw;
+    overflow-x: scroll;
+    border: 1px solid lightgray;
+}
+
+.card::-webkit-scrollbar{
+    display: none;
+}
+
+
