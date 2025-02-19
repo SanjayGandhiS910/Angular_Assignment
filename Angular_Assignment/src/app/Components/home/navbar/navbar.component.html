@@ -19,7 +19,16 @@
             <a routerLink="/hrportal/employeelist" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">EMPLOYEE LIST</a>
         </div>
     </div>
-        <div class="div div3"><div>
+    <div class="div div2">
+        <div>
+            <i class="fa-solid fa-user-group"></i>
+        </div>
+        <div>
+            <a routerLink="/hrportal/employeeattendance" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">EMPLOYEE ATTENDANCE</a>
+        </div>
+    </div>
+    <div class="div div3">
+        <div>
             <i class="fa-solid fa-building"></i>
         </div>
         <div>
@@ -28,7 +37,7 @@
     </div>
 
     <div class="div div4">
-        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="mr-2" size="xlarge" shape="circle" />
+        <p-avatar image="" class="mr-2" size="xlarge" shape="circle" />
         <br>
         <h3>{{ username }}</h3>
         <p>ROLE</p>

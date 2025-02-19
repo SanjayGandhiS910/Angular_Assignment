@@ -1,0 +1,68 @@
+<div class="screen"></div>
+
+<form action="" #AddEmplyeeForm="ngForm">
+    <h2>Department Detail</h2>
+    <hr>
+    <div class="flex1">
+        <div class="div2">
+            <div class="scrool">
+                <div class="row">
+                    <label for="">Department Id</label><br>
+                    <input pInputText type="text" ngModel name="departmentid" required/>
+                </div>
+                <div class="row">
+                    <label for="">Department Name</label><br>
+                    <input pInputText type="text" ngModel name="departmentname" required/>
+                </div>
+                <div class="row">
+                    <label for="">Manager Id</label><br>
+                    <input pInputText type="text" ngModel name="managerid" required/>
+                </div>
+                <div class="row">
+                    <label for="">No Of Employees</label><br>
+                    <input pInputText type="text" ngModel name="noofemployees" required/>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <div>
+                            <label for="">Create Source</label><br>
+                            <input type="text" pInputText ngModel name="createdsource" required>
+                        </div>
+                        <div>
+                            <label for="">Create Source Type</label><br>
+                            <input type="text" pInputText ngModel name="createdsourcetype" required>
+                        </div>
+                        <div>
+                            <label for="">Create Date & Time</label><br>
+                            <input type="text" pInputText ngModel name="createddate" required>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="">Modified Source</label><br>
+                            <input type="text" pInputText ngModel name="modifiedsource" required>
+                        </div>
+                        <div>
+                            <label for="">Modified Source Type</label><br>
+                            <input type="text" pInputText ngModel name="modifiedsourcetype" required>
+                        </div>
+                        <div>
+                            <label for="">Modified Date & Time</label><br>
+                            <input type="text" pInputText ngModel name="modifieddate" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div style="text-align: center;">
+                <p-button label="Refresh" [raised]="true" severity="info" (onClick)="refresh()"/>
+                <p-button label="Back to Departmentlist" [raised]="true" severity="info" (onClick)="goback()"/>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+

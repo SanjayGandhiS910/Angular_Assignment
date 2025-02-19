@@ -1,0 +1,138 @@
+<div class="screen"></div>
+
+<form action="" #AddEmplyeeForm="ngForm">
+    <div class="head">
+        <h2>User Detail</h2>
+        <div>
+            <button (click)="isCloseForm()">
+                <i class="fa-regular fa-circle-xmark"></i>
+            </button>
+        </div>
+    </div>
+    <hr>
+    <div class="flex1">
+        <div class="div1">
+            <i class="fa-solid fa-circle-user"></i>
+            <p-fileupload mode="basic" name="demo[]" chooseIcon="pi pi-upload" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000" [auto]="true"  />
+        </div>
+        <div class="div2">
+            <div class="scrool">
+                <div class="row">
+                    <label for="">EmplyeeId</label><br>
+                    <input pInputText type="text" ngModel name="emplyeeId" required/>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label for="">First Name</label><br>
+                        <input pInputText type="text" ngModel name="firstname" required/>
+                    </div>
+                    <div>
+                        <label for="">Last Name</label><br>
+                        <input pInputText type="text" ngModel name="lastname" required/>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label for="">Gender</label><br>
+                        <div>
+                            <p-radiobutton value="male" inputId="ingredient1" ngModel name="gender" required/>
+                            <label for="ingredient1" class="ml-2">Male</label>
+                        
+                            <p-radiobutton value="female" inputId="ingredient2" ngModel name="gender" required/>
+                            <label for="ingredient2" class="ml-2">Female</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="">Blood Group</label><br>
+                        <p-select [options]="cities" optionLabel="name" placeholder="-- Select --" ngModel name="bloodgroup" required/>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label for="">Email</label><br>
+                        <p-inputgroup>
+                            <p-inputgroup-addon>
+                                <i class="pi pi-envelope"></i>
+                            </p-inputgroup-addon>
+                            <p-floatlabel>
+                                <input pInputText id="over_label" ngModel name="email" required="email"/>
+                            </p-floatlabel>
+                        </p-inputgroup>
+                    </div>
+                    <div>
+                        <label for="">Phone Number</label><br>
+                        <p-inputgroup>
+                            <p-inputgroup-addon>
+                                <i class="pi pi-phone"></i>
+                            </p-inputgroup-addon>
+                            <p-floatlabel>
+                                <input pInputText id="over_label" ngModel name="phonenumner" required/>
+                            </p-floatlabel>
+                        </p-inputgroup>
+                    </div>
+                </div>
+                
+                <div class="cloumnflex">
+                    <div>
+                        <label for="icondisplay" class="font-bold block mb-2"> Dob </label><br>
+                        <p-datepicker [iconDisplay]="'input'" size="large" [showIcon]="true" inputId="icondisplay" ngModel name="dob" required/>
+                    </div>
+                    <div>
+                        <label for="icondisplay" class="font-bold block mb-2"> DoJ </label><br>
+                        <p-datepicker [iconDisplay]="'input'" size="large" [showIcon]="true" inputId="icondisplay" ngModel name="doj" required/>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label for="">Department</label><br>
+                        <p-select [options]="cities" optionLabel="name" placeholder="-- Select --" ngModel name="department" required/>
+                    </div>
+                    <div>
+                        <label for="">Position</label><br>
+                        <p-select [options]="cities" optionLabel="name" placeholder="-- Select --" ngModel name="position" required/>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label for="">Create Source</label><br>
+                        <input type="text" pInputText ngModel name="createsource" required>
+                    </div>
+                    <div>
+                        <label for="">Create Source Type</label><br>
+                        <input type="text" pInputText ngModel name="createsourcetype" required>
+                    </div>
+                    <div>
+                        <label for="">Create Date & Time</label><br>
+                        <input type="text" pInputText ngModel name="createdate" required>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label for="">Modified Source</label><br>
+                        <input type="text" pInputText ngModel name="modifiedsource" required>
+                    </div>
+                    <div>
+                        <label for="">Modified Source Type</label><br>
+                        <input type="text" pInputText ngModel name="modifiedsourcetype" required>
+                    </div>
+                    <div>
+                        <label for="">Modified Date & Time</label><br>
+                        <input type="text" pInputText ngModel name="modifieddate" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="">Address</label><br>
+                    <textarea rows="5" cols="30" pTextarea ngModel name="address" required></textarea>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div style="text-align: center;">
+                <p-button label="Submit" [raised]="true" severity="info" (onClick)="onSumbit(AddEmplyeeForm)"/>
+            </div>
+        </div>
+    </div>
+</form>
+
+

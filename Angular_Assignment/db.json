@@ -1,8 +1,105 @@
 {
     "users": [
-
+        {
+            "username" : "Sanjay",
+            "password" : "12345"
+        }
     ],
     "userdetails": [
-
+        {
+            "empolyeeid" : "ITO001",
+            "firstname": "Pavan",
+            "lastname": "Darshan",
+            "dob": "10-11-2001",
+            "gender": "male",
+            "bloodgroup": "o+ positive",
+            "phonenumber": "1234567890",
+            "doj": "10-12-2024",
+            "department": "R&D",
+            "position": "Software Analyst",
+            "email": "pavan@gmail.com",
+            "createsource": "AAA",
+            "createsourcetype": "BBB",
+            "createdate": "CCC",
+            "modifiedsource": "AAAA",
+            "modifiedsourcetype": "BBBB",
+            "modifieddate": "CCCC"
+        },
+        {
+            "empolyeeid" : "ITO002",
+            "firstname": "SriDevi",
+            "lastname": "Suresh",
+            "dob": "10-11-2002",
+            "gender": "female",
+            "bloodgroup": "B+ positive",
+            "phonenumber": "9876543210",
+            "doj": "10-12-2024",
+            "department": "R&D",
+            "position": "Software Analyst",
+            "email": "sridevi@gmail.com",
+            "createsource": "AA",
+            "createsourcetype": "BB",
+            "createdate": "CC",
+            "modifiedsource": "AAA",
+            "modifiedsourcetype": "BBB",
+            "modifieddate": "CCC"
+        },
+        {
+            "empolyeeid" : "ITO003",
+            "firstname": "Sanjay",
+            "lastname": "Gandhi",
+            "dob": "10-11-2001",
+            "gender": "male",
+            "bloodgroup": "o+ positive",
+            "phonenumber": "8765432190",
+            "doj": "10-12-2024",
+            "department": "R&D",
+            "position": "Software Analyst",
+            "email": "sanjay@gmail.com",
+            "createsource": "A",
+            "createsourcetype": "B",
+            "createdate": "C",
+            "modifiedsource": "AA",
+            "modifiedsourcetype": "BB",
+            "modifieddate": "CC"
+        }
+    ],
+    "departmentdetail" : [
+        {
+            "departmentid": "001",
+            "departmentname": "R&D",
+            "noofemployees": "21",
+            "managerid": "ITO010",
+            "createdsource": "ZZ",
+            "createdsourcetype": "ZZZ",
+            "createddate": "10-12-2018",
+            "modifiedsource": "Y",
+            "modifiedsourcetype": "YY",
+            "modifieddate": "10-12-2020"
+        },
+        {
+            "departmentid": "002",
+            "departmentname": "Operations",
+            "noofemployees": "10",
+            "managerid": "ITO015",
+            "createdsource": "QQ",
+            "createdsourcetype": "QQQ",
+            "createddate": "10-12-2022",
+            "modifiedsource": "W",
+            "modifiedsourcetype": "WW",
+            "modifieddate": "10-12-2023"
+        },
+        {
+            "departmentid": "003",
+            "departmentname": "Testing",
+            "noofemployees": "7",
+            "managerid": "ITO007",
+            "createdsource": "A",
+            "createdsourcetype": "AAA",
+            "createddate": "10-12-2023",
+            "modifiedsource": "R",
+            "modifiedsourcetype": "RR",
+            "modifieddate": "10-12-2024"
+        }
     ]
 }

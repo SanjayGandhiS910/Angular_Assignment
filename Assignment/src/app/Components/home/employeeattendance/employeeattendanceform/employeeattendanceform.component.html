@@ -1,0 +1,87 @@
+
+
+<form action="" #EmployeeAttendanceForm="ngForm">
+    <hr>
+    <div class="flex1">
+            <div class="scrool">
+                <div class="row">
+                    <label for="">EmplyeeId</label><br>
+                    <input pInputText type="text" ngModel name="emplyeeid" required disabled/>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label for="">Month</label><br>
+                        <p-datepicker view="month" dateFormat="MM" [readonlyInput]="true" />
+                    </div>
+                    <div>
+                        <label for="">Date</label><br>
+                        <p-datepicker [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" ngModel name="date" required/>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label for="">Department Id</label><br>
+                        <input pInputText type="text" ngModel name="departmentid" required disabled/>
+                    </div>
+                    <div>
+                        <label for="">Available</label><br>
+                        <p-select  optionLabel="name" placeholder="-- Select --" ngModel name="available" required/>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label for="">Checkin</label><br>
+                        <p-datepicker [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true" inputId="templatedisplay">
+                            <ng-template #inputicon let-clickCallBack="clickCallBack">
+                                <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
+                            </ng-template>
+                        </p-datepicker>
+                    </div>
+                    <div>
+                        <label for="">Check out</label><br>
+                        <p-datepicker [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true" inputId="templatedisplay">
+                            <ng-template #inputicon let-clickCallBack="clickCallBack">
+                                <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
+                            </ng-template>
+                        </p-datepicker>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <div>
+                            <label for="">Create Source</label><br>
+                            <input type="text" pInputText ngModel name="createsource" required>
+                        </div>
+                        <div>
+                            <label for="">Create Source Type</label><br>
+                            <input type="text" pInputText ngModel name="createsourcetype" required>
+                        </div>
+                        <div>
+                            <label for="">Create Date & Time</label><br>
+                            <input type="text" pInputText ngModel name="createdate" required>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="">Modified Source</label><br>
+                            <input type="text" pInputText ngModel name="modifiedsource" required>
+                        </div>
+                        <div>
+                            <label for="">Modified Source Type</label><br>
+                            <input type="text" pInputText ngModel name="modifiedsourcetype" required>
+                        </div>
+                        <div>
+                            <label for="">Modified Date & Time</label><br>
+                            <input type="text" pInputText ngModel name="modifieddate" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div style="text-align: center;">
+                <p-button label="Submit" [raised]="true" severity="info"/>
+            </div>
+    </div>
+</form>

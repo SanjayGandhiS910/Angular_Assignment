@@ -1,0 +1,110 @@
+{
+  "user": [
+    {
+      "id": "875e",
+      "username": "Admin",
+      "password": "admin"
+    },
+    {
+      "id": "3d23",
+      "username": "Sanjay",
+      "password": "12345"
+    },
+    {
+      "id": "5065",
+      "username": "Pavan",
+      "password": "67890"
+    }
+  ],
+  "departmentdetail" : [
+        {
+            "departmentid": "001",
+            "departmentname": "R&D",
+            "noofemployees": "21",
+            "managerid": "ITO010",
+            "createdsource": "ZZ",
+            "createdsourcetype": "ZZZ",
+            "createddate": "10-12-2018",
+            "modifiedsource": "Y",
+            "modifiedsourcetype": "YY",
+            "modifieddate": "10-12-2020"
+        },
+        {
+            "departmentid": "002",
+            "departmentname": "Operations",
+            "noofemployees": "10",
+            "managerid": "ITO015",
+            "createdsource": "QQ",
+            "createdsourcetype": "QQQ",
+            "createddate": "10-12-2022",
+            "modifiedsource": "W",
+            "modifiedsourcetype": "WW",
+            "modifieddate": "10-12-2023"
+        },
+        {
+            "departmentid": "003",
+            "departmentname": "Testing",
+            "noofemployees": "7",
+            "managerid": "ITO007",
+            "createdsource": "A",
+            "createdsourcetype": "AAA",
+            "createddate": "10-12-2023",
+            "modifiedsource": "R",
+            "modifiedsourcetype": "RR",
+            "modifieddate": "10-12-2024"
+        }
+    ],
+    "employeeattendance" : [
+      {
+        "employeeid": "ITO043",
+        "month": "February",
+        "date": "18-02-2025",
+        "departmentid": "001",
+        "departmentname": "R&D",
+        "available": "true",
+        "checkin": "11:10",
+        "checkout": "20:10",
+        "attendancecount": "10",
+        "createdsource": "A",
+        "createdsourcetype": "AA",
+        "createddate": "AAA",
+        "modifiedsource": "B",
+        "modifiedsourcetype": "BB",
+        "modifieddate": "BBB"
+      },
+      {
+        "employeeid": "ITO045",
+        "month": "February",
+        "date": "18-02-2025",
+        "departmentid": "002",
+        "departmentname": "Testing",
+        "available": "true",
+        "checkin": "10:30",
+        "checkout": "19:50",
+        "attendancecount": "15",
+        "createdsource": "Z",
+        "createdsourcetype": "ZZ",
+        "createddate": "ZZZ",
+        "modifiedsource": "Y",
+        "modifiedsourcetype": "YY",
+        "modifieddate": "YYY"
+      },
+      {
+        "employeeid": "ITO048",
+        "month": "February",
+        "date": "18-02-2025",
+        "departmentid": "003",
+        "departmentname": "Operations",
+        "available": "false",
+        "checkin": "10:10",
+        "checkout": "19:10",
+        "attendancecount": "19",
+        "createdsource": "C",
+        "createdsourcetype": "CC",
+        "createddate": "CCC",
+        "modifiedsource": "D",
+        "modifiedsourcetype": "DD",
+        "modifieddate": "DDD"
+      }
+    ]
+}

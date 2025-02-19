@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../Services/authentication.service';
+import { AuthenticationService } from '../../Services/auth/authentication.service';
 import { MessageService } from 'primeng/api';
 
 
@@ -27,9 +27,9 @@ export class SignupComponent {
       this.showError('Password','Password do not match');
     }else{
       let msg = this.user.signuptoDashBoard(username,password,cpassword)
-      if(msg === 'User Name Already Exits'){
-        this.showError('User Name','User Name Already  Exists');
-      }
+      // if(msg === 'User Name Already Exits'){
+      //   this.showError('User Name','User Name Already  Exists');
+      // }
     }
 
     this.SignupForm.reset()

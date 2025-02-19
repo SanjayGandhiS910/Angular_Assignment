@@ -1,0 +1,47 @@
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
+import { BrowserModule } from "@angular/platform-browser";
+import { LoginComponent } from "./Components/login/login.component";
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeng/themes/aura';
+
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { CardModule } from 'primeng/card';
+import { MessageService } from "primeng/api";
+import { SignupComponent } from "./Components/signup/signup.component";
+import { AppRouteModule } from "./Modules/approute.module";
+import { HomeModule } from "./Modules/home.module";
+
+@NgModule({
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        SignupComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        AppRouteModule,
+        HomeModule,
+        ToastModule,
+        CardModule,
+        ButtonModule
+    ],
+    providers: [
+        provideAnimationsAsync(),
+        providePrimeNG({
+            theme: {
+                preset: Aura
+            }
+        }),
+        MessageService
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule{}

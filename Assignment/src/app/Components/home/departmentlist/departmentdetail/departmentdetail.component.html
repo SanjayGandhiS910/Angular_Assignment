@@ -1,0 +1,58 @@
+<div class="screen"></div>
+
+<div class="deptdetail">
+    <div>
+        <h4>Department Id</h4>
+        <p>{{ dept?.departmentid }}</p>
+    </div>
+    <div>
+        <h4>Department Name</h4>
+        <p>{{ dept?.departmentname }}</p>
+    </div>
+    <div>
+        <h4>Manager Id</h4>
+        <p>{{ dept?.managerid }}</p>
+    </div>
+    <div>
+        <h4>No of Employee</h4>
+        <p>{{ dept?.noofemployees }}</p>
+    </div>
+    <div class="cloumnflex">
+        <div>
+            <div>
+                <h4>Create Source</h4>
+                <p>{{ dept?.createdsource }}</p>
+            </div>
+            <div>
+                <h4>Create Source Type</h4>
+                <p>{{ dept?.createdsourcetype }}</p>
+            </div>
+            <div>
+                <h4>Create Date & Time</h4>
+                <p>{{ dept?.createddate }}</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h4>Modified Source</h4>
+                <p>{{ dept?.modifiedsource }}</p>
+            </div>
+            <div>
+                <h4>Modified Source Type</h4>
+                <p>{{ dept?.modifiedsourcetype }}</p>
+            </div>
+            <div>
+                <h4>Modified Date & Time</h4>
+                <p>{{ dept?.modifieddate }}</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div>
+        <div style="text-align: center;">
+            <p-button label="Back to Departmentlist" [raised]="true" severity="info" (onClick)="goback()"/>
+        </div>
+    </div>
+</div>

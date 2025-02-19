@@ -1,0 +1,35 @@
+.deptdetail{
+    background-color: white;
+    padding: 20px;
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}
+
+p{
+    border: 1px solid gray;
+    padding: 10px;
+    background-color: lightgray;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.cloumnflex{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10px;
+}
+
+.screen{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 746px;
+    z-index: 1;
+}

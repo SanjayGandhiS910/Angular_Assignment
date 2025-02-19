@@ -9,3 +9,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular_Assignment';
 }
+
+
+export class A{
+  name: string = 'ssss'
+}

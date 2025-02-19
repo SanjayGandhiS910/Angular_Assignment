@@ -1,22 +1,23 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { TableModule } from 'primeng/table';
-import { UserDetailsService } from '../../../user.details';
-import { HttpClientModule } from '@angular/common/http';
-import { InputTextModule } from 'primeng/inputtext';
+import { Component, OnInit } from '@angular/core';
+import { EmployeetableComponent } from './employeetable/employeetable.component';
+import { EmpolyeeHttp } from '../../../Services/http/employeehttp.service';
+import { UserDetails } from '../../../Services/userdata/users.service';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [TableModule,HttpClientModule, InputTextModule],
+  imports: [EmployeetableComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit{
 
-  prodect!: { id: number; name: string; username: string; password: string; }[];
+  userdata!: UserDetails[]
 
-  constructor(private user: UserDetailsService ){}
+  constructor(private employeeData: EmpolyeeHttp){}
 
   ngOnInit(): void {
-    this.prodect = this.user.users
+    this.employeeData.getUser().subscribe( data => {
+      this.userdata = data
+    })
   }
 }

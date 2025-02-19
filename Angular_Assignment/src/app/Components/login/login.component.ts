@@ -1,7 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { AuthenticationService } from '../../Services/authentication.service';
+import { AuthenticationService } from '../../Services/auth/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +9,16 @@ import { AuthenticationService } from '../../Services/authentication.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   @ViewChild('LoginForm') LoginForm!: NgForm;
   
   constructor(private messageService: MessageService,private user: AuthenticationService) {}
+
+  ngOnInit(): void {
+    this.LoginForm.form.patchValue({
+      username: 'Admin'
+    })
+  }
 
   toLogin(LoginForm: NgForm){
     let username = LoginForm.controls['username'].value

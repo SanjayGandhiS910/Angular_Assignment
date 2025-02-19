@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { UserDetails } from '../../../../Services/userdata/users.service';
 
 @Component({
   selector: 'app-employeecard',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './employeecard.component.html',
   styleUrl: './employeecard.component.css'
 })
-export class EmployeecardComponent {
+export class EmployeecardComponent implements OnInit{
 
+  @Input() userdatearry!: UserDetails;
+
+  ngOnInit(): void {
+    console.log(this.userdatearry)
+  }
 }

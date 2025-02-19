@@ -1,0 +1,96 @@
+<div *ngIf="openForm">
+    <app-form (closeForm)="isCloseForm($event)"></app-form>
+</div>
+
+<div class="flex1">
+    <div> 
+        <p-inputgroup>
+            <p-button label="Search" size="large" severity="info"/>
+            <input pInputText placeholder="Search" size="large"/>
+        </p-inputgroup>
+    </div>
+    <div>
+        <p-button label="Add User" icon="pi pi-user" size="large" (onClick)="isOpenForm()" severity="info"/>
+    </div>
+</div>
+
+
+<div class="card">
+    <p-table [value]="userdata" 
+            [scrollable]="true" 
+            scrollHeight="400px"
+            [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template #header>
+            <tr>
+                <th pSortableColumn="empolyeeid">
+                    EmpolyeeID<p-sortIcon field="empolyeeid" />
+                </th>
+                <th pSortableColumn="firstname">
+                    Firstname<p-sortIcon field="firstname" />
+                </th>
+                <th pSortableColumn="lastname">
+                    Last Name<p-sortIcon field="lastname" />
+                </th>
+                <th pSortableColumn="dob">
+                    DoB<p-sortIcon field="dob" />
+                </th>
+                <th pSortableColumn="gender">
+                    Gender<p-sortIcon field="gender" />
+                </th>
+                <th pSortableColumn="phonenumber">
+                    PhoneNumber<p-sortIcon field="phonenumber" />
+                </th>
+                <th pSortableColumn="doj">
+                    DateOfJoining<p-sortIcon field="doj" />
+                </th>
+                <th pSortableColumn="depeartment">
+                    Depeartment<p-sortIcon field="depeartment" />
+                </th>
+                <th pSortableColumn="position">
+                    Position<p-sortIcon field="position" />
+                </th>
+                <th pSortableColumn="email">
+                    Email<p-sortIcon field="email" />
+                </th>
+                <th pSortableColumn="createsource">
+                    Created Source<p-sortIcon field="createsource" />
+                </th>
+                <th pSortableColumn="createsourcetype">
+                    createdSourceType<p-sortIcon field="createsourcetype" />
+                </th>
+                <th pSortableColumn="createdate">
+                    Created Date<p-sortIcon field="createdate" />
+                </th>
+                <th pSortableColumn="modifiedsource">
+                    Modified Source<p-sortIcon field="modifiedsource" />
+                </th>
+                <th pSortableColumn="modifiedsourcetype">
+                    Modified Source Type<p-sortIcon field="modifiedsourcetype" />
+                </th>
+                <th pSortableColumn="modifieddate">
+                    Modified Date<p-sortIcon field="modifieddate" />
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-user>
+            <tr>
+                <td>{{ user.empolyeeid }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.dob }}</td>
+                <td>{{ user.gender }}</td>
+                <td>{{ user.phonenumber }}</td>
+                <td>{{ user.doj }}</td>
+                <td>{{ user.department }}</td>
+                <td>{{ user.position }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.createsource }}</td>
+                <td>{{ user.createsourcetype }}</td>
+                <td>{{ user.createdate }}</td>
+                <td>{{ user.modifiedsource }}</td>
+                <td>{{ user.modifiedsourcetype }}</td>
+                <td>{{ user.modifieddate }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

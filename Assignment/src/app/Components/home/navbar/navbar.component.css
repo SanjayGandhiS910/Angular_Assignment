@@ -1,0 +1,28 @@
+.navbar{
+    background-color: #0064ff;
+    height: 100dvh;
+    width: 300px;
+    font-size: 0.8rem;
+    padding-left: 30px;
+    padding-top: 100px;
+}
+
+.colunm-flex{
+    display: flex;
+    column-gap: 10px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.div{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+.active{
+    background-color: white;
+    color: #0064ff;
+    border-radius: 50px 0% 0% 50px;
+}

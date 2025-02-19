@@ -5,6 +5,9 @@ import { DashboardComponent } from './Components/home/dashboard/dashboard.compon
 import { EmployeelistComponent } from './Components/home/employeelist/employeelist.component';
 import { DepartmentlistComponent } from './Components/home/departmentlist/departmentlist.component';
 import { HomeComponent } from './Components/home/home.component';
+import { RouteAuthService } from './Services/auth/routeauth.service';
+import { EmployeeattendanceComponent } from './Components/home/employeeattendance/employeeattendance.component';
+import { DepartmentdetailComponent } from './Components/home/departmentlist/departmentdetail/departmentdetail.component';
 
 export const routes1: Routes = [
     {
@@ -30,10 +33,11 @@ export const routes2: Routes = [
     {
         path: 'hrportal',
         component: HomeComponent,
+        canActivate: [ RouteAuthService ],
         children:[
             {
                 path: '',
-                component: DashboardComponent
+                component: DashboardComponent,
             },
             {
                 path: 'dashboard',
@@ -44,8 +48,17 @@ export const routes2: Routes = [
                 component: EmployeelistComponent
             },
             {
+                path: 'employeeattendance',
+                component: EmployeeattendanceComponent
+            },
+            {
                 path: 'departmentlist',
                 component: DepartmentlistComponent
+            }
+            ,
+            {
+                path: 'departmentlist/:id',
+                component: DepartmentdetailComponent
             }
         ]
     }

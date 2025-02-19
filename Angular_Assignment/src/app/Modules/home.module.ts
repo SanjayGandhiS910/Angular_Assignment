@@ -9,6 +9,8 @@ import Aura from '@primeng/themes/aura';
 import { NavbarComponent } from "../Components/home/navbar/navbar.component";
 import { HomeRouteModule } from "./homeroute.module";
 import { AvatarModule } from 'primeng/avatar';
+import { DrawerModule } from 'primeng/drawer';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { AvatarModule } from 'primeng/avatar';
     ],
     imports:[
         HomeRouteModule,
-        AvatarModule
+        AvatarModule,
+        DrawerModule,
+        ButtonModule
     ],
     providers:[
         provideAnimationsAsync(),

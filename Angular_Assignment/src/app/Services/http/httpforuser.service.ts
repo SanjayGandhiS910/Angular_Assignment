@@ -1,12 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { UserDetails } from "./users.service";
+import { UserDetails } from "../userdata/users.service";
 import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
-export class HttpService{
+export class HttpForUserService{
 
     apiUrl: string = ''
 

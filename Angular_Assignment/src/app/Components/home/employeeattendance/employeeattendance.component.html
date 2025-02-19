@@ -1,0 +1,88 @@
+<!-- <div *ngIf="openForm">
+    <app-form (closeForm)="isCloseForm($event)"></app-form>
+</div>
+
+<div class="flex1">
+    <div> 
+        <p-inputgroup>
+            <p-button label="Search" size="large" severity="info"/>
+            <input pInputText placeholder="Search" size="large"/>
+        </p-inputgroup>
+    </div>
+    <div>
+        <p-button label="Add User" icon="pi pi-user" size="large" (onClick)="isOpenForm()" severity="info"/>
+    </div>
+</div> -->
+
+
+<div class="card">
+    <p-table [value]="userdata" 
+            [scrollable]="true" 
+            scrollHeight="400px"
+            [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template #header>
+            <tr>
+                <th pSortableColumn="employeeid">
+                    Employeeid<p-sortIcon field="employeeid" />
+                </th>
+                <th pSortableColumn="date">
+                    Date<p-sortIcon field="date" />
+                </th>
+                <th pSortableColumn="departmentid">
+                    Departmentid<p-sortIcon field="departmentid" />
+                </th>
+                <th pSortableColumn="departmentname">
+                    Department Name<p-sortIcon field="departmentname" />
+                </th>
+                <th pSortableColumn="available">
+                    Available<p-sortIcon field="available" />
+                </th>
+                <th pSortableColumn="checkin">
+                    Checkin<p-sortIcon field="checkin" />
+                </th>
+                <th pSortableColumn="checkout">
+                    Checkout <span><p-sortIcon field="checkout" /></span>
+                </th>
+                <th pSortableColumn="attendancecount">
+                    Attendance Count <span><p-sortIcon field="attendancecount" /></span>
+                </th>
+                <th pSortableColumn="createsource">
+                    Created Source<p-sortIcon field="createsource" />
+                </th>
+                <th pSortableColumn="createsourcetype">
+                    createdSourceType<p-sortIcon field="createsourcetype" />
+                </th>
+                <th pSortableColumn="createdate">
+                    Created Date<p-sortIcon field="createdate" />
+                </th>
+                <th pSortableColumn="modifiedsource">
+                    Modified Source<p-sortIcon field="modifiedsource" />
+                </th>
+                <th pSortableColumn="modifiedsourcetype">
+                    Modified Source Type<p-sortIcon field="modifiedsourcetype" />
+                </th>
+                <th pSortableColumn="modifieddate">
+                    Modified Date<p-sortIcon field="modifieddate" />
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-user>
+            <tr>
+                <td>{{ user.employeeid }}</td>
+                <td>{{ user.date }}</td>
+                <td>{{ user.departmentid }}</td>
+                <td>{{ user.departmentname }}</td>
+                <td>{{ user.available }}</td>
+                <td>{{ user.checkin }}</td>
+                <td>{{ user.checkout }}</td>
+                <td>{{ user.attendancecount }}</td>
+                <td>{{ user.createsource }}</td>
+                <td>{{ user.createsourcetype }}</td>
+                <td>{{ user.createdate }}</td>
+                <td>{{ user.modifiedsource }}</td>
+                <td>{{ user.modifiedsourcetype }}</td>
+                <td>{{ user.modifieddate }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

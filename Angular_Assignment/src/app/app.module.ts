@@ -2,13 +2,12 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms"
 import { BrowserModule } from "@angular/platform-browser";
 import { AppRouteModule } from "./Modules/approute.module";
-import { HttpClient } from "@angular/common/http";
-
+import { HttpClientModule } from "@angular/common/http";
 //Components
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./Components/login/login.component";
 import { SignupComponent } from "./Components/signup/signup.component";
-import { AuthenticationService } from "./Services/authentication.service";
+import { AuthenticationService } from "./Services/auth/authentication.service";
 
 //PrimeNg
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -20,7 +19,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { AvatarModule } from 'primeng/avatar';
 import { HomeModule } from "./Modules/home.module";
-import { FormComponent } from "./form/form.component";
+import { HomeRouteModule } from "./Modules/homeroute.module";
 
 @NgModule({
     declarations:[
@@ -30,14 +29,15 @@ import { FormComponent } from "./form/form.component";
     ],
     imports:[
         BrowserModule,
+        HttpClientModule,
         HomeModule,
         AppRouteModule,
+        HomeRouteModule,
         FormsModule,
         CardModule,
         ButtonModule,
         ToastModule,
-        AvatarModule,
-        FormComponent
+        AvatarModule
     ],
     providers:[
         provideAnimationsAsync(),

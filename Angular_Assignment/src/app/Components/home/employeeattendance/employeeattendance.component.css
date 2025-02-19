@@ -1,0 +1,24 @@
+.flex1{
+    width: 78vw;
+    display: flex;
+    column-gap: 20px;
+    justify-content: end;
+}
+input:focus{
+    border: 1px solid rgb(0, 157, 255) !important;
+}
+
+.row1{
+    background-color: rgb(0, 157, 255);
+}
+
+/* .card{
+    margin-top: 30px;
+}
+tr:nth-child(even){
+    background-color: rgb(239, 249, 254);
+}
+::ng-deep.p-sortIcon{
+    float: right !important;
+} */
+
