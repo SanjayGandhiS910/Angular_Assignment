@@ -1,0 +1,22 @@
+.custom-datepicker .p-datepicker {
+    width: 100px !important ;/* Adjust the width as needed */
+    height: 400px; /* Adjust the height as needed */
+}
+
+.custom-datepicker .p-inputtext {
+    width: 100%; /* Ensures the input field matches the width of the date picker */
+}
+
+.red{
+    color: red;
+}
+
+::ng-deep.p-datepicker { td>span {
+            width: 20px !important;
+            height: 20px !important;
+        }
+}
+
+.custom-bg {
+    background-color: #007bff; /* Custom blue color */
+  }

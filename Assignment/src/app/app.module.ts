@@ -4,6 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { LoginComponent } from "./Components/login/login.component";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { CommonModule } from "@angular/common";
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
@@ -16,6 +17,7 @@ import { MessageService } from "primeng/api";
 import { SignupComponent } from "./Components/signup/signup.component";
 import { AppRouteModule } from "./Modules/approute.module";
 import { HomeModule } from "./Modules/home.module";
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
     declarations: [
@@ -25,13 +27,15 @@ import { HomeModule } from "./Modules/home.module";
     ],
     imports: [
         BrowserModule,
+        CommonModule,
         FormsModule,
         HttpClientModule,
         AppRouteModule,
         HomeModule,
         ToastModule,
         CardModule,
-        ButtonModule
+        ButtonModule,
+        PasswordModule
     ],
     providers: [
         provideAnimationsAsync(),

@@ -1,7 +1,6 @@
 .flex1{
     display: flex;
     justify-content: end;
-    column-gap: 10px;
     margin-bottom: 20px;
 }
 
@@ -17,4 +16,79 @@
 
 .card ::ng-deep.p-button{
     margin: 5px;
+}
+
+
+span{
+    float: right !important;
+}
+
+.btn2{
+    margin-left: 10px;
+}
+
+tr:hover{
+    background-color: rgb(240, 240, 240);
+}
+
+
+@media screen and (max-height: 630px){
+}
+
+/* Mobile View S */
+
+@media screen and (max-width: 320px){
+    .flex1{
+        display: block;
+    }
+    .flex1>div{
+        width: 100%;
+    }
+    .flex1 ::ng-deep.p-button{
+        width: 100%;
+    }
+    .btn2{
+        margin: 0px;
+        margin-top: 20px;
+    }
+}
+
+/* Mobile View M */
+
+@media screen and (max-width: 376px) and (min-width: 321px){
+    .flex1{
+        display: block;
+    }
+    .flex1>div{
+        width: 100%;
+    }
+    .flex1 ::ng-deep.p-button{
+        width: 100%;
+    }
+    .btn2{
+        margin: 0px;
+        margin-top: 20px;
+    }
+}
+
+/* Mobile View L */
+
+@media screen and (max-width: 426px) and (min-width: 376px){
+    .flex1{
+        display: block;
+    }
+    .flex1>div{
+        width: 100%;
+    }
+    .flex1 ::ng-deep.p-button{
+        width: 100%;
+    }
+    .btn2{
+        margin: 0px;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 427px){
+    
 }

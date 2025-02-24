@@ -1,24 +1,28 @@
 <div class="flex1">
     <div> 
         <p-inputgroup>
-            <p-button label="Search" size="large" severity="info"/>
-            <input pInputText placeholder="Search" size="large"/>
+            <p-button label="Search" size="large" severity="info" />
+            <input pInputText placeholder="Search" size="large" #filter (keyup)="search()"/>
         </p-inputgroup>
     </div>
-    <div>
-        <p-button (click)="showDialog()" label="Add" icon="pi pi-user" size="large" severity="info"/>
+    <div [ngClass]="{'btn2': username === 'Admin'}">
+        <p-button (click)="showDialog()" label="Add" icon="pi pi-user" size="large" severity="info" *ngIf="username == 'Admin'"/>
     </div>
 </div>
 
 <div class="card">
     <p-table [value]="empAttendance"
+            showGridlines
             [scrollable]="true" 
             scrollHeight="400px"
-            [tableStyle]="{ 'min-width': '50rem' }">
+            [tableStyle]="{ 'min-width': '50rem' }"
+            [paginator]="arrbool"
+            [rows]="5"
+            [rowsPerPageOptions]="array">
         <ng-template #header>
             <tr>
-                <th pSortableColumn="employeeid" style="min-width:200px">
-                    Employee Id <span><p-sortIcon field="employeeid" /></span>
+                <th pSortableColumn="employeeid" style="min-width:200px" pFrozenColumn>
+                    Employee Id<span><p-sortIcon field="employeeid" /></span>
                 </th>
                 <th pSortableColumn="date" style="min-width:200px">
                     Date<span><p-sortIcon field="date" /></span>
@@ -30,16 +34,16 @@
                     Department Name<span><p-sortIcon field="departmentname" /></span>
                 </th>
                 <th pSortableColumn="available" style="min-width:200px">
-                    Available <span><p-sortIcon field="available" /></span>
+                    Available<span><p-sortIcon field="available" /></span>
                 </th>
                 <th pSortableColumn="checkin" style="min-width:200px">
-                    Checkin <span><p-sortIcon field="checkin" /></span>
+                    Checkin<span><p-sortIcon field="checkin" /></span>
                 </th>
                 <th pSortableColumn="checkout" style="min-width:200px">
-                    Checkout <span><p-sortIcon field="checkout" /></span>
+                    Checkout<span><p-sortIcon field="checkout" /></span>
                 </th>
                 <th pSortableColumn="attendancecount" style="min-width:200px">
-                    Attendance Count <span><p-sortIcon field="attendancecount" /></span>
+                    Attendance Count<span><p-sortIcon field="attendancecount" /></span>
                 </th>
                 <th pSortableColumn="createdsource" style="min-width:200px">
                     Created Source<span><p-sortIcon field="createdsource" /></span>
@@ -53,45 +57,52 @@
                 <th pSortableColumn="modifiedsource" style="min-width:200px">
                     Modified Source<span><p-sortIcon field="modifiedsource" /></span>
                 </th>
-                <th pSortableColumn="modifiedsourcetype" style="min-width:200px">
+                <th pSortableColumn="modifiedsourcetype" style="min-width:210px">
                     Modified Source Type<span><p-sortIcon field="modifiedsourcetype" /></span>
                 </th>
                 <th pSortableColumn="modifieddate" style="min-width:200px">
                     Modified Date<span><p-sortIcon field="modifieddate" /></span>
                 </th>
-                <th>
+                <th *ngIf="username == 'Admin'">
                     Action
                 </th>
             </tr>
         </ng-template>
         <ng-template #body let-user>
-            <tr (dblclick)="empAtt()">
-                <td>{{ user.employeeid }}</td>
-                <td>{{ user.date }}</td>
+            <tr (dblclick)="empAtt(user)">
+                <td pFrozenColumn>{{ user.employeeid }}</td>
+                <td>{{ user.date | date}}</td>
                 <td>{{ user.departmentid }}</td>
-                <td>{{ user.departmentname }}</td>
-                <td>{{ user.available }}</td>
-                <td>{{ user.checkin }}</td>
-                <td>{{ user.checkout }}</td>
+                <td>{{ user.departmentname.name }}</td>
+                <td>{{ user.available.name }}</td>
+                <td>{{ user.checkin | date:'h:mm a' }}</td>
+                <td>{{ user.checkout | date:'h:mm a' }}</td>
                 <td>{{ user.attendancecount }}</td>
                 <td>{{ user.createdsource }}</td>
                 <td>{{ user.createdsourcetype }}</td>
-                <td>{{ user.createddate }}</td>
+                <td>{{ user.createddate | date }}</td>
                 <td>{{ user.modifiedsource }}</td>
                 <td>{{ user.modifiedsourcetype }}</td>
-                <td>{{ user.modifieddate }}</td>
-                <td>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash-can"></i>
+                <td>{{ user.modifieddate | date }}</td>
+                <td style="display: flex; column-gap: 2px; text-align: center;" *ngIf="username == 'Admin'">
+                    <p-button icon="pi pi-pen-to-square" severity="secondary" (onClick)="empAtt(user)"/>
+                    <p-button icon="pi pi-trash" severity="secondary" (click)="confirm($event,user.id)"/>
                 </td>
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="16">No customers found.</td>
             </tr>
         </ng-template>
     </p-table>
 </div>
 
+<p-confirmdialog />
+
 
 <div class="card">
-    <p-dialog header="Verfication" [modal]="true" *ngIf="visible" [visible]="true" [style]="{ width: '25rem' }" [draggable]="false" [resizable]="false">
+    <p-dialog header="Verfication" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }" [draggable]="false" [resizable]="false">
         <div>
             <label for="username" class="font-semibold w-24">Employee Id : </label>
             <input pInputText name="employeeid" class="flex-auto" [(ngModel)]="empId" />
@@ -107,15 +118,8 @@
     </p-dialog>
 </div>
 
-<div class="card">
-    <p-dialog header="User Detail" [modal]="true" [(visible)]="isVisible" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"  [draggable]="false" [resizable]="false">
-        <app-employeeattendanceform *ngIf="isVisible"/>
-    </p-dialog>
-</div>
+<app-employeeattendanceform *ngIf="isVisible" [empId]="empId" [deptId]="deptId" (closeForm)="closeForm($event)"/>
 
-<div class="card">
-    <p-dialog header="User Detail" [modal]="true" [(visible)]="empDet" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"  [draggable]="false" [resizable]="false">
-        <app-employeeattendanceform *ngIf="empDet"/>
-    </p-dialog>
-</div>
+<app-employeeattendanceform *ngIf="empDet" [empDet]="emp" [show]="true" (closeForm)="closeForm($event)" [isEdit]="true" [editButtonShow]="true"/>
+
 <p-toast position="top-center"/>

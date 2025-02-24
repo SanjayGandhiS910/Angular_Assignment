@@ -7,19 +7,23 @@ import { EmployeelistComponent } from './Components/home/employeelist/employeeli
 import { EmployeeattendanceComponent } from './Components/home/employeeattendance/employeeattendance.component';
 import { DepartmentlistComponent } from './Components/home/departmentlist/departmentlist.component';
 import { DepartmentdetailComponent } from './Components/home/departmentlist/departmentdetail/departmentdetail.component';
+import { LoginAuthService } from './Services/auth/loginauth.service';
 
 export const routes1: Routes = [
     {
         path: '',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [LoginAuthService]
     },
     {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [LoginAuthService]
     },
     {
         path: 'signup',
-        component: SignupComponent
+        component: SignupComponent,
+        canActivate: [LoginAuthService]
     },
     {
         path: 'hrportal',
@@ -33,6 +37,10 @@ export const routes2: Routes = [
         path: 'hrportal',
         component: HomeComponent,
         children:[
+            {
+                path: '',
+                component: DashboardComponent
+            },
             {
                 path: 'dashboard',
                 component: DashboardComponent

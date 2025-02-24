@@ -1,28 +1,159 @@
-.navbar{
-    background-color: #0064ff;
-    height: 100dvh;
-    width: 300px;
-    font-size: 0.8rem;
-    padding-left: 30px;
-    padding-top: 100px;
+.main{
+    display: flex;
 }
-
+.sidenavebar{
+    background-color: rgb(235, 235, 235);
+    padding-left: 20px;
+    padding-top: 60px;
+    box-sizing: border-box;
+    width: 300px;
+}
+.closenavbar{
+    margin-left: -297px;
+}
 .colunm-flex{
     display: flex;
-    column-gap: 10px;
     padding: 10px;
-    color: white;
+    column-gap: 10px;
     cursor: pointer;
 }
-
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 80px;
+    background-color: gray;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
 .div{
     width: 20px;
-    height: 20px;
+}
+.openandclose ::ng-deep.p-button{
+    position: relative;
+    left: -20px;
+    top: -10px;
+    border-radius: 50%;
+    margin-top: 20px;
+    background-color: gray;
+    color: white;
+    border: none;
+}
+.username{
+    width: 90%;
     text-align: center;
+    margin-top: 120px;
+    margin-bottom: 240px;
 }
 
 .active{
     background-color: white;
-    color: #0064ff;
-    border-radius: 50px 0% 0% 50px;
+    border-radius: 50px 0 0 50px;
+}
+.hidden{
+    visibility: hidden;
+}
+
+@media screen and (max-height: 638px){
+    .username{
+        margin-top: 55px;
+        margin-bottom: 135px;
+    }
+}
+
+/* Mobile View S */
+
+@media screen and (max-width: 320px){
+    .main{
+        position: fixed;
+        top: 64px;
+        z-index: 3;
+        height: 100%;
+    }
+    .sidenavebar{
+        width: 250px;
+    }
+    .closenavbar{
+        margin-left: -247px;
+    }
+    h5{
+        font-size: 13px;
+        margin-top: 5px;
+    }
+    h1{
+        left: 55px;
+    }
+}
+
+/* Mobile View M */
+
+@media screen and (max-width: 376px) and (min-width: 321px)  {
+    .main{
+        position: fixed;
+        top: 64px;
+        z-index: 3;
+        height: 100%;
+    }
+    .sidenavebar{
+        width: 250px;
+    }
+    .closenavbar{
+        margin-left: -247px;
+    }
+    h5{
+        font-size: 13px;
+        margin-top: 5px;
+    }
+    h1{
+        left: 45px;
+    }
+}
+
+/* Mobile View L */
+
+@media screen and (max-width: 426px) and (min-width: 376px) {
+    .main{
+        position: fixed;
+        top: 64px;
+        z-index: 3;
+        height: 100%;
+    }
+    .sidenavebar{
+        width: 250px;
+    }
+    .closenavbar{
+        margin-left: -247px;
+    }
+    h5{
+        font-size: 13px;
+        margin-top: 5px;
+    }
+    h1{
+        left: 50px;
+    }
+}
+
+
+@media screen and (max-width: 768px) and (min-width: 427px) {   
+    .main{
+        position: fixed;
+        top: 64px;
+        z-index: 3;
+        height: 100%;
+    }
+    .sidenavebar{
+        width: 250px;
+    }
+    .closenavbar{
+        margin-left: -247px;
+    }
+    h5{
+        font-size: 13px;
+        margin-top: 5px;
+    }
+    h1{
+        left: 50px;
+    }
 }

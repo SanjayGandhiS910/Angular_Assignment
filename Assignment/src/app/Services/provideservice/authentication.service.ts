@@ -18,6 +18,7 @@ export class AuthenticationService{
         if( check === undefined){
             this.messageService.add({ severity: 'error', summary: "Invalid Username or Password"});
         }else{
+            localStorage.setItem('username',username)
             this.router.navigate(['hrportal/dashboard'])
         }
     }
@@ -27,15 +28,17 @@ export class AuthenticationService{
             data.username === username
         )
         if(password !== cpassword){
-            this.messageService.add({ severity: 'error', summary: "Password do not match"});
+            return "Password do not match";
         }else if(check !== undefined){
-            this.messageService.add({ severity: 'error', summary: "User Name Already Exits"});
+            return "User Name Already Exits";
         }else{
             let newUser: User = {
                 username: username,
                 password: password
             }
             this.user.newUser(newUser)
+            this.router.navigate(['hrportal/dashboard'])
+            return
         }
     }
 }

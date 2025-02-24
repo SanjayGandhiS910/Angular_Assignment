@@ -1,50 +1,39 @@
-<!-- <div *ngIf="openForm">
-    <app-form (closeForm)="isCloseForm($event)"></app-form>
-</div>
-
-<div class="flex1">
-    <div> 
-        <p-inputgroup>
-            <p-button label="Search" size="large" severity="info"/>
-            <input pInputText placeholder="Search" size="large"/>
-        </p-inputgroup>
-    </div>
-    <div>
-        <p-button label="Add User" icon="pi pi-user" size="large" (onClick)="isOpenForm()" severity="info"/>
-    </div>
-</div> -->
 <div class="card">
     <p-table [value]="departmentData"
+            showGridlines
+            [paginator]="arrbool"
             [scrollable]="true" 
-            scrollHeight="400px"
-            [tableStyle]="{ 'min-width': '50rem' }">
+            scrollHeight="600px"
+            [tableStyle]="{ 'min-width': '50rem' }"
+            [rows]="5"
+            [rowsPerPageOptions]="array">
         <ng-template #header>
             <tr>
-                <th pSortableColumn="departmentid" style="min-width:200px">
+                <th pSortableColumn="departmentid" style="min-width:160px">
                     DepartmentId <span><p-sortIcon field="departmentid" /></span>
                 </th>
-                <th pSortableColumn="departmentname" style="min-width:200px">
+                <th pSortableColumn="departmentname" style="min-width:210px">
                     Department Name<span><p-sortIcon field="departmentname" /></span>
                 </th>
-                <th pSortableColumn="noofemployees" style="min-width:200px">
+                <th pSortableColumn="noofemployees" style="min-width:180px">
                     noOfEmployees<span><p-sortIcon field="noofemployees" /></span>
                 </th>
-                <th pSortableColumn="managerid" style="min-width:200px">
+                <th pSortableColumn="managerid" style="min-width:130px">
                     managerId<span><p-sortIcon field="managerid" /></span>
                 </th>
-                <th pSortableColumn="createdsource" style="min-width:200px">
+                <th pSortableColumn="createdsource" style="min-width:160px">
                     Created Source<span><p-sortIcon field="createdsource" /></span>
                 </th>
                 <th pSortableColumn="createdsourcetype" style="min-width:200px">
-                    createdSourceType<span><p-sortIcon field="createdsourcetype" /></span>
+                    Created Source Type<span><p-sortIcon field="createdsourcetype" /></span>
                 </th>
                 <th pSortableColumn="createddate" style="min-width:200px">
                     Created Date<span><p-sortIcon field="createddate" /></span>
                 </th>
-                <th pSortableColumn="modifiedsource" style="min-width:200px">
+                <th pSortableColumn="modifiedsource" style="min-width:170px">
                     Modified Source<span><p-sortIcon field="modifiedsource" /></span>
                 </th>
-                <th pSortableColumn="modifiedsourcetype" style="min-width:200px">
+                <th pSortableColumn="modifiedsourcetype" style="min-width:210px">
                     Modified Source Type<span><p-sortIcon field="modifiedsourcetype" /></span>
                 </th>
                 <th pSortableColumn="modifieddate" style="min-width:200px">
@@ -60,10 +49,15 @@
                 <td>{{ user.managerid }}</td>
                 <td>{{ user.createdsource }}</td>
                 <td>{{ user.createdsourcetype }}</td>
-                <td>{{ user.createddate }}</td>
+                <td>{{ user.createddate | date: 'MMM d, y, h:mm a' }}</td>
                 <td>{{ user.modifiedsource }}</td>
                 <td>{{ user.modifiedsourcetype }}</td>
-                <td>{{ user.modifieddate }}</td>
+                <td>{{ user.modifieddate | date: 'MMM d, y, h:mm a'}}</td>
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="16">No customers found.</td>
             </tr>
         </ng-template>
     </p-table>

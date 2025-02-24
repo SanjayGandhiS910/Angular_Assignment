@@ -1,26 +1,45 @@
-<div class="navbar">
-    <div class="colunm-flex" routerLink="/hrportal/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        <div class="div">
-            <i class="fa-brands fa-microsoft"></i>
+<div class="main">
+    <div class="sidenavebar" [ngClass]="{'closenavbar': checked}">
+        <div class="colunm-flex" routerLink="/hrportal/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <div class="div">
+                <i class="fa-brands fa-microsoft"></i>
+            </div>
+            <div>
+                <h5>DASHBOARD</h5>
+            </div>
         </div>
-        <h3>DashBorad</h3>
+        <div class="colunm-flex"  routerLink="/hrportal/employeelist" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <div class="div">
+                <i class="fa-solid fa-user-group"></i>
+            </div>
+            <h5>EMPLOYEE LIST</h5>
+        </div>
+        <div class="colunm-flex"  routerLink="/hrportal/employeeattendance" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <div class="div">
+                <i class="fa-solid fa-rectangle-list"></i>
+            </div>
+            <h5>EMPLOYEE ATTENDANCE</h5>
+        </div>
+        <div class="colunm-flex"  routerLink="/hrportal/departmentlist" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'hidden': !user}">
+            <div class="div">
+                <i class="fa-solid fa-building"></i>
+            </div>
+            <h5>DEPARTMENT LIST</h5>
+        </div>
+        <div class="username">
+            <img [src]="url" alt="" width="100px" height="100px" (click)="op.toggle($event)" *ngIf="user">
+            <h1 *ngIf="!user" (click)="op.toggle($event)">{{ username?.slice(0,1) }}</h1>
+            <h4>{{ username }}</h4> 
+        </div>
     </div>
-    <div class="colunm-flex"  routerLink="/hrportal/employeelist" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        <div class="div">
-            <i class="fa-solid fa-user-group"></i>
-        </div>
-        <h3>EMPLOYEE LIST</h3>
-    </div>
-    <div class="colunm-flex"  routerLink="/hrportal/employeeattendance" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        <div class="div">
-            <i class="fa-solid fa-rectangle-list"></i>
-        </div>
-        <h3>EMPLOYEE ATTENDANCE</h3>
-    </div>
-    <div class="colunm-flex"  routerLink="/hrportal/departmentlist" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        <div class="div">
-            <i class="fa-solid fa-building"></i>
-        </div>
-        <h3>DEPARTMENT LIST</h3>
+    <div class="h-full openandclose">
+        <p-button icon="pi pi-chevron-left" aria-label="Save" *ngIf="!checked" (onClick)="onToggle()"/>
+        <p-button icon="pi pi-chevron-right" aria-label="Save" *ngIf="checked" (onClick)="onToggle()"/>
     </div>
 </div>
+
+<p-confirmdialog />
+
+<p-overlayPanel #op>
+    <p-button label="Logout" icon="pi pi-user" severity="secondary" (onClick)="goToLoginPage()"/>
+</p-overlayPanel>

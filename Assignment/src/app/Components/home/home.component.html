@@ -1,9 +1,11 @@
-<app-header/>
-<div class="flex">
-    <div class="div1">
-        <app-navbar/>
+<div class="header">
+    <app-header/>
+</div>
+<div class="grid" >
+    <div class="h-100 div1">
+        <app-navbar (closeNavbar)="closeNavbar($event)"/>
     </div>
-    <div class="div2">
+    <div class="div2" [ngClass]="{'full': closeNav}">
         <router-outlet/>
     </div>
 </div>

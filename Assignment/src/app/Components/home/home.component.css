@@ -1,8 +1,63 @@
-.flex{
+.grid{
     display: flex;
+    margin-top: 64px;
+}
+
+.div1{
+    height: 100vh;
 }
 
 .div2{
-    margin: 50px;
-    width: 72%;
+    margin: 23px;
+    width: 75%;
+    box-sizing: border-box;
+}
+
+.full{
+    width: 93%;
+    height: auto;
+}
+
+
+@media screen and (max-height: 638px){
+}
+
+/* Mobile View S */
+
+@media screen and (max-width: 320px){
+    .div2{
+        width: 90%;
+    }
+    .full{
+        width: 85%;
+    }
+}
+
+/* Mobile View M */
+
+@media screen and (max-width: 376px) and (min-width: 321px) {
+    .div2{
+        width: 90%;
+    }
+    .full{
+        width: 87%;
+    }
+}
+
+/* Mobile View L */
+
+@media screen and (max-width: 426px) and (min-width: 376px){
+    .div2{
+        width: 90%;
+    }
+}
+
+
+@media screen and (max-width: 768px) and (min-width: 427px){
+    .div2{
+        width: 93%;
+    }
+    .full{
+        width: 94%;
+    }
 }

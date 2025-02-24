@@ -12,6 +12,20 @@ export class EmployeeAttendanceHttpService{
 
     constructor(private http: HttpClient){}
 
+    newEmployeeAttendance(newEmployeeAttendance: EmployeeAttendance){
+        this.http.post(this.apiUrl,newEmployeeAttendance).subscribe(d=>{
+            console.log('Success')
+        })
+    }
+
+    editEmployeeAttendance(id: string,editEmployeeAttendance: EmployeeAttendance){
+        this.http.put(this.apiUrl+'/'+id,editEmployeeAttendance).subscribe()
+    }
+
+    deleteEmployeeAttendance(id: string){
+        this.http.delete(this.apiUrl+'/'+id).subscribe()
+    }
+
     getEmployeeAttendanceData(){
         return this.isGetData()
     }

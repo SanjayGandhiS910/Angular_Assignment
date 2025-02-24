@@ -5,11 +5,9 @@
     <p-card>
         <div class="header">
             <img src="images\Itorizon.png" 
-                alt="" height="80px" width="250px">
-            <h2>Sign Up</h2>
+                alt="" height="60px" width="200px">
+            <h3>Sign Up</h3>
         </div>
-
-        <br>
 
         <div>
             <label for="username">User Name</label>
@@ -19,27 +17,21 @@
             <small *ngIf="false">Enter your username to reset your password.</small>
         </div>
 
-        <br>
-
         <div>
             <label for="password">Password</label>
             <br>
-            <input type="password" name="password" ngModel required/>
+            <p-password [feedback]="false" [toggleMask]="true" name="password" ngModel required/>
             <br>
             <small *ngIf="false">Enter your username to reset your password.</small>
         </div>
-
-        <br>
 
         <div>
             <label for="password">Confirm Password</label>
             <br>
-            <input type="password" name="confirmpassword" ngModel required/>
+            <p-password [feedback]="false" [toggleMask]="true" name="confirmpassword" ngModel required/>
             <br>
             <small *ngIf="false">Enter your username to reset your password.</small>
         </div>
-
-        <br>
 
         <div>
             <button type="submit"

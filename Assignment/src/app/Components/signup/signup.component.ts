@@ -16,7 +16,7 @@ export class SignupComponent {
   @ViewChild('SignupForm') SignupForm!: NgForm;
   userData!: User[];
   
-  constructor(private userVal: SignupService,private user: AuthenticationService) {}
+  constructor(private userVal: SignupService,private user: AuthenticationService,private messageService: MessageService) {}
   
   ngOnInit(): void {
     this.userVal.getUserData().subscribe( data => {
@@ -28,8 +28,14 @@ export class SignupComponent {
     let username = this.SignupForm.controls['username'].value
     let password = this.SignupForm.controls['password'].value
     let cpassword = this.SignupForm.controls['confirmpassword'].value
-    this.user.newUserName(username,password,cpassword,this.userData)
-    this.SignupForm.reset()
+    let msg = this.user.newUserName(username,password,cpassword,this.userData)
+    if( msg !== undefined){
+      this.messageService.add({ severity: 'error', summary: msg});
+    }else{
+      this.SignupForm.reset()
+    }
+    console.log(msg)
+    
   }
 }
 

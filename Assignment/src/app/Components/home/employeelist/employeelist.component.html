@@ -1,1 +1,55 @@
-<p>employeelist works!</p>
+<div class="cards">
+    <div class="card" *ngFor="let item of employeeData">
+        <p-card [style]="{ width: '16rem', overflow: 'hidden', height: '420px' }">
+            <div style="display: flex; justify-content: end;">
+                <p-button (onClick)="op.toggle($event)" icon="pi pi-ellipsis-v"  severity="secondary"/>
+                <p-overlayPanel #op>
+                    <div class="div btn1">
+                        <p-button icon="pi pi-pen-to-square" label="Edit"  severity="secondary" (onClick)="openEditForm(item)" *ngIf="username === 'Admin'"/>
+                    </div>
+                    <div class="div btn2">
+                        <p-button icon="pi pi-eye" label="View"  severity="secondary" (onClick)="openViewForm(item)"/>
+                    </div>
+                    <div class="div btn2">
+                        <p-button icon="pi pi-trash" label="View"  severity="secondary" (onClick)="deleteEmpData(item.id)" *ngIf="username === 'Admin'"/>
+                    </div>
+                </p-overlayPanel>
+            </div>
+            <div style="text-align: center;">
+                <img [src]="item.image" alt="" width="150px" height="150px">
+                <h5>{{ item.firstname + " " + item.lastname}}</h5>
+                <p class="para">{{ item.position.name }}</p>
+                <div class="flex" >
+                    <div>
+                        <h6>Department</h6>
+                        <p class="para">{{ item.departmentname.short_name }}</p>
+                    </div>
+                    <div>
+                        <h6>Hire Date</h6>
+                        <p class="para">{{ item.doj | date }}</p>
+                    </div>
+                </div>
+                <div class="flex flex2" >
+                    <div>
+                        <div>
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-mobile-screen"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p><a href="">{{ item.email }}</a></p>
+                        <p>{{ item.phonenumber }}</p>
+                    </div>
+                </div>
+            </div>
+        </p-card>
+    </div> 
+</div>
+
+<app-employeelistform *ngIf="visible" [userData]="emp" [isEditShow]="true" (closeForm)="closeForm($event)"/>
+
+<app-employeelistform *ngIf="isVisible" [userData]="emp" (closeForm)="closeForm($event)"/>
+
+<p-toast position="top-center"/>

@@ -20,6 +20,7 @@ import { MessageService } from 'primeng/api';
 import { AvatarModule } from 'primeng/avatar';
 import { HomeModule } from "./Modules/home.module";
 import { HomeRouteModule } from "./Modules/homeroute.module";
+import { DatePicker } from "primeng/datepicker";
 
 @NgModule({
     declarations:[
@@ -37,7 +38,8 @@ import { HomeRouteModule } from "./Modules/homeroute.module";
         CardModule,
         ButtonModule,
         ToastModule,
-        AvatarModule
+        AvatarModule,
+        DatePicker
     ],
     providers:[
         provideAnimationsAsync(),

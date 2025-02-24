@@ -1,0 +1,98 @@
+.cards{
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.cards .div ::ng-deep.p-button{
+    font-size: 10px;
+}
+
+.div ::ng-deep.p-button{
+    font-size: 10px;
+}
+.btn1 ::ng-deep.p-button:hover{
+    background-color: lightblue;
+}
+.btn2 ::ng-deep.p-button:hover{
+    background-color: lightblue;
+}
+
+.btn1 ::ng-deep.p-button{
+    margin-bottom: 5px;
+}
+.btn2 ::ng-deep.p-button{
+    margin-bottom: 5px;
+}
+h5{
+    margin-top: 10px;
+    font-weight: 400;
+}
+h6{
+    font-weight: 400;
+}
+p{
+    font-weight: 500;
+}
+i{
+    color: gray;
+}
+.para{
+    margin-top: -5px;
+}
+.flex{
+    display: flex;
+    column-gap: 15px;
+    justify-content: flex-start;
+    text-align: start;
+    margin-top: 20px;
+}
+
+.flex2{
+    margin-top: 10px;
+}
+
+img{
+    border-radius: 50%;
+}
+
+p{
+    margin: 0px;
+}
+
+@media screen and (max-height: 638px){
+    .username{
+        margin-top: 55px;
+        margin-bottom: 135px;
+    }
+}
+
+/* Mobile View S */
+
+@media screen and (max-width: 320px){
+    .cards{
+        justify-content: space-around;
+    }
+}
+
+/* Mobile View M */
+
+@media screen and (max-width: 376px) and (min-width: 321px)  {
+    .cards{
+        justify-content: space-around;
+    }
+}
+
+/* Mobile View L */
+
+@media screen and (max-width: 426px) and (min-width: 376px) {
+    .cards{
+        justify-content: space-around;
+    }
+}
+
+
+@media screen and (max-width: 768px) and (min-width: 427px) {
+    
+}

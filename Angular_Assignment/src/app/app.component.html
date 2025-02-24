@@ -1,5 +1,22 @@
-<div>
+<!-- <div>
     <router-outlet></router-outlet>
-</div>
+</div> -->
 
 <!-- <app-form></app-form> -->
+
+<div class="mw-100 p-3" style="background-color: #eee;">
+    <input type="file" (change)="onFileSelected($event)">
+    <button (click)="onUpload()">Click</button>
+</div>
+<div >Width 100%</div>
+
+<div class="container-fluid" style="background-color: blue;">
+    <h1 class="text-center text-white">Welcome to My Website</h1>
+    <p class="text-center text-white">This div takes up the full width and has a light blue background.</p>
+  </div>
+
+<!-- <div *ngFor="let item of img">
+    <img [src]="item.image" alt="">
+</div> -->
+<!-- <p-datepicker class="custom-datepicker" />
+<h1 class="red">SSSSS</h1> -->

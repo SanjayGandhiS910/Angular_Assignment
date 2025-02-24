@@ -1,0 +1,149 @@
+<div class="screen"></div>
+
+<form action="" #EditUserForm="ngForm" class="adduserform">
+    <div class="head">
+        <h3>Edit User</h3>
+        <p-button icon="pi pi-times" severity="secondary" (onClick)="isCloseForm()"/>
+    </div>
+    <hr>
+    <div class="adduserflex">
+        <div class="adduserdiv1">
+            <div>
+                <img [src]="url" alt="">
+            </div>
+            <!-- <div>
+                <input type="file" id="img" style="display: none;" (change)="selectFile($event)">
+                <label for="img"><i class="fa-solid fa-circle-plus"></i></label>
+            </div> -->
+        </div>
+        <div class="adduserdiv2">
+            <div class="adduserscrool">
+                <div class="column">
+                    <div>
+                        <label for="">EmplyeeId</label><br>
+                        <input pInputText type="text" ngModel name="employeeid" required readonly/>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label for="">First Name</label><br>
+                        <input pInputText type="text" ngModel name="firstname" required [readOnly]="isEditShow"/>
+                    </div>
+                    <div>
+                        <label for="">Last Name</label><br>
+                        <input pInputText type="text" ngModel name="lastname" required [readOnly]="isEditShow"/>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label for="">Gender</label><br>
+                        <div>
+                            <p-radiobutton value="male" inputId="ingredient1" ngModel name="gender" required [disabled]="isEditShow"/>
+                            <label for="ingredient1" class="ml-2"> Male</label>
+                        
+                            <p-radiobutton value="female" inputId="ingredient2" ngModel name="gender" required [disabled]="isEditShow"/>
+                            <label for="ingredient2" class="ml-2"> Female</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="">Blood Group</label><br>
+                        <p-select [options]="bloodGroup" optionLabel="name" placeholder="-- Select --" ngModel name="bloodgroup" required/>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label for="">Email</label><br>
+                        <p-inputgroup>
+                            <p-inputgroup-addon>
+                                <i class="pi pi-envelope"></i>
+                            </p-inputgroup-addon>
+                            <p-floatlabel>
+                                <input pInputText id="over_label" ngModel name="email" required="email" [readOnly]="isEditShow"/>
+                            </p-floatlabel>
+                        </p-inputgroup>
+                    </div>
+                    <div>
+                        <label for="">Phone Number</label><br>
+                        <p-inputgroup>
+                            <p-inputgroup-addon>
+                                <i class="pi pi-phone"></i>
+                            </p-inputgroup-addon>
+                            <p-floatlabel>
+                                <input pInputText id="over_label" ngModel name="phonenumber" required [readOnly]="isEditShow"/>
+                            </p-floatlabel>
+                        </p-inputgroup>
+                    </div>
+                </div>
+                
+                <div class="cloumnflex">
+                    <div>
+                        <label for="icondisplay">Dob</label><br>
+                        <p-datepicker [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" ngModel name="dob" required/>
+                    </div>
+                    <div>
+                        <label for="icondisplay">DoJ</label><br>
+                        <p-datepicker [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" ngModel name="doj" required/>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label for="">Department</label><br>
+                        <p-select [options]="department" optionLabel="name" placeholder="-- Select --" ngModel name="departmentname" required/>
+                    </div>
+                    <div>
+                        <label for="">Position</label><br>
+                        <p-select [options]="position" optionLabel="name" placeholder="-- Select --" ngModel name="position" required/>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <div>
+                            <label for="">Create Source</label><br>
+                            <input type="text" pInputText ngModel name="createdsource" required readonly>
+                        </div>
+                        <div>
+                            <label for="">Create Source Type</label><br>
+                            <input type="text" pInputText ngModel name="createdsourcetype" required readonly>
+                        </div>
+                        <div>
+                            <label for="">Create Date & Time</label><br>
+                            <p-datepicker inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'" ngModel name="createddate" required disabled/>
+                    </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="">Modified Source</label><br>
+                            <input type="text" pInputText ngModel name="modifiedsource" required [readOnly]="isEditShow">
+                        </div>
+                        <div>
+                            <label for="">Modified Source Type</label><br>
+                            <input type="text" pInputText ngModel name="modifiedsourcetype" required [readOnly]="isEditShow">
+                        </div>
+                        <div>
+                            <label for="">Modified Date & Time</label><br>
+                            <p-calendar inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'"  ngModel name="modifieddate" required/>
+                    </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <label for="">Address</label><br>
+                    <textarea rows="5" cols="30" pTextarea ngModel name="address" required [autoResize]="true"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="right">
+        <p-button label="Cancal" [raised]="true" severity="danger" (onClick)="isCloseForm()"/>
+        <p-button label="Edit" [raised]="true" severity="info" 
+                [disabled]="EditUserForm.invalid" [ngClass]="{'display': isEditShow}"
+                (onClick)="updateEmp()" />
+    </div>
+</form>
+
+
+
+
+
+
+

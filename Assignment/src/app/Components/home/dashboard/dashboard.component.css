@@ -1,0 +1,99 @@
+.dashboardflex{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 20px;
+}
+
+.card input{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.button{
+    text-align: center;
+}
+
+.card ::ng-deep.p-button{
+    margin: 0px;
+}
+
+.dialog ::ng-deep.p-dialog-contant{
+    overflow: hidden !important;
+}
+
+.card ::ng-deep.p-dialog::-webkit-scrollbar{
+    display: none !important;
+}
+
+.btn2{
+    margin-left: 10px;
+}
+
+tr:hover{
+    background-color: rgb(240, 240, 240);
+}
+
+@media screen and (max-height: 630px){
+}
+
+/* Mobile View S */
+
+@media screen and (max-width: 320px){
+    .dashboardflex{
+        display: block;
+        margin-bottom: 20px;
+    }
+    .dashboardflex>div{
+        width: 100%;
+    }
+    .dashboardflex ::ng-deep.p-button{
+        width: 100%;
+    }
+    .btn2{
+        margin: 0px;
+        margin-top: 20px;
+    }
+}
+
+/* Mobile View M */
+
+@media screen and (max-width: 376px) and (min-width: 321px){
+    .dashboardflex{
+        display: block;
+        margin-bottom: 20px;
+    }
+    .dashboardflex>div{
+        width: 100%;
+    }
+    .dashboardflex ::ng-deep.p-button{
+        width: 100%;
+    }
+    .btn2{
+        margin: 0px;
+        margin-top: 20px;
+    }
+}
+
+/* Mobile View L */
+
+@media screen and (max-width: 426px) and (min-width: 376px){
+    .dashboardflex{
+        display: block;
+        margin-bottom: 20px;
+    }
+    .dashboardflex>div{
+        width: 100%;
+    }
+    .dashboardflex ::ng-deep.p-button{
+        width: 100%;
+    }
+    .btn2{
+        margin: 0px;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 427px){
+    
+}

@@ -1,87 +1,151 @@
+<div class="screen"></div>
 
-
-<form action="" #EmployeeAttendanceForm="ngForm">
+<form action="" #EmployeeAttendanceForm="ngForm" >
+    <div class="head">
+        <h3>Employee Attendance List</h3>
+        <p-button icon="pi pi-times" severity="secondary" (onClick)="closeFormView()"/>
+    </div>
     <hr>
-    <div class="flex1">
-            <div class="scrool">
-                <div class="row">
-                    <label for="">EmplyeeId</label><br>
-                    <input pInputText type="text" ngModel name="emplyeeid" required disabled/>
+    <div class="scrool">
+        <div class="flex">
+            <div>
+                <div class="div">
+                    <h4>EmplyeeId</h4>
                 </div>
-                <div class="cloumnflex">
-                    <div>
-                        <label for="">Month</label><br>
-                        <p-datepicker view="month" dateFormat="MM" [readonlyInput]="true" />
-                    </div>
-                    <div>
-                        <label for="">Date</label><br>
-                        <p-datepicker [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" ngModel name="date" required/>
-                    </div>
+                <div class="div">
+                    <h4>Month</h4>
                 </div>
-                <div class="cloumnflex">
-                    <div>
-                        <label for="">Department Id</label><br>
-                        <input pInputText type="text" ngModel name="departmentid" required disabled/>
-                    </div>
-                    <div>
-                        <label for="">Available</label><br>
-                        <p-select  optionLabel="name" placeholder="-- Select --" ngModel name="available" required/>
-                    </div>
+                <div class="div">
+                    <h4>Date</h4>
                 </div>
-                <div class="cloumnflex">
-                    <div>
-                        <label for="">Checkin</label><br>
-                        <p-datepicker [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true" inputId="templatedisplay">
-                            <ng-template #inputicon let-clickCallBack="clickCallBack">
-                                <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
-                            </ng-template>
-                        </p-datepicker>
-                    </div>
-                    <div>
-                        <label for="">Check out</label><br>
-                        <p-datepicker [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true" inputId="templatedisplay">
-                            <ng-template #inputicon let-clickCallBack="clickCallBack">
-                                <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
-                            </ng-template>
-                        </p-datepicker>
-                    </div>
-                </div>
-                <div class="cloumnflex">
-                    <div>
-                        <div>
-                            <label for="">Create Source</label><br>
-                            <input type="text" pInputText ngModel name="createsource" required>
-                        </div>
-                        <div>
-                            <label for="">Create Source Type</label><br>
-                            <input type="text" pInputText ngModel name="createsourcetype" required>
-                        </div>
-                        <div>
-                            <label for="">Create Date & Time</label><br>
-                            <input type="text" pInputText ngModel name="createdate" required>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <label for="">Modified Source</label><br>
-                            <input type="text" pInputText ngModel name="modifiedsource" required>
-                        </div>
-                        <div>
-                            <label for="">Modified Source Type</label><br>
-                            <input type="text" pInputText ngModel name="modifiedsourcetype" required>
-                        </div>
-                        <div>
-                            <label for="">Modified Date & Time</label><br>
-                            <input type="text" pInputText ngModel name="modifieddate" required>
-                        </div>
-                    </div>
+                <div class="div">
+                    <h4>Department Id</h4>
                 </div>
             </div>
-            <br>
-            <hr>
-            <br>
-            <div style="text-align: center;">
-                <p-button label="Submit" [raised]="true" severity="info"/>
+            <div>
+                <div class="div div1"> 
+                    <input pInputText type="text" ngModel name="employeeid" required [readOnly]="true" [ngClass]="{'display': isEdit}"/>
+                    <p *ngIf="isEdit">{{ this.empDet.employeeid }}</p>
+                </div>
+                <div class="div div1">
+                    <p-datepicker view="month" dateFormat="MM" [readonlyInput]="true" ngModel name="month" required [ngClass]="{'display': isEdit}"/>
+                    <p *ngIf="isEdit">{{ this.empDet.month | date: 'MMMM'}}</p>
+                </div>
+                <div class="div div1">
+                    <p-datepicker [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" ngModel name="date" required [readonlyInput]="true" [ngClass]="{'display': isEdit}"/>
+                    <p *ngIf="isEdit">{{ this.empDet.date | date }}</p>
+                </div>
+                <div class="div div1">
+                    <input pInputText type="text" ngModel name="departmentid" required [readOnly]="true" [ngClass]="{'display': isEdit}"/>
+                    <p *ngIf="isEdit">{{ this.empDet.departmentid }}</p>
+                </div>
             </div>
+        </div>
+        <div class="flex flex1">
+            <div>
+                <div class="div">
+                    <h4>Available</h4>
+                </div>
+                <div class="div">
+                    <h4>Checkin</h4>
+                </div>
+                <div class="div">
+                    <h4>Checkout</h4>
+                </div>
+                <div class="div">
+                    <h4>Attendance Count</h4>
+                </div>
+            </div>
+            <div>
+                <div class="div div1">
+                    <p-select [options]="available" optionLabel="name" placeholder="-- Select --" ngModel name="available" required [ngClass]="{'display': isEdit}"/>
+                    <p *ngIf="isEdit">{{ this.empDet.available.name }}</p>
+                </div>
+                <div class="div div1">
+                    <p-datepicker [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true" [hourFormat]="'12'" inputId="templatedisplay" ngModel name="checkin" required [ngClass]="{'display': isEdit}">
+                        <ng-template #inputicon let-clickCallBack="clickCallBack">
+                            <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
+                        </ng-template>
+                    </p-datepicker>
+                    <p *ngIf="isEdit">{{ this.empDet.checkin | date: 'hh:mm a' }}</p>
+                </div>
+                <div class="div div1">
+                    <p-datepicker [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true" [hourFormat]="'12'" inputId="templatedisplay" ngModel name="checkout" required [ngClass]="{'display': isEdit}">
+                        <ng-template #inputicon let-clickCallBack="clickCallBack">
+                            <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
+                        </ng-template>
+                    </p-datepicker>
+                    <p *ngIf="isEdit">{{ this.empDet.checkout | date: 'hh:mm a' }}</p>
+                </div>    
+                <div class="div div1">
+                    <input pInputText type="text" ngModel name="attendancecount" required [ngClass]="{'display': isEdit}"/>
+                    <p *ngIf="isEdit">{{ this.empDet.attendancecount }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex1 flex3">
+            <div>
+                <div class="div">
+                    <h4>Create Source</h4>
+                </div>
+                <div class="div">
+                    <h4>Create Source Type</h4>
+                </div>
+                <div class="div div2">
+                    <h4>Create Date & Time</h4>
+                </div>
+            </div>
+            <div>
+                <div class="div div1">
+                    <input type="text" pInputText ngModel name="createdsource" required [readOnly]="show" [ngClass]="{'display': isEdit}"/>
+                    <p *ngIf="isEdit">{{ this.empDet.createdsource }}</p>
+                </div>
+                <div class="div div1">
+                    <input type="text" pInputText ngModel name="createdsourcetype" [readOnly]="show" required [ngClass]="{'display': isEdit}"/>
+                    <p *ngIf="isEdit">{{ this.empDet.createdsourcetype }}</p>
+                </div>
+                <div class="div div1 div2">
+                    <p-datepicker inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'"  ngModel name="createddate" required [ngClass]="{'display': isEdit}"/> 
+                    <p *ngIf="isEdit">{{ this.empDet.createddate | date: 'MMM d, y, h:mm a' }}</p>     
+                </div>
+            </div>
+        </div>
+        <div class="flex flex1 flex3">
+            <div>
+                <div class="div">
+                    <h4>Modified Source</h4>
+                </div>
+                <div class="div">
+                    <h4>Modified Source Type</h4>
+                </div>
+                <div class="div div2">
+                    <h4>Modified Date & Time</h4>
+                </div>
+            </div>
+            <div>
+                <div class="div div1">
+                    <input type="text" pInputText ngModel name="modifiedsource" [readOnly]="show" required [ngClass]="{'display': isEdit}"/>
+                    <p *ngIf="isEdit">{{ this.empDet.modifiedsource }}</p>
+                </div>
+                <div class="div div1">
+                    <input type="text" pInputText ngModel name="modifiedsourcetype" [readOnly]="show" required [ngClass]="{'display': isEdit}"/>
+                    <p *ngIf="isEdit">{{ this.empDet.modifiedsourcetype }}</p>
+                </div>
+                <div class="div div1 div2">
+                    <p-datepicker  inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'"  ngModel name="modifieddate" required [ngClass]="{'display': isEdit}"/>
+                    <p *ngIf="isEdit">{{ this.empDet.modifieddate | date: 'MMM d, y, h:mm a' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="btn">
+        <p-button label="Cancel" [raised]="true" severity="danger"
+        (onClick)="closeFormView()"/>
+        <p-button label="Submit" [raised]="true" severity="info" 
+                [disabled]="EmployeeAttendanceForm.invalid"
+                (onClick)="onSubmitForm()" [ngClass]="{'display': editButtonShow}"/>
+        <p-button label="Edit" [raised]="true" severity="success"
+                (onClick)="onEditForm()" [ngClass]="{'display': !editButtonShow || username}"/>
     </div>
 </form>

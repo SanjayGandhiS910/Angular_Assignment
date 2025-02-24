@@ -3,10 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { DepartmentHttpService } from '../../../../Services/http/department.service';
 import { Department } from '../../../../Services/Syntax/syntax.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-departmentdetail',
-  imports: [ButtonModule],
+  imports: [ButtonModule,CommonModule],
   templateUrl: './departmentdetail.component.html',
   styleUrl: './departmentdetail.component.css'
 })
