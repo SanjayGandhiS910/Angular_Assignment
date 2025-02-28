@@ -1,6 +1,18 @@
+<div class="emplistflex">
+    <div> 
+        <p-inputgroup>
+            <p-button label="Search" size="large" severity="info"/>
+            <input pInputText placeholder="Search" size="large" #filter (keyup)="search()"/>
+        </p-inputgroup>
+    </div>
+    <div [ngClass]="{'addbtn': username === 'Admin'}" class="adduserbtn">
+        <p-button label="Add User" icon="pi pi-user" size="large" severity="info" (onClick)="openForm()" *ngIf="username === 'Admin'"/>
+    </div>
+</div>
+
 <div class="cards">
     <div class="card" *ngFor="let item of employeeData">
-        <p-card [style]="{ width: '16rem', overflow: 'hidden', height: '420px' }">
+        <p-card [style]="{ width: '15rem', overflow: 'hidden', height: '420px' }">
             <div style="display: flex; justify-content: end;">
                 <p-button (onClick)="op.toggle($event)" icon="pi pi-ellipsis-v"  severity="secondary"/>
                 <p-overlayPanel #op>
@@ -11,7 +23,7 @@
                         <p-button icon="pi pi-eye" label="View"  severity="secondary" (onClick)="openViewForm(item)"/>
                     </div>
                     <div class="div btn2">
-                        <p-button icon="pi pi-trash" label="View"  severity="secondary" (onClick)="deleteEmpData(item.id)" *ngIf="username === 'Admin'"/>
+                        <p-button icon="pi pi-trash" label="Delete"  severity="secondary" (onClick)="confirm($event,item.id)" *ngIf="username === 'Admin'"/>
                     </div>
                 </p-overlayPanel>
             </div>
@@ -48,8 +60,16 @@
     </div> 
 </div>
 
-<app-employeelistform *ngIf="visible" [userData]="emp" [isEditShow]="true" (closeForm)="closeForm($event)"/>
+<!-- Add -->
 
-<app-employeelistform *ngIf="isVisible" [userData]="emp" (closeForm)="closeForm($event)"/>
+<app-employeelistform *ngIf="addFormVisible" (closeForm)="closeForm($event)" [formHeading]="formHeading"/>
+
+<!-- View -->
+
+<app-employeelistform *ngIf="viewVisible" [userData]="emp"  (closeForm)="closeForm($event)" [isView]="true" [formHeading]="formHeading"/>
+
+<!-- Edit -->
+
+<app-employeelistform *ngIf="editFormVisible" [userData]="emp" (closeForm)="closeForm($event)" [isEdit]="true" [formHeading]="formHeading"/>
 
 <p-toast position="top-center"/>

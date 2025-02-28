@@ -1,3 +1,12 @@
+<div class="deptlistflex">
+    <div> 
+        <p-inputgroup>
+            <p-button label="Search" size="large" severity="info"/>
+            <input pInputText placeholder="Search" size="large" #filter (keyup)="search()"/>
+        </p-inputgroup>
+    </div>
+</div>
+
 <div class="card">
     <p-table [value]="departmentData"
             showGridlines
@@ -6,7 +15,8 @@
             scrollHeight="600px"
             [tableStyle]="{ 'min-width': '50rem' }"
             [rows]="5"
-            [rowsPerPageOptions]="array">
+            [rowsPerPageOptions]="array"
+            selectionMode="single">
         <ng-template #header>
             <tr>
                 <th pSortableColumn="departmentid" style="min-width:160px">

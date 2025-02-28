@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div class="card">
+<div class="attTable">
     <p-table [value]="empAttendance"
             showGridlines
             [scrollable]="true" 
@@ -18,49 +18,50 @@
             [tableStyle]="{ 'min-width': '50rem' }"
             [paginator]="arrbool"
             [rows]="5"
-            [rowsPerPageOptions]="array">
+            [rowsPerPageOptions]="array"
+            selectionMode="single">
         <ng-template #header>
             <tr>
-                <th pSortableColumn="employeeid" style="min-width:200px" pFrozenColumn>
+                <th pSortableColumn="employeeid" style="min-width:150px">
                     Employee Id<span><p-sortIcon field="employeeid" /></span>
                 </th>
-                <th pSortableColumn="date" style="min-width:200px">
+                <th pSortableColumn="date" style="min-width:140px">
                     Date<span><p-sortIcon field="date" /></span>
                 </th>
-                <th pSortableColumn="departmentid" style="min-width:200px">
+                <th pSortableColumn="departmentid" style="min-width:160px">
                     Department Id<span><p-sortIcon field="departmentid" /></span>
                 </th>
-                <th pSortableColumn="departmentname" style="min-width:200px">
+                <th pSortableColumn="departmentname" style="min-width:220px">
                     Department Name<span><p-sortIcon field="departmentname" /></span>
                 </th>
-                <th pSortableColumn="available" style="min-width:200px">
+                <th pSortableColumn="available" style="min-width:120px">
                     Available<span><p-sortIcon field="available" /></span>
                 </th>
-                <th pSortableColumn="checkin" style="min-width:200px">
+                <th pSortableColumn="checkin" style="min-width:120px">
                     Checkin<span><p-sortIcon field="checkin" /></span>
                 </th>
-                <th pSortableColumn="checkout" style="min-width:200px">
+                <th pSortableColumn="checkout" style="min-width:120px">
                     Checkout<span><p-sortIcon field="checkout" /></span>
                 </th>
-                <th pSortableColumn="attendancecount" style="min-width:200px">
+                <th pSortableColumn="attendancecount" style="min-width:190px">
                     Attendance Count<span><p-sortIcon field="attendancecount" /></span>
                 </th>
-                <th pSortableColumn="createdsource" style="min-width:200px">
+                <th pSortableColumn="createdsource" style="min-width:160px">
                     Created Source<span><p-sortIcon field="createdsource" /></span>
                 </th>
                 <th pSortableColumn="createdsourcetype" style="min-width:200px">
                     Created Source Type<span><p-sortIcon field="createdsourcetype" /></span>
                 </th>
-                <th pSortableColumn="createddate" style="min-width:200px">
+                <th pSortableColumn="createddate" style="min-width:160px">
                     Created Date<span><p-sortIcon field="createddate" /></span>
                 </th>
-                <th pSortableColumn="modifiedsource" style="min-width:200px">
+                <th pSortableColumn="modifiedsource" style="min-width:170px">
                     Modified Source<span><p-sortIcon field="modifiedsource" /></span>
                 </th>
                 <th pSortableColumn="modifiedsourcetype" style="min-width:210px">
                     Modified Source Type<span><p-sortIcon field="modifiedsourcetype" /></span>
                 </th>
-                <th pSortableColumn="modifieddate" style="min-width:200px">
+                <th pSortableColumn="modifieddate" style="min-width:160px">
                     Modified Date<span><p-sortIcon field="modifieddate" /></span>
                 </th>
                 <th *ngIf="username == 'Admin'">
@@ -69,8 +70,8 @@
             </tr>
         </ng-template>
         <ng-template #body let-user>
-            <tr (dblclick)="empAtt(user)">
-                <td pFrozenColumn>{{ user.employeeid }}</td>
+            <tr (dblclick)="empAtt(user)" >
+                <td>{{ user.employeeid }}</td>
                 <td>{{ user.date | date}}</td>
                 <td>{{ user.departmentid }}</td>
                 <td>{{ user.departmentname.name }}</td>
@@ -85,7 +86,7 @@
                 <td>{{ user.modifiedsourcetype }}</td>
                 <td>{{ user.modifieddate | date }}</td>
                 <td style="display: flex; column-gap: 2px; text-align: center;" *ngIf="username == 'Admin'">
-                    <p-button icon="pi pi-pen-to-square" severity="secondary" (onClick)="empAtt(user)"/>
+                    <p-button icon="pi pi-pen-to-square" severity="secondary" (onClick)="editIcon(user)"/>
                     <p-button icon="pi pi-trash" severity="secondary" (click)="confirm($event,user.id)"/>
                 </td>
             </tr>
@@ -108,7 +109,7 @@
             <input pInputText name="employeeid" class="flex-auto" [(ngModel)]="empId" />
         </div>
         <div>
-            <label for="email" class="font-semibold w-24">Department Id : </label>
+            <label for="email" class="email">Department Id : </label>
             <input pInputText name="departmentid" class="flex-auto"  [(ngModel)]="deptId"/>
         </div>
         <div class="button">
@@ -120,6 +121,6 @@
 
 <app-employeeattendanceform *ngIf="isVisible" [empId]="empId" [deptId]="deptId" (closeForm)="closeForm($event)"/>
 
-<app-employeeattendanceform *ngIf="empDet" [empDet]="emp" [show]="true" (closeForm)="closeForm($event)" [isEdit]="true" [editButtonShow]="true"/>
+<app-employeeattendanceform *ngIf="empDet" [empDet]="emp" [show]="true" (closeForm)="closeForm($event)" [isEdit]="isEditIcon" [editButtonShow]="true"/>
 
 <p-toast position="top-center"/>

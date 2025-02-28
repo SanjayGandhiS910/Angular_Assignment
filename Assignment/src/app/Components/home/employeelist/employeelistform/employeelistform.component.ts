@@ -37,19 +37,24 @@ import { CalendarModule } from 'primeng/calendar';
 })
 export class EmployeelistformComponent implements OnInit{
 
-  @ViewChild('EditUserForm') editUserForm!: NgForm;
+  @ViewChild('UserForm') editUserForm!: NgForm;
+  @Input() formHeading: string = ''
+  @Input() isEdit: boolean = false;
+  @Input() isView: boolean = false;
   @Input() userData!: EmployeeList
-  @Input() isEditShow: boolean = false;
   @Output() closeForm = new EventEmitter()
   bloodGroup!: any[]
   department!: any[]
   position!: any[]
   id!: string | undefined;
-  url!: string;
+  url: string = 'images/usericon.png';
+  selectedFile!: File;
+  empId!: any[] | undefined;
 
-  constructor(private employeeList: UserDetailsHttpService){}
+  constructor(private employeeList: UserDetailsHttpService,private empData: UserDetailsHttpService){}
 
   ngOnInit(): void {
+    this.getData(); 
     this.bloodGroup =[
       {name: "O+"},
       {name: "O-"},
@@ -102,10 +107,20 @@ export class EmployeelistformComponent implements OnInit{
       { "name": "Release Manager", "short_name": "RM" }
     ]
     setTimeout(() => {
-      this.getValue()
+      if(this.isEdit || this.isView){
+        this.getValue()
+      }
     }, 100);
-    this.id = this.userData.id
-    this.url = this.userData.image
+    if(this.isEdit || this.isView){
+      this.id = this.userData.id
+      this.url = this.userData.image
+    }
+  }
+
+  getData(){
+    this.empData.getUserData().subscribe(d=>{
+      this.empId = d
+    })
   }
 
   getValue(){
@@ -144,10 +159,43 @@ export class EmployeelistformComponent implements OnInit{
   updateEmp(){
     if(this.id !== undefined){
       let formData = this.editUserForm.value
+      formData['createdsource'] = this.userData.createdsource
+      formData['createdsourcetype'] = this.userData.createdsourcetype
       formData['createddate'] = this.userData.createddate
       formData['image'] = this.userData.image
       this.employeeList.editEmployeeList(this.id,formData)
       this.closeForm.emit(false)
+    }
+  }
+
+  selectFile(e: any): void{
+    this.selectedFile = e.target.files[0]
+    let a = e.target.files[0].type
+    if(a.match(/image\/*/)){
+      console.log(this.selectedFile)
+      const reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0])
+      reader.onload = ((event: any)=>{
+        this.url = event.target.result
+      })
+    }else{
+      this.url = "images/usericon.png"
+    }
+  }
+
+  onSubmit(): void{
+    let id = this.empId?.find( d => d.employeeid === this.editUserForm.controls['employeeid'].value)
+    let l = (this.editUserForm.controls['phonenumber'].value).length
+    if((this.selectedFile && !id) && ( l === 0 || l === 10) ) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64Image = reader.result as string;
+        let addFormData = this.editUserForm.value
+        addFormData['image'] = base64Image
+        this.empData.newUser(addFormData)
+        this.closeForm.emit(false)
+      };
+      reader.readAsDataURL(this.selectedFile);
     }
   }
 

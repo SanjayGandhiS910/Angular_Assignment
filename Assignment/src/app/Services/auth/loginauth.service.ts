@@ -7,11 +7,15 @@ import { Observable } from "rxjs";
 })
 export class LoginAuthService implements CanActivate{
 
-    constructor(private router: Router){}
+    constructor(){}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): 
         boolean | Observable<boolean> | Promise<boolean>{
-        return localStorage.getItem('isLogin') === 'true'
+        if(sessionStorage.getItem('isLogin') === null || sessionStorage.getItem('isLogin') === 'true'){
+            return true
+        }else{
+            return false
+        }
     }
 
 }

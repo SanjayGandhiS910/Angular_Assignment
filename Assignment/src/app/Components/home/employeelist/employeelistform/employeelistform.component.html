@@ -1,8 +1,8 @@
 <div class="screen"></div>
 
-<form action="" #EditUserForm="ngForm" class="adduserform">
+<form action="" #UserForm="ngForm" class="adduserform">
     <div class="head">
-        <h3>Edit User</h3>
+        <h3>{{ formHeading }}</h3>
         <p-button icon="pi pi-times" severity="secondary" (onClick)="isCloseForm()"/>
     </div>
     <hr>
@@ -11,37 +11,37 @@
             <div>
                 <img [src]="url" alt="">
             </div>
-            <!-- <div>
+            <div *ngIf="!isView">
                 <input type="file" id="img" style="display: none;" (change)="selectFile($event)">
                 <label for="img"><i class="fa-solid fa-circle-plus"></i></label>
-            </div> -->
+            </div>
         </div>
         <div class="adduserdiv2">
             <div class="adduserscrool">
                 <div class="column">
                     <div>
                         <label for="">EmplyeeId</label><br>
-                        <input pInputText type="text" ngModel name="employeeid" required readonly/>
+                        <input pInputText type="text" ngModel name="employeeid" required [disabled]="isEdit || isView"/>
                     </div>
                 </div>
                 <div class="cloumnflex">
                     <div>
                         <label for="">First Name</label><br>
-                        <input pInputText type="text" ngModel name="firstname" required [readOnly]="isEditShow"/>
+                        <input pInputText type="text" ngModel name="firstname" required [readOnly]="isView"/>
                     </div>
                     <div>
                         <label for="">Last Name</label><br>
-                        <input pInputText type="text" ngModel name="lastname" required [readOnly]="isEditShow"/>
+                        <input pInputText type="text" ngModel name="lastname" required [readOnly]=""/>
                     </div>
                 </div>
                 <div class="cloumnflex">
                     <div>
                         <label for="">Gender</label><br>
                         <div>
-                            <p-radiobutton value="male" inputId="ingredient1" ngModel name="gender" required [disabled]="isEditShow"/>
+                            <p-radiobutton value="male" inputId="ingredient1" ngModel name="gender" required [disabled]="isView"/>
                             <label for="ingredient1" class="ml-2"> Male</label>
                         
-                            <p-radiobutton value="female" inputId="ingredient2" ngModel name="gender" required [disabled]="isEditShow"/>
+                            <p-radiobutton value="female" inputId="ingredient2" ngModel name="gender" required [disabled]="isView"/>
                             <label for="ingredient2" class="ml-2"> Female</label>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                                 <i class="pi pi-envelope"></i>
                             </p-inputgroup-addon>
                             <p-floatlabel>
-                                <input pInputText id="over_label" ngModel name="email" required="email" [readOnly]="isEditShow"/>
+                                <input pInputText id="over_label" ngModel name="email" required="email" [readOnly]="isView"/>
                             </p-floatlabel>
                         </p-inputgroup>
                     </div>
@@ -69,7 +69,7 @@
                                 <i class="pi pi-phone"></i>
                             </p-inputgroup-addon>
                             <p-floatlabel>
-                                <input pInputText id="over_label" ngModel name="phonenumber" required [readOnly]="isEditShow"/>
+                                <input pInputText id="over_label" ngModel name="phonenumber" required [readOnly]="isView"/>
                             </p-floatlabel>
                         </p-inputgroup>
                     </div>
@@ -88,7 +88,7 @@
                 <div class="cloumnflex">
                     <div>
                         <label for="">Department</label><br>
-                        <p-select [options]="department" optionLabel="name" placeholder="-- Select --" ngModel name="departmentname" required/>
+                        <p-select [options]="department" optionLabel="name" placeholder="-- Select --" #checkPosition ngModel name="departmentname" required />
                     </div>
                     <div>
                         <label for="">Position</label><br>
@@ -99,30 +99,30 @@
                     <div>
                         <div>
                             <label for="">Create Source</label><br>
-                            <input type="text" pInputText ngModel name="createdsource" required readonly>
+                            <input type="text" pInputText ngModel name="createdsource" required [disabled]="isEdit || isView">
                         </div>
                         <div>
                             <label for="">Create Source Type</label><br>
-                            <input type="text" pInputText ngModel name="createdsourcetype" required readonly>
+                            <input type="text" pInputText ngModel name="createdsourcetype" required [disabled]="isEdit || isView">
                         </div>
                         <div>
                             <label for="">Create Date & Time</label><br>
-                            <p-datepicker inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'" ngModel name="createddate" required disabled/>
+                            <p-datepicker inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'" ngModel name="createddate" required [disabled]="isEdit || isView"/>
+                        </div>
                     </div>
-                    </div>
-                    <div>
+                    <div *ngIf="!(!isEdit && !isView)">
                         <div>
                             <label for="">Modified Source</label><br>
-                            <input type="text" pInputText ngModel name="modifiedsource" required [readOnly]="isEditShow">
+                            <input type="text" pInputText ngModel name="modifiedsource" required [readOnly]="isView">
                         </div>
                         <div>
                             <label for="">Modified Source Type</label><br>
-                            <input type="text" pInputText ngModel name="modifiedsourcetype" required [readOnly]="isEditShow">
+                            <input type="text" pInputText ngModel name="modifiedsourcetype" required [readOnly]="isView">
                         </div>
                         <div>
                             <label for="">Modified Date & Time</label><br>
                             <p-calendar inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'"  ngModel name="modifieddate" required/>
-                    </div>
+                        </div>
                     </div>
                 </div>
                 <div class="column">
@@ -135,9 +135,12 @@
     <hr>
     <div class="right">
         <p-button label="Cancal" [raised]="true" severity="danger" (onClick)="isCloseForm()"/>
-        <p-button label="Edit" [raised]="true" severity="info" 
-                [disabled]="EditUserForm.invalid" [ngClass]="{'display': isEditShow}"
+        <p-button label="Save" [raised]="true" severity="info" 
+                [disabled]="UserForm.invalid" [ngClass]="{'display': !isEdit}"
                 (onClick)="updateEmp()" />
+        <p-button label="Submit" [raised]="true" severity="info" 
+                [disabled]="UserForm.invalid" [ngClass]="{'display': isEdit || isView}"
+                (onClick)="onSubmit()" />
     </div>
 </form>
 

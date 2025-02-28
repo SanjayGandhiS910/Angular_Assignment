@@ -52,6 +52,7 @@ export class EmployeeattendanceComponent implements OnInit{
   arrlen!: number;
   array!: number[];
   arrbool!: boolean;
+  isEditIcon!: boolean;
 
   @ViewChild('filter') filter!: ElementRef
 
@@ -128,6 +129,13 @@ export class EmployeeattendanceComponent implements OnInit{
   empAtt(user: any){
     this.emp = user
     this.empDet = true
+    this.isEditIcon = true
+  }
+
+  editIcon(user: any){
+    this.emp = user
+    this.empDet = true
+    this.isEditIcon = false
   }
 
   search(){
@@ -136,7 +144,7 @@ export class EmployeeattendanceComponent implements OnInit{
     if(value === ''){
       this.empAttendance = this.empData
     }else{
-      this.empAttendance = this.empData.filter(d => d.employeeid.slice(0,l).toLocaleLowerCase() == value.toLocaleLowerCase())
+      this.empAttendance = this.empData.filter(d => d.employeeid.includes(value.toLocaleLowerCase()))
     }
   }
 
@@ -155,7 +163,7 @@ export class EmployeeattendanceComponent implements OnInit{
     this.confirmationService.confirm({
         target: event.target as EventTarget,
         message: 'Do you want to delete this record?',
-        header: 'Danger Zone',
+        header: 'Confirmation',
         icon: 'pi pi-info-circle',
         rejectLabel: 'Cancel',
         rejectButtonProps: {

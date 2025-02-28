@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit{
     if(this.username === 'Admin'){
       this.user = true
     }
-    localStorage.setItem('isLogin','false')
+    sessionStorage.setItem('isLogin','false')
   }
 
   onToggle(){
@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit{
   }
 
   goToLoginPage(){
-    localStorage.setItem('isLogin','true')
+    sessionStorage.setItem('isLogin','true')
     this.router.navigate(['/'])
   }
 }

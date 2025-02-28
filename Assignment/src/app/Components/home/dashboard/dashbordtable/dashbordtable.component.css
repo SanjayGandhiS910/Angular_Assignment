@@ -1,12 +1,9 @@
-.flex1{
+.dashboardflex{
     display: flex;
     justify-content: end;
     margin-bottom: 20px;
 }
 
-.attTable{
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
 .card input{
     width: 100%;
     margin-top: 5px;
@@ -16,22 +13,26 @@
 .button{
     text-align: center;
 }
+
 .card ::ng-deep.p-button{
-    margin: 5px;
+    margin: 0px;
 }
-td ::ng-deep.p-button{
-    padding: 0px;
+
+.dialog ::ng-deep.p-dialog-contant{
+    overflow: hidden !important;
 }
-span{
-    float: right !important;
+
+.card ::ng-deep.p-dialog::-webkit-scrollbar{
+    display: none !important;
 }
 
 .btn2{
     margin-left: 10px;
 }
-/* tr:hover{
-    background-color: rgb(240, 240, 240) !important;
-} */
+
+tr:hover{
+    background-color: rgb(240, 240, 240);
+}
 
 @media screen and (max-height: 630px){
 }
@@ -39,13 +40,14 @@ span{
 /* Mobile View S */
 
 @media screen and (max-width: 320px){
-    .flex1{
+    .dashboardflex{
         display: block;
+        margin-bottom: 20px;
     }
-    .flex1>div{
+    .dashboardflex>div{
         width: 100%;
     }
-    .flex1 ::ng-deep.p-button{
+    .dashboardflex ::ng-deep.p-button{
         width: 100%;
     }
     .btn2{
@@ -57,13 +59,14 @@ span{
 /* Mobile View M */
 
 @media screen and (max-width: 376px) and (min-width: 321px){
-    .flex1{
+    .dashboardflex{
         display: block;
+        margin-bottom: 20px;
     }
-    .flex1>div{
+    .dashboardflex>div{
         width: 100%;
     }
-    .flex1 ::ng-deep.p-button{
+    .dashboardflex ::ng-deep.p-button{
         width: 100%;
     }
     .btn2{
@@ -75,13 +78,14 @@ span{
 /* Mobile View L */
 
 @media screen and (max-width: 426px) and (min-width: 376px){
-    .flex1{
+    .dashboardflex{
         display: block;
+        margin-bottom: 20px;
     }
-    .flex1>div{
+    .dashboardflex>div{
         width: 100%;
     }
-    .flex1 ::ng-deep.p-button{
+    .dashboardflex ::ng-deep.p-button{
         width: 100%;
     }
     .btn2{

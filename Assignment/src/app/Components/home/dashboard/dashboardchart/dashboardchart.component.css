@@ -1,0 +1,13 @@
+.charts{
+    box-sizing: border-box;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.btns{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 5px;
+}

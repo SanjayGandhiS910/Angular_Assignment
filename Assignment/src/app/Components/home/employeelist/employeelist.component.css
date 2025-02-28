@@ -1,17 +1,47 @@
-.cards{
+.emplistflex{
     display: flex;
-    gap: 20px;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    justify-content: end;
+}
+.emplistflex input{
+    padding: 5px 15px;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    border: 1px solid lightgray;
+}
+.adduserbtn{
+    margin-right: 10px;
+}
+.addbtn{
+    margin-left: 10px;
 }
 
+.cards{
+    display: flex;
+    gap: 15px;
+    height: 78vh;
+    overflow-y: scroll;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
 .cards .div ::ng-deep.p-button{
     font-size: 10px;
+}
+.cards::-webkit-scrollbar{
+    display: none;
+}
+
+.card{
+    height: 420px;
+    border: none;
 }
 
 .div ::ng-deep.p-button{
     font-size: 10px;
+    width: 80px;
 }
+
 .btn1 ::ng-deep.p-button:hover{
     background-color: lightblue;
 }
@@ -66,6 +96,9 @@ p{
         margin-top: 55px;
         margin-bottom: 135px;
     }
+    .cards{
+        margin-top: 20px;
+    }
 }
 
 /* Mobile View S */
@@ -73,6 +106,23 @@ p{
 @media screen and (max-width: 320px){
     .cards{
         justify-content: space-around;
+    }
+    .emplistflex{
+        display: block;
+        margin-bottom: 20px;
+    }
+    .emplistflex input{
+        width: 100%;
+    }
+    .emplistflex>div{
+        width: 100%;
+    }
+    .emplistflex ::ng-deep.p-button{
+        width: 100%;
+    }
+    .addbtn{
+        margin: 0px;
+        margin-top: 20px;
     }
 }
 
@@ -82,6 +132,23 @@ p{
     .cards{
         justify-content: space-around;
     }
+    .emplistflex{
+        display: block;
+        margin-bottom: 20px;
+    }
+    .emplistflex input{
+        width: 100%;
+    }
+    .emplistflex>div{
+        width: 100%;
+    }
+    .emplistflex ::ng-deep.p-button{
+        width: 100%;
+    }
+    .addbtn{
+        margin: 0px;
+        margin-top: 20px;
+    }
 }
 
 /* Mobile View L */
@@ -90,9 +157,28 @@ p{
     .cards{
         justify-content: space-around;
     }
+    .emplistflex{
+        display: block;
+        margin-bottom: 20px;
+    }
+    .emplistflex input{
+        width: 100%;
+    }
+    .emplistflex>div{
+        width: 100%;
+    }
+    .emplistflex ::ng-deep.p-button{
+        width: 100%;
+    }
+    .addbtn{
+        margin: 0px;
+        margin-top: 20px;
+    }
 }
 
 
 @media screen and (max-width: 768px) and (min-width: 427px) {
-    
+    .cards{
+        margin-top: 20px;
+    }
 }
