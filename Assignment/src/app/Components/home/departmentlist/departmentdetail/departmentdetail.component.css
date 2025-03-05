@@ -21,7 +21,7 @@
 p{
     border: 1px solid gray;
     padding: 8px;
-    background-color: lightgray;
+    background-color: rgb(240, 240, 240);
     margin-top: 5px;
     margin-bottom: 8px;
 }
@@ -42,7 +42,7 @@ p{
     z-index: 2;
 }
 
-.btn{
+.gobackbtn{
     display: flex;
     justify-content: end;
     margin-right: 10px;

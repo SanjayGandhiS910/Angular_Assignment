@@ -1,6 +1,7 @@
 .emplistflex{
     display: flex;
     justify-content: end;
+    padding: 20px 20px 0px 20px;
 }
 .emplistflex input{
     padding: 5px 15px;
@@ -8,22 +9,27 @@
     border: none;
     border: 1px solid lightgray;
 }
-.adduserbtn{
-    margin-right: 10px;
+.emplistflex input:focus{
+    border: none !important;
+    outline: none;
+    border: 1px solid rgb(165, 165, 165) !important;
 }
+/* .adduserbtn{
+    margin-right: 10px;
+} */
 .addbtn{
     margin-left: 10px;
 }
 
 .cards{
     display: flex;
-    gap: 15px;
-    height: 78vh;
-    overflow-y: scroll;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
-    margin-top: 20px;
-    padding-bottom: 20px;
+    gap: 18px;
+    height: 80vh;
+    overflow-y: scroll;
+    padding-bottom: 2px;
+    margin: 20px 0px 0px 0px;
 }
 .cards .div ::ng-deep.p-button{
     font-size: 10px;
@@ -92,13 +98,6 @@ p{
 }
 
 @media screen and (max-height: 638px){
-    .username{
-        margin-top: 55px;
-        margin-bottom: 135px;
-    }
-    .cards{
-        margin-top: 20px;
-    }
 }
 
 /* Mobile View S */

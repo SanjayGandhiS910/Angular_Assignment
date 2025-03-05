@@ -21,39 +21,45 @@
                 <div class="column">
                     <div>
                         <label for="">EmplyeeId</label><br>
-                        <input pInputText type="text" ngModel name="employeeid" required [disabled]="isEdit || isView"/>
+                        <input pInputText type="text" ngModel name="employeeid" required [disabled]="isEdit" *ngIf="!isView"/>
+                        <small *ngIf="empIdExits"><p-message severity="error">EmployeeID already exits</p-message></small>
+                        <p *ngIf="isView">{{ userData.employeeid }}</p>
                     </div>
                 </div>
                 <div class="cloumnflex">
                     <div>
                         <label for="">First Name</label><br>
-                        <input pInputText type="text" ngModel name="firstname" required [readOnly]="isView"/>
+                        <input pInputText type="text" ngModel name="firstname" required  *ngIf="!isView"/>
+                        <p *ngIf="isView">{{ userData.firstname }}</p>
                     </div>
                     <div>
                         <label for="">Last Name</label><br>
-                        <input pInputText type="text" ngModel name="lastname" required [readOnly]=""/>
+                        <input pInputText type="text" ngModel name="lastname" required  *ngIf="!isView"/>
+                        <p *ngIf="isView">{{ userData.lastname }}</p>
                     </div>
                 </div>
                 <div class="cloumnflex">
                     <div>
                         <label for="">Gender</label><br>
-                        <div>
-                            <p-radiobutton value="male" inputId="ingredient1" ngModel name="gender" required [disabled]="isView"/>
-                            <label for="ingredient1" class="ml-2"> Male</label>
+                        <div *ngIf="!isView">
+                            <p-radiobutton value="male" inputId="ingredient1" ngModel name="gender" required />
+                            <label for="ingredient1" class="ml-2">Male</label>
                         
-                            <p-radiobutton value="female" inputId="ingredient2" ngModel name="gender" required [disabled]="isView"/>
-                            <label for="ingredient2" class="ml-2"> Female</label>
+                            <p-radiobutton value="female" inputId="ingredient2" ngModel name="gender" required/>
+                            <label for="ingredient2" class="ml-2">Female</label>
                         </div>
+                        <p *ngIf="isView">{{ (userData.gender).toUpperCase() }}</p>
                     </div>
                     <div>
                         <label for="">Blood Group</label><br>
-                        <p-select [options]="bloodGroup" optionLabel="name" placeholder="-- Select --" ngModel name="bloodgroup" required/>
+                        <p-select [options]="bloodGroup" optionLabel="name" placeholder="-- Select --" ngModel name="bloodgroup" required *ngIf="!isView"/>
+                        <p *ngIf="isView">{{ userData.bloodgroup.name }}</p>
                     </div>
                 </div>
                 <div class="cloumnflex">
                     <div>
                         <label for="">Email</label><br>
-                        <p-inputgroup>
+                        <p-inputgroup *ngIf="!isView">
                             <p-inputgroup-addon>
                                 <i class="pi pi-envelope"></i>
                             </p-inputgroup-addon>
@@ -61,10 +67,11 @@
                                 <input pInputText id="over_label" ngModel name="email" required="email" [readOnly]="isView"/>
                             </p-floatlabel>
                         </p-inputgroup>
+                        <p *ngIf="isView">{{ userData.email }}</p>
                     </div>
                     <div>
                         <label for="">Phone Number</label><br>
-                        <p-inputgroup>
+                        <p-inputgroup *ngIf="!isView">
                             <p-inputgroup-addon>
                                 <i class="pi pi-phone"></i>
                             </p-inputgroup-addon>
@@ -72,69 +79,84 @@
                                 <input pInputText id="over_label" ngModel name="phonenumber" required [readOnly]="isView"/>
                             </p-floatlabel>
                         </p-inputgroup>
+                        <p *ngIf="isView">{{ userData.phonenumber }}</p>
                     </div>
                 </div>
                 
                 <div class="cloumnflex">
                     <div>
-                        <label for="icondisplay">Dob</label><br>
-                        <p-datepicker [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" ngModel name="dob" required/>
+                        <label for="icondisplay">Date of Birth</label><br>
+                        <p-datepicker [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" ngModel name="dob" required *ngIf="!isView"/>
+                        <p *ngIf="isView">{{ userData.dob| date }}</p>
                     </div>
                     <div>
-                        <label for="icondisplay">DoJ</label><br>
-                        <p-datepicker [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" ngModel name="doj" required/>
+                        <label for="icondisplay">Date of Jioning</label><br>
+                        <p-datepicker [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" ngModel name="doj" required *ngIf="!isView"/>
+                        <p *ngIf="isView">{{ userData.doj | date }}</p>
                     </div>
                 </div>
                 <div class="cloumnflex">
                     <div>
                         <label for="">Department</label><br>
-                        <p-select [options]="department" optionLabel="name" placeholder="-- Select --" #checkPosition ngModel name="departmentname" required />
+                        <p-select [options]="department" optionLabel="name" placeholder="-- Select --" #checkPosition ngModel name="departmentname" required *ngIf="!isView"/>
+                        <p *ngIf="isView">{{ userData.departmentname.name }}</p>
                     </div>
                     <div>
                         <label for="">Position</label><br>
-                        <p-select [options]="position" optionLabel="name" placeholder="-- Select --" ngModel name="position" required/>
+                        <p-select [options]="position" optionLabel="name" placeholder="-- Select --" ngModel name="position" required *ngIf="!isView"/>
+                        <p *ngIf="isView">{{ userData.position.name }}</p>
                     </div>
                 </div>
                 <div class="cloumnflex">
                     <div>
                         <div>
                             <label for="">Create Source</label><br>
-                            <input type="text" pInputText ngModel name="createdsource" required [disabled]="isEdit || isView">
+                            <input type="text" pInputText ngModel name="createdsource" required [disabled]="isEdit" *ngIf="!isView">
+                            <p *ngIf="isView">{{ userData.createdsource }}</p>
                         </div>
                         <div>
                             <label for="">Create Source Type</label><br>
-                            <input type="text" pInputText ngModel name="createdsourcetype" required [disabled]="isEdit || isView">
+                            <input type="text" pInputText ngModel name="createdsourcetype" required [disabled]="isEdit" *ngIf="!isView">
+                            <p *ngIf="isView">{{ userData.createdsourcetype }}</p>
                         </div>
                         <div>
                             <label for="">Create Date & Time</label><br>
-                            <p-datepicker inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'" ngModel name="createddate" required [disabled]="isEdit || isView"/>
+                            <p-datepicker inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'" ngModel name="createddate" required [disabled]="isEdit" *ngIf="!isView"/>
+                            <p *ngIf="isView">{{ userData.createddate | date }}</p>
                         </div>
                     </div>
                     <div *ngIf="!(!isEdit && !isView)">
                         <div>
                             <label for="">Modified Source</label><br>
-                            <input type="text" pInputText ngModel name="modifiedsource" required [readOnly]="isView">
+                            <input type="text" pInputText ngModel name="modifiedsource" required *ngIf="!isView">
+                            <p *ngIf="isView">{{ userData.modifiedsource }}</p>
                         </div>
                         <div>
                             <label for="">Modified Source Type</label><br>
-                            <input type="text" pInputText ngModel name="modifiedsourcetype" required [readOnly]="isView">
+                            <input type="text" pInputText ngModel name="modifiedsourcetype" required *ngIf="!isView">
+                            <p *ngIf="isView">{{ userData.modifiedsourcetype }}</p>
                         </div>
                         <div>
                             <label for="">Modified Date & Time</label><br>
-                            <p-calendar inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'"  ngModel name="modifieddate" required/>
+                            <p-calendar inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'"  ngModel name="modifieddate" required *ngIf="!isView"/>
+                            <p *ngIf="isView">{{ userData.modifieddate | date }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="column">
                     <label for="">Address</label><br>
-                    <textarea rows="5" cols="30" pTextarea ngModel name="address" required [autoResize]="true"></textarea>
+                    <textarea rows="5" cols="30" pTextarea ngModel name="address" required [autoResize]="true" *ngIf="!isView"></textarea>
+                    <p *ngIf="isView">{{ userData.address }}</p>
                 </div>
             </div>
         </div>
     </div>
     <hr>
     <div class="right">
-        <p-button label="Cancal" [raised]="true" severity="danger" (onClick)="isCloseForm()"/>
+        <p-button label="Cancal" [raised]="true" severity="secondary" (onClick)="isCloseForm()"/>
+        <p-button label="Edit" [raised]="true" severity="info" 
+                [disabled]="UserForm.invalid" [ngClass]="{'display': !isView}"
+                (onClick)="toEdit()" *ngIf="username === 'Admin'"/>
         <p-button label="Save" [raised]="true" severity="info" 
                 [disabled]="UserForm.invalid" [ngClass]="{'display': !isEdit}"
                 (onClick)="updateEmp()" />
@@ -143,10 +165,3 @@
                 (onClick)="onSubmit()" />
     </div>
 </form>
-
-
-
-
-
-
-

@@ -1,9 +1,15 @@
 .flex{
     display: grid;
-    grid-template-columns: 98%;
+    grid-template-columns: 100%;
     grid-column-gap: 20px;
+    overflow-y: scroll;
+    height: 90vh;
+    padding: 25px 20px 2px 25px;
 }
 
+.flex::-webkit-scrollbar{
+    display: none;
+}
 .div2{
     padding: 20px;
     box-sizing: border-box;

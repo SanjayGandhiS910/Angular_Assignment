@@ -70,18 +70,21 @@
 .closebtn ::ng-deep.p-button{
     border-radius: 50px !important;
 }
-::ng-deep .expandempattchart>div{
+.noofempchart{
+    display: flex;
+    justify-content: center;
+}
+::ng-deep .expandnoofempchart>div{
+    width: 700px;
     height: 700px;
+}
+::ng-deep .noofempchart>div{
+    width: 350px;
+    height: 350px;
 }
 
 
 @media screen and (max-height: 630px){
-    ::ng-deep .empattchart>div{
-        height: 400px;
-    }
-    ::ng-deep .expandempattchart>div{
-        height: 480px;
-    }
 }
 
 /* Mobile View S */
@@ -115,6 +118,14 @@
         height: 25px;
         width: 25px;
     }
+    ::ng-deep .noofempchart>div{
+        width: 250px;
+        height: 250px;
+    }
+    ::ng-deep .expandnoofempchart>div{
+        width: 300px;
+        height: 300px;
+    }
 }
 
 /* Mobile View M */
@@ -143,6 +154,14 @@
     }
     .togglebtn{
         margin: 10px;
+    }
+    ::ng-deep .noofempchart>div{
+        width: 280px;
+        height: 280px;
+    }
+    ::ng-deep .expandnoofempchart>div{
+        width: 350px;
+        height: 350px;
     }
 }
 
@@ -173,9 +192,20 @@
     .togglebtn{
         margin: 10px;
     }
+    ::ng-deep .noofempchart>div{
+        width: 300px;
+        height: 300px;
+    }
+    ::ng-deep .expandnoofempchart>div{
+        width: 400px;
+        height: 400px;
+    }
 }
 
 @media screen and (max-width: 768px) and (min-width: 427px){
-    
+    ::ng-deep .expandnoofempchart>div{
+        width: 500px;
+        height: 500px;
+    }
 }
 

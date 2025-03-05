@@ -7,7 +7,7 @@
     height: 98%;
     padding: 20px;
     background-color: lightgray;
-    z-index: 10000;
+    z-index: 1005;
     box-sizing: border-box;
     border-radius: 5px;
 }
@@ -98,6 +98,10 @@ input,textarea{
 
 .display{
     display: none;
+}
+
+p{
+    font-weight: 500;
 }
 
 /* Mobile View S */

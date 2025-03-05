@@ -28,12 +28,16 @@
         </div>
         <div class="username">
             <img [src]="url" alt="" width="100px" height="100px" (click)="op.toggle($event)" *ngIf="user">
-            <h1 *ngIf="!user" (click)="op.toggle($event)">{{ username?.slice(0,1) }}</h1>
+            <div class="h1"> 
+                <h1 *ngIf="!user" (click)="op.toggle($event)">{{ username?.slice(0,1) }}</h1>
+            </div>
             <h4>{{ username }}</h4> 
         </div>
     </div>
-    <div class="h-full openandclose">
+    <div class="open">
         <p-button icon="pi pi-chevron-left" aria-label="Save" *ngIf="!checked" (onClick)="onToggle()"/>
+    </div>
+    <div class="close"> 
         <p-button icon="pi pi-chevron-right" aria-label="Save" *ngIf="checked" (onClick)="onToggle()"/>
     </div>
 </div>

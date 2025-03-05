@@ -71,11 +71,11 @@ input{
     display: none;
 }
 
-.btn{
+.btns{
     display: flex;
     justify-content: end;
 }
-.btn ::ng-deep.p-button{
+.btns ::ng-deep.p-button{
     margin-right: 10px;
     float: right;
 }

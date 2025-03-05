@@ -72,9 +72,15 @@ export class EmployeeattendanceformComponent implements OnInit{
   }
   onSubmitForm(){
     let empNewData = this.EmployeeAttendanceForm.value
-    empNewData['departmentname'] = this.data
-    this.empAttendance.newEmployeeAttendance(empNewData)
-    this.closeForm.emit(false)
+    let a = new Date(this.EmployeeAttendanceForm.controls['checkin'].value)
+    let b = new Date(this.EmployeeAttendanceForm.controls['checkout'].value)
+    if(a>b){
+      console.log('check the date')
+    }else{
+      empNewData['departmentname'] = this.data
+      this.empAttendance.newEmployeeAttendance(empNewData)
+      this.closeForm.emit(false)
+    }
   }
 
   setValue(){
@@ -127,12 +133,18 @@ export class EmployeeattendanceformComponent implements OnInit{
   }
 
   onEditForm(){
+    let a = new Date(this.EmployeeAttendanceForm.controls['checkin'].value)
+    let b = new Date(this.EmployeeAttendanceForm.controls['checkout'].value)
     if(!this.isEdit){
-      let id = this.editData.id
-      let formData = this.EmployeeAttendanceForm.value
-      formData['departmentname'] = this.empDet.departmentname
-      this.empAttendance.editEmployeeAttendance(id,formData)
-      this.closeForm.emit(false)
+      if(a>b){
+        alert('check the check in date')
+      }else{
+        let id = this.editData.id
+        let formData = this.EmployeeAttendanceForm.value
+        formData['departmentname'] = this.empDet.departmentname
+        this.empAttendance.editEmployeeAttendance(id,formData)
+        this.closeForm.emit(false)
+      }
     }
     this.isEdit = false
   }

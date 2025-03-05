@@ -1,7 +1,7 @@
 <div class="charts">
     <div class="head">
         <div class="heading">
-            <h3>Employee Attendance</h3>
+            <h3>No of Employees</h3>
             <div class="expandbutton1">   
                 <p-button (onClick)="toExpand()" icon="pi pi-arrow-up-right-and-arrow-down-left-from-center" severity="secondary" pTooltip="Expand" tooltipPosition="bottom"></p-button>
             </div>
@@ -15,12 +15,12 @@
             </div>
         </div>
     </div>
-    <div *ngIf="value === 'bar'">
-        <p-chart type="bar" [data]="data" [options]="options" class="empattchart"/>
+    <div *ngIf="value === 'pie'" class="noofempchart">
+        <p-chart type="pie" [data]="data" [options]="options" class="noofempchart"/>
     </div>
 
-    <div *ngIf="value === 'line'">
-        <p-chart type="line" [data]="data" [options]="options" class="empattchart"/>
+    <div *ngIf="value === 'doughnut'" class="noofempchart">
+        <p-chart type="doughnut" [data]="data" [options]="options" class="noofempchart"/>
     </div>
 </div>
 
@@ -29,7 +29,7 @@
 <div class="expandcharts" *ngIf="extand">
     <div class="expandhead">
         <div class="heading">
-            <h3>Employee Attendance</h3>
+            <h3>No of Employees</h3>
             <div class="expandbutton1 closebtn"> 
                 <p-button icon="pi pi-times" severity="secondary" (onClick)="closeExpand()"/>
             </div>
@@ -43,11 +43,11 @@
             </div>
         </div>
     </div>
-    <div *ngIf="value === 'bar'">
-        <p-chart type="bar" [data]="data" [options]="options" class="expandempattchart"/>
+    <div *ngIf="value === 'pie'" class="noofempchart">
+        <p-chart type="pie" [data]="data" [options]="options" class="expandnoofempchart"/>
     </div>
 
-    <div *ngIf="value === 'line'">
-        <p-chart type="line" [data]="data" [options]="options" class="expandempattchart"/>
+    <div *ngIf="value === 'doughnut'" class="noofempchart">
+        <p-chart type="doughnut" [data]="data" [options]="options" class="expandnoofempchart"/>
     </div>
 </div>

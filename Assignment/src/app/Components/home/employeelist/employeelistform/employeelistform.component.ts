@@ -10,10 +10,12 @@ import { SelectModule } from 'primeng/select';
 import { TextareaModule } from 'primeng/textarea';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { FormsModule, NgForm } from '@angular/forms';
-import { EmployeeList } from '../../../../Services/Syntax/syntax.service';
 import { CommonModule } from '@angular/common';
 import { UserDetailsHttpService } from '../../../../Services/http/userdetails.service';
 import { CalendarModule } from 'primeng/calendar';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { MessageModule } from 'primeng/message';
 
 @Component({
   selector: 'app-employeelistform',
@@ -30,7 +32,9 @@ import { CalendarModule } from 'primeng/calendar';
     SelectModule,
     TextareaModule,
     CommonModule,
-    CalendarModule
+    CalendarModule,
+    ToastModule,
+    MessageModule
   ],
   templateUrl: './employeelistform.component.html',
   styleUrl: './employeelistform.component.css'
@@ -41,8 +45,9 @@ export class EmployeelistformComponent implements OnInit{
   @Input() formHeading: string = ''
   @Input() isEdit: boolean = false;
   @Input() isView: boolean = false;
-  @Input() userData!: EmployeeList
+  @Input() userData!: any
   @Output() closeForm = new EventEmitter()
+  username!: string | null;
   bloodGroup!: any[]
   department!: any[]
   position!: any[]
@@ -50,10 +55,12 @@ export class EmployeelistformComponent implements OnInit{
   url: string = 'images/usericon.png';
   selectedFile!: File;
   empId!: any[] | undefined;
+  empIdExits: boolean = false
 
-  constructor(private employeeList: UserDetailsHttpService,private empData: UserDetailsHttpService){}
+  constructor(private employeeList: UserDetailsHttpService,private empData: UserDetailsHttpService,private messageService: MessageService){}
 
   ngOnInit(): void {
+    this.username = localStorage.getItem('username')
     this.getData(); 
     this.bloodGroup =[
       {name: "O+"},
@@ -159,11 +166,22 @@ export class EmployeelistformComponent implements OnInit{
   updateEmp(){
     if(this.id !== undefined){
       let formData = this.editUserForm.value
+      formData['employeeid'] = this.userData.employeeid
       formData['createdsource'] = this.userData.createdsource
       formData['createdsourcetype'] = this.userData.createdsourcetype
       formData['createddate'] = this.userData.createddate
-      formData['image'] = this.userData.image
-      this.employeeList.editEmployeeList(this.id,formData)
+      if(this.selectedFile){
+        const reader = new FileReader();
+        reader.onload = () => {
+          const base64Image = reader.result as string;
+          formData['image'] = base64Image
+          this.employeeList.editEmployeeList(this.id,formData)
+        };
+        reader.readAsDataURL(this.selectedFile);
+      }else{
+        formData['image'] = this.userData.image
+        this.employeeList.editEmployeeList(this.id,formData)
+      }
       this.closeForm.emit(false)
     }
   }
@@ -172,7 +190,6 @@ export class EmployeelistformComponent implements OnInit{
     this.selectedFile = e.target.files[0]
     let a = e.target.files[0].type
     if(a.match(/image\/*/)){
-      console.log(this.selectedFile)
       const reader = new FileReader();
       reader.readAsDataURL(e.target.files[0])
       reader.onload = ((event: any)=>{
@@ -196,7 +213,20 @@ export class EmployeelistformComponent implements OnInit{
         this.closeForm.emit(false)
       };
       reader.readAsDataURL(this.selectedFile);
+    }else if(id){
+      this.empIdExits = true
+      setTimeout(()=>{
+        this.empIdExits = false
+      },2000)
     }
+  }
+
+  toEdit(){
+    this.isEdit = true
+    this.isView = false
+    setTimeout(()=>{
+      this.getValue()
+    },100)
   }
 
 }

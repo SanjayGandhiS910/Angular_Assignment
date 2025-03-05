@@ -14,7 +14,7 @@
     <p-table [value]="empAttendance"
             showGridlines
             [scrollable]="true" 
-            scrollHeight="400px"
+            scrollHeight="590px"
             [tableStyle]="{ 'min-width': '50rem' }"
             [paginator]="arrbool"
             [rows]="5"
@@ -102,7 +102,7 @@
 <p-confirmdialog />
 
 
-<div class="card">
+<div class="cards">
     <p-dialog header="Verfication" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }" [draggable]="false" [resizable]="false">
         <div>
             <label for="username" class="font-semibold w-24">Employee Id : </label>
@@ -123,4 +123,4 @@
 
 <app-employeeattendanceform *ngIf="empDet" [empDet]="emp" [show]="true" (closeForm)="closeForm($event)" [isEdit]="isEditIcon" [editButtonShow]="true"/>
 
-<p-toast position="top-center"/>
+<p-toast position="top-center" />

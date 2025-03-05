@@ -36,6 +36,7 @@ export class AuthenticationService{
                 username: username,
                 password: password
             }
+            localStorage.setItem('username',username)
             this.user.newUser(newUser)
             this.router.navigate(['hrportal/dashboard'])
             return

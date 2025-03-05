@@ -1,23 +1,21 @@
-.grid{
+.flex{
     display: flex;
+    justify-content: flex-start;
     margin-top: 64px;
 }
 
 .div1{
-    height: 100vh;
+    height: 92vh;
 }
 
 .div2{
-    margin: 23px;
-    width: 75%;
-    box-sizing: border-box;
+    width: 82%;
 }
 
 .full{
-    width: 93%;
+    width: 99.5%;
     height: auto;
 }
-
 
 @media screen and (max-height: 638px){
 }
@@ -29,7 +27,7 @@
         width: 90%;
     }
     .full{
-        width: 85%;
+        width: 100%;
     }
 }
 
@@ -40,7 +38,7 @@
         width: 90%;
     }
     .full{
-        width: 87%;
+        width: 100%;
     }
 }
 
@@ -50,6 +48,9 @@
     .div2{
         width: 90%;
     }
+    .full{
+        width: 100%;
+    }
 }
 
 
@@ -58,6 +59,6 @@
         width: 93%;
     }
     .full{
-        width: 94%;
+        width: 100%;
     }
 }

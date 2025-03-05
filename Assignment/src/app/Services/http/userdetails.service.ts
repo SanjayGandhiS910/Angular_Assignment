@@ -18,8 +18,8 @@ export class UserDetailsHttpService{
         })
     }
 
-    editEmployeeList(id: string,editEmployeeList: EmployeeList){
-        this.http.put(this.apiUrl+'/'+id,editEmployeeList).subscribe(res=> console.log(res))
+    editEmployeeList(id: string | undefined,editEmployeeList: EmployeeList){
+        this.http.put(this.apiUrl+'/'+id,editEmployeeList).subscribe(res=> console.log('Success'))
     }
     
     deleteEmployeeList(id: string){

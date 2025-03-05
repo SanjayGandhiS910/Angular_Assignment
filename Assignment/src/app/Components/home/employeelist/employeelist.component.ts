@@ -91,8 +91,7 @@ export class EmployeelistComponent implements OnInit{
     if(value === ''){
       this.employeeData = this.temp
     }else{
-      this.employeeData = this.temp.filter(d => d.firstname.toLocaleLowerCase().includes(value.toLocaleLowerCase()) || 
-      d.lastname.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
+      this.employeeData = this.temp.filter(d => (d.firstname + " " + d.lastname).toLocaleLowerCase().includes(value.toLocaleLowerCase()))
     }
   }
 

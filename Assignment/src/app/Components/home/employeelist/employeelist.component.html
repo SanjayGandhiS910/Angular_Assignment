@@ -12,7 +12,7 @@
 
 <div class="cards">
     <div class="card" *ngFor="let item of employeeData">
-        <p-card [style]="{ width: '15rem', overflow: 'hidden', height: '420px' }">
+        <p-card [style]="{ width: '16rem', overflow: 'hidden', height: '420px' }">
             <div style="display: flex; justify-content: end;">
                 <p-button (onClick)="op.toggle($event)" icon="pi pi-ellipsis-v"  severity="secondary"/>
                 <p-overlayPanel #op>
@@ -72,4 +72,4 @@
 
 <app-employeelistform *ngIf="editFormVisible" [userData]="emp" (closeForm)="closeForm($event)" [isEdit]="true" [formHeading]="formHeading"/>
 
-<p-toast position="top-center"/>
+<p-toast position="top-center" [style]="{'z-index': '9999'}"/>

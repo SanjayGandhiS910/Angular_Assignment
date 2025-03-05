@@ -1,7 +1,7 @@
 .deptlistflex{
     display: flex;
     justify-content: end;
-    margin-bottom: 20px;
+    margin: 20px 20px 0 20px;
 }
 .deptlistflex input{
     padding: 5px 15px;
@@ -9,16 +9,41 @@
     border: none;
     border: 1px solid lightgray;
 }
-/* 
-tr:hover{
-    background-color: rgb(240, 240, 240);
-} */
-
-.card{
+input:focus{
     border: none;
+    border: 1px solid rgb(165, 165, 165) !important;
+}
+.deptlisttable{
+    margin: 25px 20px 2px 25px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 span{
     float: right;
+}
+
+
+::ng-deep.p-paginator-page.p-paginator-page-selected{
+    background-color: rgb(56 189 248) !important;
+    color: white !important;
+}
+::ng-deep.p-select-option.p-select-option-selected.p-focus{
+    background-color: rgb(56 189 248) !important;
+    color: white !important;
+}
+::ng-deep.p-datatable-thead > tr > th.p-datatable-column-sorted{
+    background-color: rgb(124, 124, 124) !important;
+    color: rgb(0, 0, 0) !important;
+}
+::ng-deep.p-datatable-gridlines .p-datatable-thead > tr > th {
+    background-color: rgb(245, 245, 245) !important;
+    color: gray;
+    margin: 1px;
+}
+::ng-deep.p-select-option.p-select-option-selected{
+    background-color: rgb(150, 223, 255) !important;
+    color: white !important;
+}
+::ng-deep.p-inputwrapper-focus{
+    border: 1px solid gray !important;
 }

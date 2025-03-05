@@ -68,14 +68,7 @@ export class EmployeeattendanceComponent implements OnInit{
     setTimeout(()=>{
       if(this.arrlen <= 5)
         this.arrbool = false
-      else if(this.arrlen > 5 && this.arrlen < 10){
-        this.arrbool = true
-        this.array = [5]
-      }
-      else if(this.arrlen >= 10 && this.arrlen < 15){
-        this.arrbool = true
-        this.array = [5,10]
-      }else{
+      else{
         this.arrbool = true
         this.array = [5,10,15]
       }
@@ -144,7 +137,7 @@ export class EmployeeattendanceComponent implements OnInit{
     if(value === ''){
       this.empAttendance = this.empData
     }else{
-      this.empAttendance = this.empData.filter(d => d.employeeid.includes(value.toLocaleLowerCase()))
+      this.empAttendance = this.empData.filter(d => d.employeeid.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
     }
   }
 

@@ -37,14 +37,7 @@ export class DepartmentlistComponent implements OnInit{
     setTimeout(()=>{
       if(this.arrlen <= 5)
         this.arrbool = false
-      else if(this.arrlen > 5 && this.arrlen < 10){
-        this.arrbool = true
-        this.array = [5]
-      }
-      else if(this.arrlen >= 10 && this.arrlen < 15){
-        this.arrbool = true
-        this.array = [5,10]
-      }else{
+      else{
         this.arrbool = true
         this.array = [5,10,15]
       }

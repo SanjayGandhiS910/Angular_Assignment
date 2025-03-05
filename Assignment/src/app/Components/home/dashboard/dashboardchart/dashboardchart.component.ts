@@ -4,6 +4,10 @@ import { EmployeeAttendanceHttpService } from '../../../../Services/http/employe
 import { SelectButton } from 'primeng/selectbutton';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { Button } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { DashboardchartService } from '../../../../Services/provideservice/dashboardchart.service';
 
 @Component({
   selector: 'app-dashboardchart',
@@ -11,7 +15,10 @@ import { CommonModule } from '@angular/common';
     ChartModule,
     SelectButton,
     FormsModule,
-    CommonModule
+    CommonModule,
+    OverlayPanelModule,
+    Button,
+    TooltipModule
   ],
   templateUrl: './dashboardchart.component.html',
   styleUrl: './dashboardchart.component.css'
@@ -21,18 +28,17 @@ export class DashboardchartComponent implements OnInit{
   options!: any;
   stateOptions: any[] = [{ label: 'Bar', value: 'bar' },{ label: 'Line', value: 'line' }];
   value: 'bar' | 'line' | undefined = 'bar';
-  @Input() attendanceArray: number[] = []
-  @Input() empIdArray: string[] = []
+  extand: boolean = false;
+  attendanceArray: number[] = []
+  empIdArray: string[] = []
   bgColor: string[] = []
-  constructor(private cd: ChangeDetectorRef,private empAttendance: EmployeeAttendanceHttpService) {}
+
+  constructor(private cd: ChangeDetectorRef,private empAttendance: EmployeeAttendanceHttpService,private dashboardservice: DashboardchartService) {}
+
    ngOnInit(): void {
     this.getData()
     setTimeout(()=>{
         this.chartValue()
-        for(let i in this.attendanceArray){
-            let bg = 'rgba('+ this.attendanceArray[i]  +','+ this.attendanceArray[i] * Number(i)*Number(i) +','+ this.attendanceArray[i] * Number(i)*Number(i)*Number(i)  +', 0.7)'
-            this.bgColor.push(bg)
-        }
     },100)
    }
 
@@ -42,11 +48,11 @@ export class DashboardchartComponent implements OnInit{
         datasets: [
             {
                 label: 'Employee Attendance Count',
-                data: this.attendanceArray,
+                data: [...this.attendanceArray,300],
                 fill: false,
                 tension: 0.4,
-                borderColor: 'rgba(41, 41, 41, 0.71)',
-                backgroundColor: this.bgColor,
+                borderColor: 'rgba(128, 128, 128, 0.71)',
+                backgroundColor: 'rgba(93, 127, 134, 0.71)',
                 // borderWidth: 1
             }
         ]
@@ -91,8 +97,14 @@ export class DashboardchartComponent implements OnInit{
         this.attendanceArray.push(Number(d[a].attendancecount))
         this.empIdArray.push(d[a].employeeid)
       }
-      console.log(this.attendanceArray)
-      console.log(this.empIdArray)
     })
+  }
+  
+  toExpand(){
+    this.extand = true
+  }
+
+  closeExpand(){
+    this.extand = false
   }
 }
