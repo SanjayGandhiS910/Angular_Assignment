@@ -3,8 +3,10 @@
     grid-template-columns: 100%;
     grid-column-gap: 20px;
     overflow-y: scroll;
-    height: 90vh;
-    padding: 25px 20px 2px 25px;
+    height: 87vh;
+    margin-top: 25px;
+    padding: 0px 20px 2px 25px;
+    z-index: 0;
 }
 
 .flex::-webkit-scrollbar{
@@ -13,4 +15,30 @@
 .div2{
     padding: 20px;
     box-sizing: border-box;
+}
+
+
+@media screen and (max-height: 638px){
+    .flex{
+        height: 83vh;
+    }
+}
+
+/* Mobile View S */
+
+@media screen and (max-width: 320px){
+}
+
+/* Mobile View M */
+
+@media screen and (max-width: 376px) and (min-width: 321px) {
+}
+
+/* Mobile View L */
+
+@media screen and (max-width: 426px) and (min-width: 376px){
+}
+
+
+@media screen and (max-width: 768px) and (min-width: 427px){
 }

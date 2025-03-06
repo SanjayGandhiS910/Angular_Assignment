@@ -25,6 +25,7 @@ export class DepartmentlistComponent implements OnInit{
   arrlen!: number;
   array!: number[];
   arrbool!: boolean;
+  icon: boolean = false;
   @ViewChild('filter') filter!: ElementRef
 
   constructor(private dept: DepartmentHttpService, private route: Router, private empData: UserDetailsHttpService,
@@ -65,7 +66,6 @@ export class DepartmentlistComponent implements OnInit{
 
   search(){
     let value = this.filter.nativeElement.value
-    let l = value.length
     if(value === ''){
       this.departmentData = this.temp
     }else{
@@ -80,4 +80,11 @@ export class DepartmentlistComponent implements OnInit{
     }
   }
 
+  onPageChange(event: any) {
+    console.log(event.rows >= this.arrlen)
+    if(event.rows >= this.arrlen)
+      this.icon = true
+    else
+      this.icon = false
+  }
 }

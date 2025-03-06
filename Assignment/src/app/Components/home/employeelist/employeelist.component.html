@@ -10,9 +10,9 @@
     </div>
 </div>
 
-<div class="cards">
-    <div class="card" *ngFor="let item of employeeData">
-        <p-card [style]="{ width: '16rem', overflow: 'hidden', height: '420px' }">
+<div class="cards" [class.gap]="bool">
+    <div class="empcard" *ngFor="let item of employeeData">
+        <p-card>
             <div style="display: flex; justify-content: end;">
                 <p-button (onClick)="op.toggle($event)" icon="pi pi-ellipsis-v"  severity="secondary"/>
                 <p-overlayPanel #op>

@@ -50,6 +50,10 @@ span{
     color: white !important;
 }
 
+::ng-deep.p-datatable-scrollable > .p-datatable-table-container{
+    max-height: 590px;
+}
+
 ::ng-deep.p-select-option.p-select-option-selected.p-focus{
     background-color: rgb(56 189 248) !important;
     color: white !important;
@@ -72,7 +76,23 @@ span{
 ::ng-deep.p-inputwrapper-focus{
     border: 1px solid gray !important;
 }
+.attTable.close ::ng-deep .p-ripple.p-paginator-first{
+    display: none;
+}
+.attTable.close ::ng-deep .p-ripple.p-paginator-prev{
+    display: none;
+}
+.attTable.close ::ng-deep .p-ripple.p-paginator-next{
+    display: none;
+}
+.attTable.close ::ng-deep .p-ripple.p-paginator-last{
+    display: none;
+}
+
 @media screen and (max-height: 630px){
+    ::ng-deep.p-datatable-scrollable > .p-datatable-table-container{
+        max-height: 320px;
+    }
 }
 
 /* Mobile View S */
@@ -90,6 +110,18 @@ span{
     .btn2{
         margin: 0px;
         margin-top: 20px;
+    }
+    ::ng-deep .p-ripple.p-paginator-first{
+        display: none;
+    }
+    ::ng-deep .p-ripple.p-paginator-prev{
+        display: none;
+    }
+    ::ng-deep .p-ripple.p-paginator-next{
+        display: none;
+    }
+    ::ng-deep .p-ripple.p-paginator-last{
+        display: none;
     }
 }
 
@@ -129,6 +161,9 @@ span{
     }
 }
 
+/* Tablet */
+
 @media screen and (max-width: 768px) and (min-width: 427px){
     
 }
+

@@ -10,16 +10,16 @@
     </div>
 </div>
 
-<div class="attTable">
+<div class="attTable" [class.close]="icon">
     <p-table [value]="empAttendance"
             showGridlines
             [scrollable]="true" 
-            scrollHeight="590px"
             [tableStyle]="{ 'min-width': '50rem' }"
             [paginator]="arrbool"
             [rows]="5"
             [rowsPerPageOptions]="array"
-            selectionMode="single">
+            selectionMode="single"
+            (onPage)="onPageChange($event)">
         <ng-template #header>
             <tr>
                 <th pSortableColumn="employeeid" style="min-width:150px">

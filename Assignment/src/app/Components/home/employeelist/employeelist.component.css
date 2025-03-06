@@ -20,16 +20,18 @@
 .addbtn{
     margin-left: 10px;
 }
-
 .cards{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 18px;
+    gap: 17px;
     height: 80vh;
     overflow-y: scroll;
     padding-bottom: 2px;
-    margin: 20px 0px 0px 0px;
+    margin: 20px 0px 0px 22px;
+}
+.gap{
+    gap: 22px;
 }
 .cards .div ::ng-deep.p-button{
     font-size: 10px;
@@ -37,8 +39,12 @@
 .cards::-webkit-scrollbar{
     display: none;
 }
-
-.card{
+.cards ::ng-deep.p-card{
+    width: 16rem;
+    overflow: hidden;
+    height: 420px;
+}
+.empcard{
     height: 420px;
     border: none;
 }
@@ -104,7 +110,9 @@ p{
 
 @media screen and (max-width: 320px){
     .cards{
-        justify-content: space-around;
+        justify-content: space-evenly;
+        margin-left: 0px;
+        height: 61vh;
     }
     .emplistflex{
         display: block;
@@ -122,6 +130,9 @@ p{
     .addbtn{
         margin: 0px;
         margin-top: 20px;
+    }
+    .cards ::ng-deep.p-card{
+        width: 17rem;
     }
 }
 
@@ -130,6 +141,8 @@ p{
 @media screen and (max-width: 376px) and (min-width: 321px)  {
     .cards{
         justify-content: space-around;
+        margin-left: 2px;
+        height: 61vh;
     }
     .emplistflex{
         display: block;
@@ -147,6 +160,9 @@ p{
     .addbtn{
         margin: 0px;
         margin-top: 20px;
+    }
+    .cards ::ng-deep.p-card{
+        width: 18rem;
     }
 }
 
@@ -155,6 +171,8 @@ p{
 @media screen and (max-width: 426px) and (min-width: 376px) {
     .cards{
         justify-content: space-around;
+        margin-left: 1px;
+        height: 61vh;
     }
     .emplistflex{
         display: block;
@@ -173,11 +191,19 @@ p{
         margin: 0px;
         margin-top: 20px;
     }
+    .cards ::ng-deep.p-card{
+        width: 19rem;
+    }
 }
 
 
 @media screen and (max-width: 768px) and (min-width: 427px) {
     .cards{
+        height: 72vh;
         margin-top: 20px;
+        gap: 16px;
+    }
+    .cards ::ng-deep.p-card{
+        width: auto;
     }
 }

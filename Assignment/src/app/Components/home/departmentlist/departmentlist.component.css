@@ -22,6 +22,9 @@ span{
     float: right;
 }
 
+::ng-deep.p-datatable-scrollable > .p-datatable-table-container{
+    max-height: 590px;
+}
 
 ::ng-deep.p-paginator-page.p-paginator-page-selected{
     background-color: rgb(56 189 248) !important;
@@ -46,4 +49,24 @@ span{
 }
 ::ng-deep.p-inputwrapper-focus{
     border: 1px solid gray !important;
+}
+
+
+.deptlisttable.close ::ng-deep .p-ripple.p-paginator-first{
+    display: none;
+}
+.deptlisttable.close ::ng-deep .p-ripple.p-paginator-prev{
+    display: none;
+}
+.deptlisttable.close ::ng-deep .p-ripple.p-paginator-next{
+    display: none;
+}
+.deptlisttable.close ::ng-deep .p-ripple.p-paginator-last{
+    display: none;
+}
+
+@media screen and (max-height: 630px){
+    ::ng-deep.p-datatable-scrollable > .p-datatable-table-container{
+        max-height: 390px;
+    }
 }

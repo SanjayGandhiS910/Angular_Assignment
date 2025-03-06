@@ -15,6 +15,7 @@ import { DepartmentHttpService } from '../../../Services/http/department.service
 import { UserDetailsHttpService } from '../../../Services/http/userdetails.service';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
+import { PaginatorModule } from 'primeng/paginator';
 
 @Component({
   selector: 'app-employeeattendance',
@@ -29,13 +30,14 @@ import { ConfirmDialog } from 'primeng/confirmdialog';
     ConfirmDialog,
     EmployeeattendanceformComponent,
     NgIf,
-    CommonModule
+    CommonModule,
+    PaginatorModule
   ],
   templateUrl: './employeeattendance.component.html',
   styleUrl: './employeeattendance.component.css',
   providers: [ConfirmationService]
 })
-export class EmployeeattendanceComponent implements OnInit{
+export class EmployeeattendanceComponent implements OnInit, OnChanges{
 
   empAttendance!: EmployeeAttendance[];
   empList!: EmployeeList[];
@@ -51,6 +53,7 @@ export class EmployeeattendanceComponent implements OnInit{
   username!: string | null
   arrlen!: number;
   array!: number[];
+  icon: boolean = false;
   arrbool!: boolean;
   isEditIcon!: boolean;
 
@@ -62,6 +65,10 @@ export class EmployeeattendanceComponent implements OnInit{
         private departmentlist: DepartmentHttpService,
         private confirmationService: ConfirmationService){}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+  }
+
   ngOnInit(): void {
     this.getAllValue()
     this.username = localStorage.getItem('username')
@@ -72,6 +79,7 @@ export class EmployeeattendanceComponent implements OnInit{
         this.arrbool = true
         this.array = [5,10,15]
       }
+      console.log(this.arrlen)
     },100)
   }
 
@@ -185,6 +193,13 @@ export class EmployeeattendanceComponent implements OnInit{
     setTimeout(() => {
       this.getAllValue()
     }, 100);
+  }
+
+  onPageChange(event: any) {
+    if(event.rows > this.arrlen)
+      this.icon = true
+    else
+      this.icon = false
   }
 
 }

@@ -10,6 +10,7 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { ConfirmationService } from 'primeng/api';
+import { DepartmentListService } from '../../../Services/provideservice/deptlist.service';
 
 @Component({
   selector: 'app-employeelist',
@@ -36,14 +37,21 @@ export class EmployeelistComponent implements OnInit{
   temp!: any[];
   emp!: any;
   username!: string | null;
+  bool!: boolean;
   @ViewChild('filter') filter!: ElementRef;
 
   constructor(private empData: UserDetailsHttpService,private messageService: MessageService,
-          private confirmationService: ConfirmationService){}
+          private confirmationService: ConfirmationService,private emitData: DepartmentListService){
+            emitData.getData().subscribe(d => {
+              this.bool = d
+              console.log(this.bool)
+            })
+          }
 
   ngOnInit(): void {
     this.getData()
     this.username = localStorage.getItem('username')
+    console.log(this.bool)
   }
 
   getData(){

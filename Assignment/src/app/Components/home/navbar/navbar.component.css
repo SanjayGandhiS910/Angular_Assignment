@@ -27,7 +27,7 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: gray;
+    background-color: rgb(167, 167, 167);
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -52,7 +52,8 @@ h1{
     transition: margin-left 500ms;
 }
 .open ::ng-deep.p-button:hover{
-    background-color: rgb(195, 195, 195);
+    background-color: rgb(195, 195, 195) !important;
+    border: none;
     color: black;
 }
 .close ::ng-deep.p-button{
@@ -86,6 +87,9 @@ h1{
 }
 img{
     cursor: pointer;
+    background-color: rgb(167, 167, 167);
+    padding: 20px;
+    border-radius: 50%;
 }
 
 @media screen and (max-height: 638px){

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { DepartmentListService } from '../../../Services/provideservice/deptlist.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,15 +11,14 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 })
 export class NavbarComponent implements OnInit{
 
-  url: string = 'images/adminicon.png';
+  url: string = 'images/adicon.webp';
 
   @Output() closeNavbar = new EventEmitter();
   user: boolean = false;
   username!: string | null;
   checked: boolean = false
   
-  constructor(private confirmationService: ConfirmationService, 
-              private messageService: MessageService,
+  constructor(private emitData: DepartmentListService,
             private router: Router) {}
 
   ngOnInit(): void {
@@ -33,10 +33,12 @@ export class NavbarComponent implements OnInit{
     if(!this.checked){
       this.checked = true
       this.closeNavbar.emit(true)
+      this.emitData.putData(true)
     }
     else{
       this.checked =false
       this.closeNavbar.emit(false)
+      this.emitData.putData(false)
     }
   }
 

@@ -1,13 +1,14 @@
 .deptdetail{
-    background-color: white;
+    background-color: lightgrey;
     padding: 20px;
     position: absolute;
-    width: 95%;
-    height: 95%;
+    width: 99%;
+    height: 98%;
+    border-radius: 10px;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    z-index: 3;
+    z-index: 15;
 }
 .head{
     display: flex;
@@ -21,7 +22,7 @@
 p{
     border: 1px solid gray;
     padding: 8px;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(205, 205, 205);
     margin-top: 5px;
     margin-bottom: 8px;
 }
@@ -39,7 +40,7 @@ p{
     background-color: rgba(80, 80, 80, 0.489);
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 11;
 }
 
 .gobackbtn{
