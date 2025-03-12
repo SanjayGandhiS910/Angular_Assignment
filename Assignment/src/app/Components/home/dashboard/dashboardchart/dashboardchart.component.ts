@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { Button } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
-import { DashboardchartService } from '../../../../Services/provideservice/dashboardchart.service';
+import { EmployeedetailsComponent } from '../employeedetails/employeedetails.component';
 
 @Component({
   selector: 'app-dashboardchart',
   imports: [
+    EmployeedetailsComponent,
     ChartModule,
     SelectButton,
     FormsModule,
@@ -32,8 +33,10 @@ export class DashboardchartComponent implements OnInit{
   attendanceArray: number[] = []
   empIdArray: string[] = []
   bgColor: string[] = []
+  showDeatil!: boolean;
+  empID!: string;
 
-  constructor(private cd: ChangeDetectorRef,private empAttendance: EmployeeAttendanceHttpService,private dashboardservice: DashboardchartService) {}
+  constructor(private cd: ChangeDetectorRef,private empAttendance: EmployeeAttendanceHttpService) {}
 
    ngOnInit(): void {
     this.getData()
@@ -106,5 +109,17 @@ export class DashboardchartComponent implements OnInit{
 
   closeExpand(){
     this.extand = false
+  }
+
+  onClickEvent(data: any){
+    const {index} = data.element;
+    if (data) {
+      this.empID = this.data.labels[index]
+      this.showDeatil = true
+    }
+  }
+
+  openDeatil(data: boolean){
+    this.showDeatil = data
   }
 }

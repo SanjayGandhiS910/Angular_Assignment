@@ -1,9 +1,9 @@
 <div class="screen"></div>
 
-<div class="departmentdetail">
+<div class="deptdetail">
     <div class="head">
         <h3>Department Details</h3>
-        <p-button icon="pi pi-times" severity="secondary" (onClick)="goback()"/>
+        <p-button icon="pi pi-times" severity="secondary" (onClick)="closeDeptDetail()"/>
     </div>
     <hr>
     <div class="scrool">
@@ -21,7 +21,7 @@
         </div>
         <div>
             <h5>No of Employee</h5>
-            <p>{{ dept?.noofemployees }}</p>
+            <p>{{ noofemp }}</p>
         </div>
         <div class="cloumnflex">
             <div>
@@ -57,7 +57,8 @@
     <hr>
     <div>
         <div class="gobackbtn">
-            <p-button label="Go Back" [raised]="true" severity="secondary" (onClick)="goback()"/>
+            <p-button label="Cancal" [raised]="true" severity="secondary" (onClick)="closeDeptDetail()"/>
         </div>
     </div>
 </div>
+

@@ -9,3 +9,30 @@
 body{
     background-color: #f4f6fa;
 }
+
+:root{
+    --p-select-focus-border-color: rgba(128, 128, 128, 0.59) !important;
+    --p-select-option-selected-background: rgb(167, 167, 167) !important;
+    --p-select-option-selected-focus-background: rgba(128, 128, 128, 0.59) !important;
+    --p-select-option-selected-color: white !important;
+    --p-select-option-selected-focus-color: white !important;
+    --p-radiobutton-checked-background: rgba(128, 128, 128, 0.59) !important;
+    --p-radiobutton-checked-hover-background: rgba(128, 128, 128, 0.59) !important;
+    --p-radiobutton-checked-border-color: rgba(128, 128, 128, 0.59) !important;
+    --p-radiobutton-checked-focus-border-color: rgba(128, 128, 128, 0.59) !important;
+    --p-radiobutton-checked-hover-border-color: rgba(128, 128, 128, 0.59) !important;
+    --p-radiobutton-focus-border-color: rgba(128, 128, 128, 0.59) !important;
+}
+
+input:focus{
+    border: 1px solid rgba(128, 128, 128, 0.59) !important;
+}
+input:hover{
+    border: 1px solid rgba(128, 128, 128, 0.59) !important;
+}
+textarea:focus{
+    border: 1px solid rgba(128, 128, 128, 0.59) !important;
+}
+textarea:hover{
+    border: 1px solid rgba(128, 128, 128, 0.59) !important;
+}

@@ -1,0 +1,115 @@
+<div class="screen"></div>
+
+<div class="empDetail">
+    <div class="head">
+        <h3>Employee Details</h3>
+        <p-button icon="pi pi-times" severity="secondary" (onClick)="closeDetail()"/>
+    </div>
+    <hr>
+    <div class="adduserflex">
+        <div class="adduserdiv1">
+            <div>
+                <img [src]="url" alt="">
+            </div>
+        </div>
+        <div class="adduserdiv2">
+            <div class="adduserscrool">
+                <div class="column">
+                    <div>
+                        <label>EmplyeeId</label><br>
+                        <p>{{ empDetail?.employeeid }}</p>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label>First Name</label><br>
+                        <p>{{ empDetail?.firstname }}</p>
+                    </div>
+                    <div>
+                        <label>Last Name</label><br>
+                        <p>{{ empDetail?.lastname }}</p>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label>Gender</label><br>
+                        <p>{{ (empDetail?.gender).toUpperCase() }}</p>
+                    </div>
+                    <div>
+                        <label>Blood Group</label><br>
+                        <p>{{ empDetail?.bloodgroup.name }}</p>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label>Email</label><br>
+                        <p>{{ empDetail?.email }}</p>
+                    </div>
+                    <div>
+                        <label>Phone Number</label><br>
+                        <p>{{ empDetail?.phonenumber }}</p>
+                    </div>
+                </div>
+                
+                <div class="cloumnflex">
+                    <div>
+                        <label for="icondisplay">Date of Birth</label><br>
+                        <p>{{ empDetail?.dob| date }}</p>
+                    </div>
+                    <div>
+                        <label for="icondisplay">Date of Jioning</label><br>
+                        <p>{{ empDetail?.doj | date }}</p>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <label>Department</label><br>
+                        <p>{{ empDetail?.departmentname.name }}</p>
+                    </div>
+                    <div>
+                        <label>Position</label><br>
+                        <p>{{ empDetail?.position.name }}</p>
+                    </div>
+                </div>
+                <div class="cloumnflex">
+                    <div>
+                        <div>
+                            <label>Create Source</label><br>
+                            <p>{{ empDetail?.createdsource }}</p>
+                        </div>
+                        <div>
+                            <label>Create Source Type</label><br>
+                            <p>{{ empDetail?.createdsourcetype }}</p>
+                        </div>
+                        <div>
+                            <label>Create Date & Time</label><br>
+                            <p>{{ empDetail?.createddate | date }}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Modified Source</label><br>
+                            <p>{{ empDetail?.modifiedsource }}</p>
+                        </div>
+                        <div>
+                            <label>Modified Source Type</label><br>
+                            <p>{{ empDetail?.modifiedsourcetype }}</p>
+                        </div>
+                        <div>
+                            <label>Modified Date & Time</label><br>
+                            <p>{{ empDetail?.modifieddate | date }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <label>Address</label><br>
+                    <p>{{ empDetail?.address }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="right">
+        <p-button label="Cancal" [raised]="true" severity="secondary" (onClick)="closeDetail()"/>
+    </div>
+</div>

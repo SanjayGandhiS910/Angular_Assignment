@@ -15,6 +15,7 @@ import { ConfirmDialog } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
     declarations:[
@@ -30,7 +31,8 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
         ButtonModule,
         ConfirmDialog,
         ToastModule,
-        OverlayPanelModule
+        OverlayPanelModule,
+        TooltipModule
     ],
     providers:[
         provideAnimationsAsync(),

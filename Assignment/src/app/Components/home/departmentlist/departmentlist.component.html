@@ -52,7 +52,7 @@
             </tr>
         </ng-template>
         <ng-template #body let-user>
-            <tr (click)="navigate(user.departmentid)">
+            <tr (dblclick)="navigate(user.departmentid)">
                 <td>{{ user.departmentid }}</td>
                 <td>{{ user.departmentname }}</td>
                 <td>{{ user.noofemployees }}</td>

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardtableComponent } from './dashbordtable/dashbordtable.component';
 import { DashboardchartComponent } from './dashboardchart/dashboardchart.component';
-import { EmployeeAttendanceHttpService } from '../../../Services/http/employeeattendance.service';
 import { NoofemployeechartComponent } from "./noofemployeechart/noofemployeechart.component";
+import { EmployeedetailsComponent } from './employeedetails/employeedetails.component';
 
 @Component({
   selector: 'app-dashboard',

@@ -16,11 +16,11 @@
         </div>
     </div>
     <div *ngIf="value === 'bar'">
-        <p-chart type="bar" [data]="data" [options]="options" class="empattchart"/>
+        <p-chart type="bar" [data]="data" [options]="options" class="empattchart" (onDataSelect)="onClickEvent($event)"/>
     </div>
 
     <div *ngIf="value === 'line'">
-        <p-chart type="line" [data]="data" [options]="options" class="empattchart"/>
+        <p-chart type="line" [data]="data" [options]="options" class="empattchart" (onDataSelect)="onClickEvent($event)"/>
     </div>
 </div>
 
@@ -50,4 +50,8 @@
     <div *ngIf="value === 'line'">
         <p-chart type="line" [data]="data" [options]="options" class="expandempattchart"/>
     </div>
+</div>
+
+<div>
+    <app-employeedetails *ngIf="showDeatil" (showEmpDetail)="openDeatil($event)" [employeeID]="empID"/>
 </div>

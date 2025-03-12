@@ -27,9 +27,9 @@
             <h5>DEPARTMENT LIST</h5>
         </div>
         <div class="username">
-            <img [src]="url" alt="" width="100px" height="100px" (click)="op.toggle($event)" *ngIf="user">
+            <img [src]="url" alt="" width="100px" height="100px" *ngIf="user">
             <div class="h1"> 
-                <h1 *ngIf="!user" (click)="op.toggle($event)">{{ username?.slice(0,1) }}</h1>
+                <h1 *ngIf="!user">{{ username?.slice(0,1) }}</h1>
             </div>
             <h4>{{ username }}</h4> 
         </div>
@@ -43,7 +43,7 @@
 </div>
 
 <p-confirmdialog />
-
+<!-- 
 <p-overlayPanel #op>
     <p-button label="Logout" icon="pi pi-user" severity="secondary" (onClick)="goToLoginPage()"/>
-</p-overlayPanel>
+</p-overlayPanel> -->

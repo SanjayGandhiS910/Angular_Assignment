@@ -23,14 +23,13 @@ label{
 }
 input{
     width: 100%;
-    height: 38px;
+    height: 41.6px;
     border-radius: 3px;
     border: 1px solid gray;
     padding: 8px;
 }
 input:focus{
     border: 1px solid rgb(0, 0, 0);
-    height: 38px;
     outline: none;
 }
 ::ng-deep.p-inputtext{
@@ -45,6 +44,10 @@ input:focus{
 
 ::ng-deep.p-password{
     width: 100%;
+}
+::ng-deep.p-inputtext:focus{
+    border: 1px solid gray !important;
+    outline: none !important;
 }
 ::ng-deep.p-card>div{
     width: 100%;

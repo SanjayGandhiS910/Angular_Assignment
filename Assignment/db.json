@@ -221,29 +221,6 @@
       "id": "3e55"
     },
     {
-      "employeeid": "ITO005",
-      "month": "2024-12-31T18:30:00.000Z",
-      "date": "2025-02-25T18:30:00.000Z",
-      "departmentid": "009",
-      "available": {
-        "name": true
-      },
-      "checkin": "2025-02-27T03:43:00.730Z",
-      "checkout": "2025-02-27T14:08:00.766Z",
-      "attendancecount": "159",
-      "createdsource": "Admin",
-      "createdsourcetype": "Admin",
-      "createddate": "2025-02-22T20:08:00.000Z",
-      "modifiedsource": "Admin",
-      "modifiedsourcetype": "Admin",
-      "modifieddate": "2025-02-23T20:08:00.000Z",
-      "departmentname": {
-        "name": "Business Intelligence",
-        "short_name": "BI"
-      },
-      "id": "f122"
-    },
-    {
       "employeeid": "ITO002",
       "month": "2025-01-31T18:30:00.000Z",
       "date": "2025-02-03T18:30:00.000Z",

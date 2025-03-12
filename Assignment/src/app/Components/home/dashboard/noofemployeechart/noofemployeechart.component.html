@@ -16,11 +16,11 @@
         </div>
     </div>
     <div *ngIf="value === 'pie'" class="noofempchart">
-        <p-chart type="pie" [data]="data" [options]="options" class="noofempchart"/>
+        <p-chart type="pie" [data]="data" [options]="options" class="noofempchart" (onDataSelect)="onClickEvent($event)"/>
     </div>
 
     <div *ngIf="value === 'doughnut'" class="noofempchart">
-        <p-chart type="doughnut" [data]="data" [options]="options" class="noofempchart"/>
+        <p-chart type="doughnut" [data]="data" [options]="options" class="noofempchart" (onDataSelect)="onClickEvent($event)"/>
     </div>
 </div>
 
@@ -50,4 +50,8 @@
     <div *ngIf="value === 'doughnut'" class="noofempchart">
         <p-chart type="doughnut" [data]="data" [options]="options" class="expandnoofempchart"/>
     </div>
+</div>
+
+<div>
+    <app-deptdetil *ngIf="showDeatil" (closeDetail)="closeDetail($event)" [deptID]="deptID" [noofemp]="noofemp"/>
 </div>
