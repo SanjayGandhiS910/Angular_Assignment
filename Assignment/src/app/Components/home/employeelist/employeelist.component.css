@@ -31,7 +31,7 @@
     margin: 20px 0px 0px 22px;
 }
 .gap{
-    gap: 22px;
+    gap: 8px;
 }
 .cards .div ::ng-deep.p-button{
     font-size: 10px;

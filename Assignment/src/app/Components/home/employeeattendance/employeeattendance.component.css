@@ -88,10 +88,13 @@ span{
 .attTable.close ::ng-deep .p-ripple.p-paginator-last{
     display: none;
 }
+.attTable ::ng-deep.p-datatable-tbody > tr{
+    cursor: pointer !important;
+}
 
-@media screen and (max-height: 630px){
+@media screen and (max-height: 640px){
     ::ng-deep.p-datatable-scrollable > .p-datatable-table-container{
-        max-height: 320px;
+        max-height: 318px;
     }
 }
 

@@ -1,32 +1,32 @@
 <div class="main">
     <div class="sidenavebar" [ngClass]="{'closenavbar': checked}">
-        <div class="colunm-flex" routerLink="/hrportal/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <div class="div">
-                <i class="fa-brands fa-microsoft"></i>
+        <div class="colunm-flex" routerLink="/hrportal/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'divcontainer':checked}">
+            <div class="div" [ngClass]="{'div1': checked}">
+                <i class="fa-brands fa-microsoft" [ngClass]="{'icons':checked}"></i>
             </div>
             <div>
-                <h5>DASHBOARD</h5>
+                <h5 [ngClass]="{'display': checked}">DASHBOARD</h5>
             </div>
         </div>
-        <div class="colunm-flex"  routerLink="/hrportal/employeelist" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <div class="div">
-                <i class="fa-solid fa-user-group"></i>
+        <div class="colunm-flex"  routerLink="/hrportal/employeelist" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'divcontainer':checked}">
+            <div class="div"  [ngClass]="{'div1': checked}">
+                <i class="fa-solid fa-user-group" [ngClass]="{'icons':checked}"></i>
             </div>
-            <h5>EMPLOYEE LIST</h5>
+            <h5 [ngClass]="{'display': checked}">EMPLOYEE LIST</h5>
         </div>
-        <div class="colunm-flex"  routerLink="/hrportal/employeeattendance" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <div class="div">
-                <i class="fa-solid fa-rectangle-list"></i>
+        <div class="colunm-flex"  routerLink="/hrportal/employeeattendance" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'divcontainer':checked}">
+            <div class="div" [ngClass]="{'div1': checked}">
+                <i class="fa-solid fa-rectangle-list" [ngClass]="{'icons':checked}"></i>
             </div>
-            <h5>EMPLOYEE ATTENDANCE</h5>
+            <h5 [ngClass]="{'display': checked}">EMPLOYEE ATTENDANCE</h5>
         </div>
-        <div class="colunm-flex"  routerLink="/hrportal/departmentlist" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'hidden': !user}">
-            <div class="div">
-                <i class="fa-solid fa-building"></i>
+        <div class="colunm-flex"  routerLink="/hrportal/departmentlist" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'hidden': !user}" [ngClass]="{'divcontainer':checked}">
+            <div class="div" [ngClass]="{'div1': checked}">
+                <i class="fa-solid fa-building" [ngClass]="{'icons':checked}"></i>
             </div>
-            <h5>DEPARTMENT LIST</h5>
+            <h5 [ngClass]="{'display': checked}">DEPARTMENT LIST</h5>
         </div>
-        <div class="username">
+        <div class="username" [ngClass]="{'hidden': checked}">
             <img [src]="url" alt="" width="100px" height="100px" *ngIf="user">
             <div class="h1"> 
                 <h1 *ngIf="!user">{{ username?.slice(0,1) }}</h1>

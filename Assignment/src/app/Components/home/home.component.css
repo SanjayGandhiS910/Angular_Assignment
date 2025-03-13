@@ -16,8 +16,8 @@
 }
 
 .full{
-    width: 99.5% !important;
-    margin-left: 4px;
+    width: 95.5% !important;
+    margin-left: 70px;
     height: auto;
 }
 
@@ -34,7 +34,8 @@
         margin-left: 0px;
     }
     .full{
-        width: 100%;
+        width: 80% !important;
+        margin-left: 70px;
     }
 }
 

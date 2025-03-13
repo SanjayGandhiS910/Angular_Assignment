@@ -50,7 +50,9 @@ span{
 ::ng-deep.p-inputwrapper-focus{
     border: 1px solid gray !important;
 }
-
+::ng-deep.p-datatable-tbody > tr{
+    cursor: pointer !important;
+}
 
 .deptlisttable.close ::ng-deep .p-ripple.p-paginator-first{
     display: none;
@@ -65,8 +67,8 @@ span{
     display: none;
 }
 
-@media screen and (max-height: 630px){
+@media screen and (max-height: 640px){
     ::ng-deep.p-datatable-scrollable > .p-datatable-table-container{
-        max-height: 390px;
+        max-height: 400px;
     }
 }

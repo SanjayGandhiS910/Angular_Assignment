@@ -9,7 +9,7 @@
     transition: margin-left 50ms;
 }
 .closenavbar{
-    margin-left: -297px;
+    width: 70px;
     transition: margin-left 50ms;
 }
 .colunm-flex{
@@ -46,7 +46,7 @@ h1{
     left: 280px;
     top: 70px;
     border-radius: 50%;
-    background-color: gray;
+    background-color: rgb(162, 162, 162);
     color: white;
     border: none;
     transition: margin-left 500ms;
@@ -58,10 +58,10 @@ h1{
 }
 .close ::ng-deep.p-button{
     position: fixed;
-    left: -20px;
+    left: 48px;
     top: 70px;
     border-radius: 50%;
-    background-color: gray;
+    background-color: rgb(162, 162, 162);
     color: white;
     border: none;
     transition: left 500ms;
@@ -91,8 +91,29 @@ img{
     padding: 20px;
     border-radius: 50%;
 }
+.display{
+    display: none;
+}
+.icons{
+    font-size: 23px;
+    margin-bottom: 19px;
+}
+.divcontainer{
+    margin-left: 0px;
+    padding-left: 25px;
+    padding-bottom: 0px;
+    border-radius: 0;
+}
+.divcontainer:hover{
+    background-color: rgb(198, 198, 198);
+    border-radius: 0;
+}
+.div1{
+    display: flex;
+    justify-content: center;
+}
 
-@media screen and (max-height: 638px){
+@media screen and (max-height: 640px){
     .username{
         margin-top: 55px;
     }
@@ -111,7 +132,7 @@ img{
         width: 250px;
     }
     .closenavbar{
-        margin-left: -247px;
+        width: 70px;
     }
     h5{
         font-size: 13px;
