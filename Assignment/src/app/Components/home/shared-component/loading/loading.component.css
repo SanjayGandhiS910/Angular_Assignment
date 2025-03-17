@@ -1,0 +1,16 @@
+.load{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 11;
+}
+.screen{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(80, 80, 80, 0.489);
+    top: 0;
+    left: 0;
+    z-index: 10;
+}

@@ -8,7 +8,7 @@
         </div>
         <div class="btns">
             <div class="togglebtn">
-                <p-selectbutton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value"/>
+                <p-selectbutton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value" [allowEmpty]="false"/>
             </div>
             <div class="expandbutton2">   
                 <p-button (onClick)="toExpand()" icon="pi pi-arrow-up-right-and-arrow-down-left-from-center" severity="secondary" pTooltip="Expand" tooltipPosition="bottom"></p-button>
@@ -24,9 +24,9 @@
     </div>
 </div>
 
-<div class="screen" *ngIf="extand"></div>
+<div class="screen" *ngIf="expand"></div>
 
-<div class="expandcharts" *ngIf="extand">
+<div class="expandcharts" *ngIf="expand">
     <div class="expandhead">
         <div class="heading">
             <h3>Employee Attendance</h3>
@@ -36,7 +36,7 @@
         </div>
         <div class="expandbtns">
             <div class="togglebtn">
-                <p-selectbutton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value"/>
+                <p-selectbutton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value" [allowEmpty]="false"/>
             </div>
             <div class="expandbutton2 closebtn"> 
                 <p-button icon="pi pi-times" severity="secondary" (onClick)="closeExpand()"/>
@@ -53,5 +53,9 @@
 </div>
 
 <div>
-    <app-employeedetails *ngIf="showDeatil" (showEmpDetail)="openDeatil($event)" [employeeID]="empID"/>
+    <app-employeedetails *ngIf="showDeatil" (showEmpDetail)="openDeatil($event)" [employeeId]="empId"/>
 </div>
+
+<!-- Loading -->
+
+<app-loading *ngIf="isLoading" />

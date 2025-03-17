@@ -76,18 +76,15 @@ span{
 ::ng-deep.p-inputwrapper-focus{
     border: 1px solid gray !important;
 }
+
+.attTable.close ::ng-deep .p-ripple.p-paginator-last,
+.attTable.close ::ng-deep .p-paginator-page.p-paginator-page-selected,
+.attTable.close ::ng-deep .p-ripple.p-paginator-next,
+.attTable.close ::ng-deep .p-ripple.p-paginator-prev,
 .attTable.close ::ng-deep .p-ripple.p-paginator-first{
-    display: none;
+    display: none !important;
 }
-.attTable.close ::ng-deep .p-ripple.p-paginator-prev{
-    display: none;
-}
-.attTable.close ::ng-deep .p-ripple.p-paginator-next{
-    display: none;
-}
-.attTable.close ::ng-deep .p-ripple.p-paginator-last{
-    display: none;
-}
+
 .attTable ::ng-deep.p-datatable-tbody > tr{
     cursor: pointer !important;
 }

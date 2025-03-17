@@ -54,16 +54,11 @@ span{
     cursor: pointer !important;
 }
 
+.deptlisttable.close ::ng-deep .p-ripple.p-paginator-last,
+.deptlisttable.close ::ng-deep .p-paginator-page.p-paginator-page-selected,
+.deptlisttable.close ::ng-deep .p-ripple.p-paginator-next,
+.deptlisttable.close ::ng-deep .p-ripple.p-paginator-prev,
 .deptlisttable.close ::ng-deep .p-ripple.p-paginator-first{
-    display: none;
-}
-.deptlisttable.close ::ng-deep .p-ripple.p-paginator-prev{
-    display: none;
-}
-.deptlisttable.close ::ng-deep .p-ripple.p-paginator-next{
-    display: none;
-}
-.deptlisttable.close ::ng-deep .p-ripple.p-paginator-last{
     display: none;
 }
 

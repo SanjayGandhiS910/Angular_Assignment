@@ -22,6 +22,10 @@ body{
     --p-radiobutton-checked-focus-border-color: rgba(128, 128, 128, 0.59) !important;
     --p-radiobutton-checked-hover-border-color: rgba(128, 128, 128, 0.59) !important;
     --p-radiobutton-focus-border-color: rgba(128, 128, 128, 0.59) !important;
+    --p-progressspinner-color-1 : gray !important;
+    --p-progressspinner-color-2 : gray !important;
+    --p-progressspinner-color-3 : gray !important;
+    --p-progressspinner-color-4 : gray !important;
 }
 
 input:focus{

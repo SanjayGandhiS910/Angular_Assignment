@@ -1,22 +1,25 @@
-import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
 import { UserDetailsHttpService } from '../../../../Services/http/userdetails.service';
 
 @Component({
   selector: 'app-employeedetails',
-  imports: [
-    ButtonModule,
-    CommonModule
-  ],
+  standalone: false,
   templateUrl: './employeedetails.component.html',
   styleUrl: './employeedetails.component.css'
 })
 export class EmployeedetailsComponent implements OnInit{
+
+  // empDetail property to store Employee Detail
   empDetail!: any;
+
+  // url property to store Employee Photo url
   url!: string;
+
+  // To close the Form
   @Output() showEmpDetail = new EventEmitter();
-  @Input() employeeID!: string;
+
+  // To get The Employee Id
+  @Input() employeeId!: string;
 
   constructor(private empDetails: UserDetailsHttpService){}
 
@@ -24,13 +27,15 @@ export class EmployeedetailsComponent implements OnInit{
     this.getEmpData()
   }
 
+  // get the Employee Detail based on emplyee id
   getEmpData(){
     this.empDetails.getUserData().subscribe(d => {
-      this.empDetail = d.find( d => d.employeeid === this.employeeID)
+      this.empDetail = d.find( d => d.employeeid === this.employeeId)
       this.url = this.empDetail.image
     })
   }
 
+  // To close the Form
   closeDetail(){
     this.showEmpDetail.emit(false)
   }

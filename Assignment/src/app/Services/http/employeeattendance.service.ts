@@ -14,7 +14,6 @@ export class EmployeeAttendanceHttpService{
 
     newEmployeeAttendance(newEmployeeAttendance: EmployeeAttendance){
         this.http.post(this.apiUrl,newEmployeeAttendance).subscribe(d=>{
-            console.log('Success')
         })
     }
 

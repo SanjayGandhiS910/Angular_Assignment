@@ -1,60 +1,57 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { FileUploadModule } from 'primeng/fileupload';
-import { ButtonModule } from 'primeng/button';
-import { DatePickerModule } from 'primeng/datepicker';
-import { InputTextModule } from 'primeng/inputtext';
-import { InputGroupModule } from 'primeng/inputgroup';
-import { FloatLabelModule } from 'primeng/floatlabel';
-import { RadioButton } from 'primeng/radiobutton';
-import { SelectModule } from 'primeng/select';
-import { TextareaModule } from 'primeng/textarea';
-import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
-import { FormsModule, NgForm } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { NgForm } from '@angular/forms';
 import { UserDetailsHttpService } from '../../../../Services/http/userdetails.service';
-import { CalendarModule } from 'primeng/calendar';
-import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { MessageModule } from 'primeng/message';
 
 @Component({
   selector: 'app-employeelistform',
-  imports: [
-    FormsModule,
-    FileUploadModule,
-    ButtonModule,
-    DatePickerModule,
-    InputTextModule,
-    InputGroupModule,
-    InputGroupAddonModule,
-    FloatLabelModule,
-    RadioButton,
-    SelectModule,
-    TextareaModule,
-    CommonModule,
-    CalendarModule,
-    ToastModule,
-    MessageModule
-  ],
+  standalone: false,
   templateUrl: './employeelistform.component.html',
   styleUrl: './employeelistform.component.css'
 })
 export class EmployeelistformComponent implements OnInit{
 
+  // to contain Employee Detail form values
   @ViewChild('UserForm') editUserForm!: NgForm;
+
+  // Form Heading
   @Input() formHeading: string = ''
+
+  // which form is showing edit or view or add
   @Input() isEdit: boolean = false;
   @Input() isView: boolean = false;
+
+  // to sore employee detail
   @Input() userData!: any
+
+  // to close the form
   @Output() closeForm = new EventEmitter()
+
+  //to fing which user is login
   username!: string | null;
+
+  //bloodGroup select form value 
   bloodGroup!: any[]
+
+  //department select form value 
   department!: any[]
+
+  //position select form value 
   position!: any[]
+
+  // to store employee id
   id!: string | undefined;
+
+  //to store the employee image url
   url: string = 'images/usericon.png';
+
+  // to store image form local file
   selectedFile!: File;
+
+  // to store the employees Details
   empId!: any[] | undefined;
+
+  // employee id exits popup will come 
   empIdExits: boolean = false
 
   constructor(private employeeList: UserDetailsHttpService,private empData: UserDetailsHttpService,private messageService: MessageService){}
@@ -85,33 +82,33 @@ export class EmployeelistformComponent implements OnInit{
         { name: "DevOps", short_name: "DevOps" }
     ]
     this.position = [
-      { "name": "Software Engineer", "short_name": "SE" },
-      { "name": "Frontend Developer", "short_name": "FD" },
-      { "name": "Backend Developer", "short_name": "BD" },
-      { "name": "Network Engineer", "short_name": "NE" },
-      { "name": "Network Administrator", "short_name": "NA" },
-      { "name": "Network Architect", "short_name": "NA" },
-      { "name": "Security Analyst", "short_name": "SA" },
-      { "name": "Security Engineer", "short_name": "SE" },
-      { "name": "Penetration Tester", "short_name": "PT" },
-      { "name": "Database Administrator", "short_name": "DBA" },
-      { "name": "Database Developer", "short_name": "DD" },
-      { "name": "Data Analyst", "short_name": "DA" },
-      { "name": "System Administrator", "short_name": "SA" },
-      { "name": "Linux Administrator", "short_name": "LA" },
-      { "name": "Cloud Administrator", "short_name": "CA" },
-      { "name": "Cloud Engineer", "short_name": "CE" },
-      { "name": "Cloud Architect", "short_name": "CA" },
-      { "name": "DevOps Engineer", "short_name": "DE" },
-      { "name": "IT Support Specialist", "short_name": "ITSS" },
-      { "name": "Helpdesk Technician", "short_name": "HT" },
-      { "name": "Technical Support Specialist", "short_name": "TSS" },
-      { "name": "BI Developer", "short_name": "BID" },
-      { "name": "BI Analyst", "short_name": "BIA" },
-      { "name": "BI Consultant", "short_name": "BIC" },
-      { "name": "DevOps Engineer", "short_name": "DE" },
-      { "name": "Site Reliability Engineer", "short_name": "SRE" },
-      { "name": "Release Manager", "short_name": "RM" }
+      { name: "Software Engineer", short_name: "SE" },
+      { name: "Frontend Developer", short_name: "FD" },
+      { name: "Backend Developer", short_name: "BD" },
+      { name: "Network Engineer", short_name: "NE" },
+      { name: "Network Administrator", short_name: "NA" },
+      { name: "Network Architect", short_name: "NA" },
+      { name: "Security Analyst", short_name: "SA" },
+      { name: "Security Engineer", short_name: "SE" },
+      { name: "Penetration Tester", short_name: "PT" },
+      { name: "Database Administrator", short_name: "DBA" },
+      { name: "Database Developer", short_name: "DD" },
+      { name: "Data Analyst", short_name: "DA" },
+      { name: "System Administrator", short_name: "SA" },
+      { name: "Linux Administrator", short_name: "LA" },
+      { name: "Cloud Administrator", short_name: "CA" },
+      { name: "Cloud Engineer", short_name: "CE" },
+      { name: "Cloud Architect", short_name: "CA" },
+      { name: "DevOps Engineer", short_name: "DE" },
+      { name: "IT Support Specialist", short_name: "ITSS" },
+      { name: "Helpdesk Technician", short_name: "HT" },
+      { name: "Technical Support Specialist", short_name: "TSS" },
+      { name: "BI Developer", short_name: "BID" },
+      { name: "BI Analyst", short_name: "BIA" },
+      { name: "BI Consultant", short_name: "BIC" },
+      { name: "DevOps Engineer", short_name: "DE" },
+      { name: "Site Reliability Engineer", short_name: "SRE" },
+      { name: "Release Manager", short_name: "RM" }
     ]
     setTimeout(() => {
       if(this.isEdit || this.isView){
@@ -124,12 +121,14 @@ export class EmployeelistformComponent implements OnInit{
     }
   }
 
+  //get the employees datails
   getData(){
     this.empData.getUserData().subscribe(d=>{
       this.empId = d
     })
   }
 
+  //patch the value to form
   getValue(){
     let dob = new Date(this.userData.dob)
     let doj = new Date(this.userData.doj)
@@ -159,10 +158,12 @@ export class EmployeelistformComponent implements OnInit{
     })
   }
 
+  // click to close the form
   isCloseForm(){
     this.closeForm.emit(false)
   }
 
+  // Edit the employee details
   updateEmp(){
     if(this.id !== undefined){
       let formData = this.editUserForm.value
@@ -186,6 +187,7 @@ export class EmployeelistformComponent implements OnInit{
     }
   }
 
+  // click to upload and show image in webpage
   selectFile(e: any): void{
     this.selectedFile = e.target.files[0]
     let a = e.target.files[0].type
@@ -200,6 +202,7 @@ export class EmployeelistformComponent implements OnInit{
     }
   }
 
+  // click to Add new employee 
   onSubmit(): void{
     let id = this.empId?.find( d => d.employeeid === this.editUserForm.controls['employeeid'].value)
     let l = (this.editUserForm.controls['phonenumber'].value).length
@@ -221,6 +224,7 @@ export class EmployeelistformComponent implements OnInit{
     }
   }
 
+  // click edit button to change view form to edit form
   toEdit(){
     this.isEdit = true
     this.isView = false

@@ -1,12 +1,9 @@
 <div class="flex">
-    <!-- <div>
-        <app-dashboardtable></app-dashboardtable>
-    </div> -->
     <div>
         <app-dashboardchart></app-dashboardchart>
     </div>
     <br>
     <div>
-        <app-noofemployeechart></app-noofemployeechart>
+        <app-noofemployeechart *ngIf="username === 'Admin'"></app-noofemployeechart>
     </div>
 </div>

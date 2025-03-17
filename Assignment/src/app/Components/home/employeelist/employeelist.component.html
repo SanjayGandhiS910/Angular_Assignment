@@ -73,3 +73,7 @@
 <app-employeelistform *ngIf="editFormVisible" [userData]="emp" (closeForm)="closeForm($event)" [isEdit]="true" [formHeading]="formHeading"/>
 
 <p-toast position="top-center" [style]="{'z-index': '9999'}"/>
+
+<!-- Loading -->
+
+<app-loading *ngIf="isLoading"/>

@@ -1,62 +1,63 @@
 import { Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { TableModule } from 'primeng/table';
-import { InputTextModule } from 'primeng/inputtext';
-import { Dialog } from 'primeng/dialog';
-import { ButtonModule } from 'primeng/button';
-import { InputGroupModule } from 'primeng/inputgroup';
 import { EmployeeAttendanceHttpService } from '../../../Services/http/employeeattendance.service';
 import { Department, EmployeeAttendance, EmployeeList } from '../../../Services/Syntax/syntax.service';
-import { FormsModule } from '@angular/forms';
-import { EmployeeattendanceformComponent } from './employeeattendanceform/employeeattendanceform.component';
-import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { CommonModule, NgIf } from '@angular/common';
 import { DepartmentHttpService } from '../../../Services/http/department.service';
 import { UserDetailsHttpService } from '../../../Services/http/userdetails.service';
 import { ConfirmationService } from 'primeng/api';
-import { ConfirmDialog } from 'primeng/confirmdialog';
-import { PaginatorModule } from 'primeng/paginator';
 
 @Component({
   selector: 'app-employeeattendance',
-  imports: [
-    TableModule,
-    InputTextModule,
-    ButtonModule,
-    InputGroupModule,
-    Dialog,
-    ToastModule,
-    FormsModule,
-    ConfirmDialog,
-    EmployeeattendanceformComponent,
-    NgIf,
-    CommonModule,
-    PaginatorModule
-  ],
+  standalone: false,
   templateUrl: './employeeattendance.component.html',
   styleUrl: './employeeattendance.component.css',
   providers: [ConfirmationService]
 })
-export class EmployeeattendanceComponent implements OnInit, OnChanges{
+export class EmployeeattendanceComponent implements OnInit{
 
+  // to store the Employee Attendance Details
   empAttendance!: EmployeeAttendance[];
-  empList!: EmployeeList[];
-  deptList!: Department[];
   empData!: EmployeeAttendance[]
+
+  // to store the Employees Details
+  empList!: EmployeeList[];
+
+  // to store the Department Details
+  deptList!: Department[];
+
+  // for Verfication form
   visible: boolean = false;
+
+  // for Employee Attendance Form 
   isVisible: boolean = false
+
+  // send the department id and employee id to EmployeeattendanceformComponent
   deptId: string = ''
   empId: string = ''
+
+  // for update employee attendance form 
   empDet: boolean = false
-  id!: string | null
-  emp!: any
-  username!: string | null
-  arrlen!: number;
-  array!: number[];
-  icon: boolean = false;
-  arrbool!: boolean;
+
+  // for edit employee attendance form
   isEditIcon!: boolean;
 
+  // to store the Employee detail
+  emp!: any
+
+  // to store which user login
+  username!: string | null
+
+  // to store employee attendance array length
+  arrlen!: number;
+
+  // paginator array
+  array!: number[];
+
+  // for paginator icons
+  icon: boolean = false;
+  arrbool!: boolean;
+
+  // get value from input
   @ViewChild('filter') filter!: ElementRef
 
   constructor(private employeeattendance: EmployeeAttendanceHttpService,
@@ -64,10 +65,6 @@ export class EmployeeattendanceComponent implements OnInit, OnChanges{
         private employeelist: UserDetailsHttpService,
         private departmentlist: DepartmentHttpService,
         private confirmationService: ConfirmationService){}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
-  }
 
   ngOnInit(): void {
     this.getAllValue()
@@ -79,10 +76,10 @@ export class EmployeeattendanceComponent implements OnInit, OnChanges{
         this.arrbool = true
         this.array = [5,10,15]
       }
-      console.log(this.arrlen)
     },100)
   }
 
+  // get the employee attendance , employee list , department list values
   getAllValue(){
     this.employeeattendance.getEmployeeAttendanceData().subscribe( d =>{
       this.empAttendance = d
@@ -97,21 +94,19 @@ export class EmployeeattendanceComponent implements OnInit, OnChanges{
     })
   }
 
+  // close the verification form
   closeDialog(){
     this.visible = false
   }
 
-  showDialog() {  
-    let username = localStorage.getItem('username')
-    if(username === 'Admin'){
-      this.visible = true;
-      this.empId = ''
-      this.deptId = ''
-    }else{
-      this.messageService.add({ severity: 'error', summary: "User Cannot able to add user"});
-    }
+  // open the verification form
+  showDialog() {
+    this.visible = true;
+    this.empId = ''
+    this.deptId = ''
   }
 
+  // after verification successful navigate to add Employee Attendance form
   navigateToEmpList(){
     let id = this.empData.find( d => d.employeeid === this.empId)
     let deptName1: any = this.empList.find( d => d.employeeid === this.empId)?.departmentname
@@ -127,18 +122,21 @@ export class EmployeeattendanceComponent implements OnInit, OnChanges{
     }
   }
 
+  // Click Table row to open the view employee attendance form
   empAtt(user: any){
     this.emp = user
     this.empDet = true
     this.isEditIcon = true
   }
 
+  // Click edit icon to open the edit employee attendance form
   editIcon(user: any){
     this.emp = user
     this.empDet = true
     this.isEditIcon = false
   }
 
+  //Search for Department list Table
   search(){
     let value = this.filter.nativeElement.value
     let l = value.length
@@ -149,17 +147,15 @@ export class EmployeeattendanceComponent implements OnInit, OnChanges{
     }
   }
 
+  // delete employee attendance
   deleteEmpAttendanceData(id: string){
-    if( this.username === 'Admin'){
-      this.employeeattendance.deleteEmployeeAttendance(id)
-    }else{
-      this.messageService.add({ severity: 'error', summary: "User can't add data"});
-    }
+    this.employeeattendance.deleteEmployeeAttendance(id)
     setTimeout(() => {
       this.getAllValue()
     }, 100);
   }
 
+  // Click Table delete icon to open the Confirm Popup 
   confirm(event: Event,id: string) {
     this.confirmationService.confirm({
         target: event.target as EventTarget,
@@ -187,6 +183,7 @@ export class EmployeeattendanceComponent implements OnInit, OnChanges{
     });
   }
 
+  // close the add, update, view employee attendace form
   closeForm(s: boolean){
     this.isVisible = s
     this.empDet = s
@@ -195,6 +192,7 @@ export class EmployeeattendanceComponent implements OnInit, OnChanges{
     }, 100);
   }
 
+  // Hide the Paginator icon
   onPageChange(event: any) {
     if(event.rows > this.arrlen)
       this.icon = true

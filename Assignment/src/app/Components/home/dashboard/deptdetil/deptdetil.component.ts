@@ -1,21 +1,23 @@
-import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
 import { DepartmentHttpService } from '../../../../Services/http/department.service';
 
 @Component({
   selector: 'app-deptdetil',
-  imports: [
-    ButtonModule,
-    CommonModule
-  ],
+  standalone: false,
   templateUrl: './deptdetil.component.html',
   styleUrl: './deptdetil.component.css'
 })
 export class DeptdetilComponent implements OnInit{
-  @Input() deptID!: string
-  @Input() noofemp!: number
+  // dept property to store dept id
+  @Input() deptId!: string
+
+  // dept property to store no of employee
+  @Input() noOfEmp!: number
+
+  // Close Department Details Form
   @Output() closeDetail = new EventEmitter()
+
+  // dept property to store department detail
   dept!: any;
 
   constructor(private deptData: DepartmentHttpService){}
@@ -24,12 +26,14 @@ export class DeptdetilComponent implements OnInit{
     this.getData()
   }
 
+  // get the department detail based on department id 
   getData(){
     this.deptData.getDepartmentData().subscribe( d => {
-      this.dept = d.find( d => d.departmentid === this.deptID)
+      this.dept = d.find( d => d.departmentid === this.deptId)
     })
   }
 
+  // to close the department details form
   closeDeptDetail(){
     this.closeDetail.emit(false)
   }

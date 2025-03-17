@@ -20,7 +20,7 @@
             </div>
             <h5 [ngClass]="{'display': checked}">EMPLOYEE ATTENDANCE</h5>
         </div>
-        <div class="colunm-flex"  routerLink="/hrportal/departmentlist" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'hidden': !user}" [ngClass]="{'divcontainer':checked}">
+        <div class="colunm-flex"  routerLink="/hrportal/departmentlist" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'hidden': username !== 'Admin','divcontainer':checked}">
             <div class="div" [ngClass]="{'div1': checked}">
                 <i class="fa-solid fa-building" [ngClass]="{'icons':checked}"></i>
             </div>

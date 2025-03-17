@@ -14,7 +14,6 @@ export class UserDetailsHttpService{
 
     newUser(newuser: any){
         return this.http.post(this.apiUrl,newuser).subscribe(d=>{
-            console.log(d)
         })
     }
 

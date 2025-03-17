@@ -8,7 +8,7 @@
         </div>
         <div class="btns">
             <div class="togglebtn">
-                <p-selectbutton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value"/>
+                <p-selectbutton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value" [allowEmpty]="false"/>
             </div>
             <div class="expandbutton2">   
                 <p-button (onClick)="toExpand()" icon="pi pi-arrow-up-right-and-arrow-down-left-from-center" severity="secondary" pTooltip="Expand" tooltipPosition="bottom"></p-button>
@@ -36,7 +36,7 @@
         </div>
         <div class="expandbtns">
             <div class="togglebtn">
-                <p-selectbutton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value"/>
+                <p-selectbutton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value" [allowEmpty]="false"/>
             </div>
             <div class="expandbutton2 closebtn"> 
                 <p-button icon="pi pi-times" severity="secondary" (onClick)="closeExpand()"/>
@@ -53,5 +53,5 @@
 </div>
 
 <div>
-    <app-deptdetil *ngIf="showDeatil" (closeDetail)="closeDetail($event)" [deptID]="deptID" [noofemp]="noofemp"/>
+    <app-deptdetil *ngIf="showDeatil" (closeDetail)="closeDetail($event)" [deptId]="deptID" [noOfEmp]="noOfEmp"/>
 </div>

@@ -1,52 +1,42 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
-import { DialogModule } from 'primeng/dialog';
-import { ButtonModule } from 'primeng/button';
-import { DatePickerModule } from 'primeng/datepicker';
-import { InputTextModule } from 'primeng/inputtext';
-import { InputGroupModule } from 'primeng/inputgroup';
-import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
-import { FloatLabelModule } from 'primeng/floatlabel';
-import { SelectModule } from 'primeng/select';
-import { TextareaModule } from 'primeng/textarea';
+import { NgForm } from '@angular/forms';
 import { EmployeeAttendanceHttpService } from '../../../../Services/http/employeeattendance.service';
-import { CommonModule, formatDate } from '@angular/common';
 import { UserDetailsHttpService } from '../../../../Services/http/userdetails.service';
-import { CalendarModule } from 'primeng/calendar';
 
 @Component({
   selector: 'app-employeeattendanceform',
-  imports: [
-    FormsModule,
-    DialogModule,
-    ButtonModule,
-    DatePickerModule,
-    InputTextModule,
-    InputGroupModule,
-    InputGroupAddonModule,
-    FloatLabelModule,
-    SelectModule,
-    TextareaModule,
-    CommonModule,
-    CalendarModule
-  ],
+  standalone: false,
   templateUrl: './employeeattendanceform.component.html',
   styleUrl: './employeeattendanceform.component.css'
 })
 export class EmployeeattendanceformComponent implements OnInit{
 
+  // to contain Employee Attendance form values
   @ViewChild('EmployeeAttendanceForm') EmployeeAttendanceForm!: NgForm;
+
+  // get the employee id, department id, department name , employee detail value 
   @Input() empId!: string;
   @Input() deptId!: string;
-  @Input() show!: boolean;
   @Input() deptName!: string;
   @Input() empDet!: any;
+
+  @Input() show!: boolean;
   @Input() isEdit!: boolean;
   @Input() editButtonShow!: boolean;
+
+  // close the form
   @Output() closeForm = new EventEmitter();
+
+  //form p-select values
   available!: any[];
+
+  // to store departname 
   data!: string | undefined;
+
+  // edit employee attendance detail
   editData!: any | undefined;
+
+  // only for admin accesss
   username: boolean = true
 
   constructor(private empAttendance: EmployeeAttendanceHttpService,private employeeData: UserDetailsHttpService){}
@@ -70,12 +60,14 @@ export class EmployeeattendanceformComponent implements OnInit{
       { name: false}
     ]
   }
+
+  // add new value in employee attendance table
   onSubmitForm(){
     let empNewData = this.EmployeeAttendanceForm.value
     let a = new Date(this.EmployeeAttendanceForm.controls['checkin'].value)
     let b = new Date(this.EmployeeAttendanceForm.controls['checkout'].value)
     if(a>b){
-      console.log('check the date')
+      alert("Check the check-in or check-out")
     }else{
       empNewData['departmentname'] = this.data
       this.empAttendance.newEmployeeAttendance(empNewData)
@@ -83,6 +75,7 @@ export class EmployeeattendanceformComponent implements OnInit{
     }
   }
 
+  // patch the employee id and department id value in form
   setValue(){
     this.EmployeeAttendanceForm.form.patchValue({
       employeeid: this.empId,
@@ -90,12 +83,14 @@ export class EmployeeattendanceformComponent implements OnInit{
     })
   }
 
+  // get the department name
   getValue(){
     this.employeeData.getUserData().subscribe(d=>{
       this.data = d.find(d=> d.employeeid === this.empId)?.departmentname
     })
   }
 
+  //patch the value to form
   setValues(){
     let date = new Date(this.empDet.date)
     let month = new Date(this.empDet.month)
@@ -121,10 +116,12 @@ export class EmployeeattendanceformComponent implements OnInit{
     })
   }
 
+  // Close the form
   closeFormView(){
     this.closeForm.emit(false)
   }
 
+  // get the employee attendance data
   setUpdateData(){
     let value = this.EmployeeAttendanceForm.controls['employeeid'].value
     this.empAttendance.getEmployeeAttendanceData().subscribe(d=>{
@@ -132,6 +129,7 @@ export class EmployeeattendanceformComponent implements OnInit{
     })
   }
 
+  // Edit the employee attendance data
   onEditForm(){
     let a = new Date(this.EmployeeAttendanceForm.controls['checkin'].value)
     let b = new Date(this.EmployeeAttendanceForm.controls['checkout'].value)

@@ -1,61 +1,58 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ChartModule } from 'primeng/chart';
-import { SelectButton } from 'primeng/selectbutton';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
-import { Button } from 'primeng/button';
-import { TooltipModule } from 'primeng/tooltip';
 import { DepartmentListService } from '../../../../Services/provideservice/deptlist.service';
 import { UserDetailsHttpService } from '../../../../Services/http/userdetails.service';
-import { DeptdetilComponent } from "../deptdetil/deptdetil.component";
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-noofemployeechart',
-  imports: [
-    ChartModule,
-    FormsModule,
-    CommonModule,
-    OverlayPanelModule,
-    Button,
-    TooltipModule,
-    DeptdetilComponent,
-    SelectButton
-],
+  standalone: false,
   templateUrl: './noofemployeechart.component.html',
   styleUrl: './noofemployeechart.component.css'
 })
 export class NoofemployeechartComponent implements OnInit{
+  // Chart Values
   data!: any;
   options!: any;
+
+  //  SelectButton Values
   stateOptions: any[] = [{ label: 'Pie', value: 'pie' },{ label: 'Doughnut', value: 'doughnut' }];
   value: 'pie' | 'doughnut' | undefined = 'pie';
+
+  // Expand Chart 
   extand: boolean = false;
-  noofemployeeArray: number[] = []
+
+  // Array For Attendance Count and EmployeeId and chart backgrounnd colour
+  noOfEmployeeArray: number[] = []
   deptIdArray: string[] = ['001','002','003','004','005','006','007','008','009','010']
   bgColor: string[] = []
-  deptID!: string;
-  noofemp!: number
+
+  // Department Details Form 
   showDeatil!: boolean;
+  
+  // Using deptID Property to store Emplyoee Id
+  deptID!: string;
+
+  // Using noOfEmp Property to store Emplyoee Id
+  noOfEmp!: number
 
   constructor(private cd: ChangeDetectorRef, private empData: UserDetailsHttpService, private deptService: DepartmentListService,
               private router: Router
   ) {}
 
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.getEmpData()
     setTimeout(()=>{
         this.chartValue()
-    },100)
-   }
+    },200)
+  }
 
+  //Chart Values
   chartValue(){
     this.data = {
       labels: this.deptIdArray,
       datasets: [
           {
-              data: this.noofemployeeArray,
+              data: this.noOfEmployeeArray,
               backgroundColor: ['rgba(201, 201, 201, 0.71)','rgba(255, 215, 215, 0.71)','rgba(208, 178, 255, 0.71)'
                 ,'rgba(179, 255, 231, 0.71)','hsla(209, 100.00%, 84.90%, 0.71)','rgba(215, 251, 97, 0.71)','rgba(183, 255, 210, 0.71)'
                 ,'rgba(248, 255, 181, 0.71)','rgba(255, 186, 249, 0.71)','rgba(255, 177, 198, 0.71)'
@@ -66,46 +63,49 @@ export class NoofemployeechartComponent implements OnInit{
               ]
           }
       ]
-  };
+    };
 
-  this.options = {
-      plugins: {
-          legend: {
-              labels: {
-                  usePointStyle: true,
-                  color: 'rgb(0, 0, 0)'
-              }
-          }
-      }
-  };
-  this.cd.markForCheck()
-}
+    this.options = {
+        plugins: {
+            legend: {
+                labels: {
+                    usePointStyle: true,
+                    color: 'rgb(0, 0, 0)'
+                }
+            }
+        }
+    };
+    this.cd.markForCheck()
+  }
 
+  //Get the noOfEmployeeArray Values
   getEmpData(){
     this.empData.getUserData().subscribe( d => {
-      this.noofemployeeArray = this.deptService.attendanceCount(d)
+      this.noOfEmployeeArray = this.deptService.attendanceCount(d)
     })
   }
 
+  //To Expand The DashBoard Chart
   toExpand(){
     this.extand = true
   }
 
+  //To Close the expanded DashBoard Chart
   closeExpand(){
     this.extand = false
   }
 
+  //Show The Details Based on the Employee Id
   onClickEvent(data: any){
     const {index} = data.element;
     if (data) {
       this.deptID = this.data.labels[index]
-      this.noofemp = this.data.datasets[0].data[index]
-      console.log(typeof this.noofemp)
-      console.log(this.deptID)
+      this.noOfEmp = this.data.datasets[0].data[index]
       this.showDeatil = true
     }
   }
 
+  //Send the data from NoofemployeechartComponent to DeptdetilComponent
   closeDetail(event: any){
     this.showDeatil = event
   }

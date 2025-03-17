@@ -11,56 +11,75 @@ import { ToastModule } from 'primeng/toast';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { ConfirmationService } from 'primeng/api';
 import { DepartmentListService } from '../../../Services/provideservice/deptlist.service';
+import { LoadingComponent } from '../shared-component/loading/loading.component';
 
 @Component({
   selector: 'app-employeelist',
-  imports: [
-    OverlayPanelModule,
-    ButtonModule,
-    CardModule,
-    CommonModule,
-    EmployeelistformComponent,
-    DialogModule,
-    ToastModule,
-    InputGroupModule
-],
+  standalone: false,
   templateUrl: './employeelist.component.html',
   styleUrl: './employeelist.component.css'
 })
 export class EmployeelistComponent implements OnInit{
 
+  // to send the Form Heading value EmployeelistComponent to EmployeelistformComponent
   formHeading: string = '';
+
+  //Before Fetching Data 
+  isLoading: boolean = false;
+
+  // Open or close editform based on the this value
   editFormVisible!: boolean;
+  
+  // Open or close viewform based on the this value
   viewVisible!: boolean;
+
+  // Open or close add employee form based on the this value
   addFormVisible!: boolean;
+
+  // to store employees details
   employeeData!: any[];
   temp!: any[];
+
+  // to store employee detail
   emp!: any;
+
+  // to store value which user login
   username!: string | null;
+
+  // using this value to Define the card gap
   bool!: boolean;
+
+  // get value from input
   @ViewChild('filter') filter!: ElementRef;
 
   constructor(private empData: UserDetailsHttpService,private messageService: MessageService,
           private confirmationService: ConfirmationService,private emitData: DepartmentListService){
             emitData.getData().subscribe(d => {
               this.bool = d
-              console.log(this.bool)
             })
           }
 
   ngOnInit(): void {
     this.getData()
     this.username = localStorage.getItem('username')
-    console.log(this.bool)
   }
 
+  // get the employee details
   getData(){
+    this.isLoading = true
     this.empData.getUserData().subscribe(d => {
       this.employeeData = d
       this.temp = d
+      this.isLoading = false
     })
   }
+  
+  // open the Add Employee Form show
+  openForm(){
+    this.addFormVisible = true
+  }
 
+  // open the edit employee form
   openEditForm(userData: any){
     this.formHeading = "Edit User"
     if(this.username === 'Admin'){
@@ -71,12 +90,14 @@ export class EmployeelistComponent implements OnInit{
     }
   }
 
+  //open the View employee form
   openViewForm(userData: any){
     this.formHeading = "View User"
     this.viewVisible = true
     this.emp = userData
   }
 
+  //close the View and edit employee form
   closeForm(bool: boolean){
     this.editFormVisible = bool;
     this.viewVisible = bool;
@@ -86,6 +107,7 @@ export class EmployeelistComponent implements OnInit{
     }, 100);
   }
 
+  // Delete the employee detail
   deleteEmpData(id: string){
     this.empData.deleteEmployeeList(id)
     setTimeout(() => {
@@ -93,6 +115,7 @@ export class EmployeelistComponent implements OnInit{
     }, 100);
   }
 
+  //Search for Employee Card Table based on Employee Name
   search(){
     let value = this.filter.nativeElement.value
     let l = value.length
@@ -103,16 +126,7 @@ export class EmployeelistComponent implements OnInit{
     }
   }
 
-  openForm(){
-    let username = localStorage.getItem('username')
-    this.formHeading = "Add User"
-    if(username === 'Admin'){
-      this.addFormVisible = true
-    }else{
-      this.messageService.add({ severity: 'error', summary: "User Cannot able to add user"});
-    }
-  }
-
+  //Delete confirmation popup
   confirm(event: Event,id: string) {
     this.confirmationService.confirm({
         target: event.target as EventTarget,

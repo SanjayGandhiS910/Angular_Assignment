@@ -14,7 +14,6 @@ export class SignupService{
 
     newUser(newuser: User){
         this.http.post(this.apiUrl,newuser).subscribe(d=>{
-            console.log('Success')
         })
     }
 

@@ -34,7 +34,6 @@ export class SignupComponent {
     }else{
       this.SignupForm.reset()
     }
-    console.log(msg)
     
   }
 }

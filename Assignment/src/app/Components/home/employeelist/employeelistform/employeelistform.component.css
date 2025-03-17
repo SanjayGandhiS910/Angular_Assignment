@@ -6,7 +6,7 @@
     width: 98%;
     height: 98%;
     padding: 20px;
-    background-color: lightgray;
+    background-color: white;
     z-index: 1005;
     box-sizing: border-box;
     border-radius: 5px;
@@ -103,7 +103,7 @@ input,textarea{
 
 p{
     padding: 9px;
-    background-color: rgb(205, 205, 205);
+    background-color: rgb(239, 239, 239);
     margin-top: 8px;
     margin-bottom: 8px;
     font-weight: 500;

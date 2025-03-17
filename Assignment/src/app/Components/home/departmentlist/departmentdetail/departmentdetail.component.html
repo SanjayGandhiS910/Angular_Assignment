@@ -1,6 +1,8 @@
 <div class="screen"></div>
 
-<div class="departmentdetail">
+<app-loading *ngIf="isLoading"/>
+
+<div class="departmentdetail" *ngIf="!isLoading">
     <div class="head">
         <h3>Department Details</h3>
         <p-button icon="pi pi-times" severity="secondary" (onClick)="goback()"/>
