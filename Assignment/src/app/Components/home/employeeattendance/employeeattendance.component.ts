@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { EmployeeAttendanceHttpService } from '../../../Services/http/employeeattendance.service';
 import { Department, EmployeeAttendance, EmployeeList } from '../../../Services/Syntax/syntax.service';
 import { MessageService } from 'primeng/api';
@@ -14,7 +14,9 @@ import { ConfirmationService } from 'primeng/api';
   providers: [ConfirmationService]
 })
 export class EmployeeattendanceComponent implements OnInit{
+  inputValue: string = ''
 
+  @ViewChild('dt2') tableSort!: any;
   // to store the Employee Attendance Details
   empAttendance!: EmployeeAttendance[];
   empData!: EmployeeAttendance[]
@@ -57,8 +59,6 @@ export class EmployeeattendanceComponent implements OnInit{
   icon: boolean = false;
   arrbool!: boolean;
 
-  // get value from input
-  @ViewChild('filter') filter!: ElementRef
 
   constructor(private employeeattendance: EmployeeAttendanceHttpService,
         private messageService: MessageService,
@@ -69,6 +69,7 @@ export class EmployeeattendanceComponent implements OnInit{
   ngOnInit(): void {
     this.getAllValue()
     this.username = localStorage.getItem('username')
+    sessionStorage.setItem('currentPath','hrportal/employeeattendance')
     setTimeout(()=>{
       if(this.arrlen <= 5)
         this.arrbool = false
@@ -104,6 +105,8 @@ export class EmployeeattendanceComponent implements OnInit{
     this.visible = true;
     this.empId = ''
     this.deptId = ''
+    this.inputValue = ''
+    this.tableSort.filterGlobal('', 'contains')
   }
 
   // after verification successful navigate to add Employee Attendance form
@@ -124,6 +127,8 @@ export class EmployeeattendanceComponent implements OnInit{
 
   // Click Table row to open the view employee attendance form
   empAtt(user: any){
+    this.inputValue = ''
+    this.tableSort.filterGlobal('', 'contains')
     this.emp = user
     this.empDet = true
     this.isEditIcon = true
@@ -131,6 +136,8 @@ export class EmployeeattendanceComponent implements OnInit{
 
   // Click edit icon to open the edit employee attendance form
   editIcon(user: any){
+    this.inputValue = ''
+    this.tableSort.filterGlobal('', 'contains')
     this.emp = user
     this.empDet = true
     this.isEditIcon = false
@@ -138,12 +145,10 @@ export class EmployeeattendanceComponent implements OnInit{
 
   //Search for Department list Table
   search(){
-    let value = this.filter.nativeElement.value
-    let l = value.length
-    if(value === ''){
+    if(this.inputValue === ''){
       this.empAttendance = this.empData
     }else{
-      this.empAttendance = this.empData.filter(d => d.employeeid.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
+      this.empAttendance = this.empData.filter(d => d.employeeid.includes(this.inputValue))
     }
   }
 
@@ -176,10 +181,7 @@ export class EmployeeattendanceComponent implements OnInit{
         accept: () => {
             this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' });
             this.deleteEmpAttendanceData(id)
-        },
-        reject: () => {
-            this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
-        },
+        }
     });
   }
 
@@ -194,7 +196,7 @@ export class EmployeeattendanceComponent implements OnInit{
 
   // Hide the Paginator icon
   onPageChange(event: any) {
-    if(event.rows > this.arrlen)
+    if(event.rows >= this.arrlen)
       this.icon = true
     else
       this.icon = false

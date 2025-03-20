@@ -28,10 +28,10 @@
 
 @media screen and (max-width: 320px){
     .div2{
-        width: 100%;
+        width: 80%;
         position: absolute;
         left: 0;
-        margin-left: 0px;
+        margin-left: 70px;
     }
     .full{
         width: 80% !important;
@@ -43,10 +43,10 @@
 
 @media screen and (max-width: 376px) and (min-width: 321px) {
     .div2{
-        width: 100%;
+        width: 80%;
         position: absolute;
         left: 0;
-        margin-left: 0px;
+        margin-left: 70px;
     }
     .full{
         width: 80% !important;
@@ -58,10 +58,10 @@
 
 @media screen and (max-width: 426px) and (min-width: 376px){
     .div2{
-        width: 100%;
+        width: 80%;
         position: absolute;
         left: 0;
-        margin-left: 0px;
+        margin-left: 70px;
     }
     .full{
         width: 80% !important;
@@ -72,10 +72,10 @@
 
 @media screen and (max-width: 768px) and (min-width: 427px){
     .div2{
-        width: 100%;
+        width: 90%;
         position: absolute;
         left: 0;
-        margin-left: 0px;
+        margin-left: 70px;
     }
     .full{
         width: 90% !important;

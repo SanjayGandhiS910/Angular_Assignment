@@ -3,7 +3,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 98%;
+    width: 99%;
     height: 98%;
     padding: 20px;
     background-color: white;
@@ -26,23 +26,40 @@
 }
 
 .adduserdiv1{
+    width: 300px;
+    height: 280px;
     background-color: rgb(239, 239, 239);
-    padding: 30px;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.addHeight{
+    height: 210px !important;
+}
+.adduserdiv1 h6{
+    font-size: 16px;
+}
+.adduserdiv1 p{
+    font-size: 12px;
+    width: auto !important;
 }
 img{
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    margin-top: 10px;
 }
 .fa-solid{
+    color: rgb(55, 178, 255);
+    background-color: white;
     font-size: 35px;
     position: relative;
-    top: -10px;
-    left: 57px;
+    top: -15px;
+    border-radius: 50%;
 }
 
 .adduserscrool{
-    height: 73vh;
+    height: 74vh;
     overflow-y: scroll;
 }
 .adduserscrool::-webkit-scrollbar{
@@ -56,34 +73,58 @@ img{
 }
 .cloumnflex{
     display: flex;
+    column-gap: 20px;
+}
+.gender{
+    display: flex;
     column-gap: 10px;
+    margin-top: 8px;
+}
+.gender>div{
+    border: 1px solid #cbd5e1;
+    padding: 8px 10px;
+}
+label{
+    font-weight: 500;
 }
 input,textarea{
     width: 100%;
-    margin-top: 2px;
-    margin-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 25px;
+    border-radius: 0px !important;
+}
+.phonenumber{
+    margin-top: 8px !important;
+    margin-bottom: 25px !important;
 }
 ::ng-deep.p-radiobutton{
-    margin-top: 8px;
-    margin-right: 2px;
-    margin-left: 5px;
+    margin-right: 3px;
+    margin-top: -2px;
+    border-radius: 0px !important;
 }
 ::ng-deep.p-select{
     width: 100%;
-    margin-top: 2px;
-    margin-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 25px;
+    border-radius: 0px !important;
+}
+::ng-deep.p-inputgroupaddon:first-child{
+    border-radius: 0px !important;
 }
 ::ng-deep.p-datepicker{
     width: 100%;
-    margin-top: 2px;
-    margin-bottom: 5px;
+    margin-top: 8px !important;
+    margin-bottom: 25px !important;
     border: none !important;
 }
-
+::ng-deep.p-inputtext{
+    border-radius: 0px !important;
+}
 .right{
     display: flex;
     justify-content: end;
     column-gap: 10px;
+    margin-top: 20px;
     margin-right: 5px;
 }
 
@@ -94,7 +135,7 @@ input,textarea{
     background-color: rgba(80, 80, 80, 0.489);
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 1004;
 }
 
 .display{
@@ -108,13 +149,23 @@ p{
     margin-bottom: 8px;
     font-weight: 500;
 }
+span{
+    color: red;
+}
+.address input{
+    margin-bottom: 10px;
+}
+
+
+@media screen and (max-height: 630px){
+}
 
 /* Mobile View S */
 
 @media screen and (max-width: 320px){
     .adduserflex{
         display: block;
-        height: 70vh;
+        height: 71vh;
         overflow-y: scroll;
     }
     .adduserflex::-webkit-scrollbar{
@@ -125,11 +176,10 @@ p{
         overflow: auto;
     }
     .adduserdiv1{
+        width: 285px;
+        height: 250px;
         text-align: center;
-        padding: 30px;
-        background: none;
-        margin-top: -20px;
-        margin-bottom: -20px;
+        margin-bottom: 10px;
     }
     .fa-solid{
         left: 2px;
@@ -144,11 +194,11 @@ p{
     .p-datepicker .p-datepicker-panel {
         min-width: 300px;
     }
-}
-
-@media screen and (max-height: 630px){
-    .adduserscrool{
-        height: 68vh;
+    .address input{
+        margin-bottom: 5px;
+    }
+    .right{
+        margin-top: 15px;
     }
 }
 
@@ -157,7 +207,7 @@ p{
 @media screen and (max-width: 376px) and (min-width: 321px)  {
     .adduserflex{
         display: block;
-        height: 70vh;
+        height: 69vh;
         overflow-y: scroll;
     }
     .adduserflex::-webkit-scrollbar{
@@ -168,11 +218,10 @@ p{
         overflow: auto;
     }
     .adduserdiv1{
+        width: 330px;
+        height: 265px;
         text-align: center;
-        padding: 30px;
-        background: none;
-        margin-top: -20px;
-        margin-bottom: -20px;
+        margin-bottom: 25px;
     }
     .fa-solid{
         left: 2px;
@@ -184,6 +233,12 @@ p{
     .cloumnflex{
         display: block;
     }
+    .address input{
+        margin-bottom: 5px;
+    }
+    .right{
+        margin-top: 15px;
+    }
 }
 
 /* Mobile View L */
@@ -191,7 +246,7 @@ p{
 @media screen and (max-width: 426px) and (min-width: 376px) {
     .adduserflex{
         display: block;
-        height: 70vh;
+        height: 69vh;
         overflow-y: scroll;
     }
     .adduserflex::-webkit-scrollbar{
@@ -202,11 +257,10 @@ p{
         overflow: auto !important;
     }
     .adduserdiv1{
+        width: 400px;
+        height: 270px;
         text-align: center;
-        padding: 30px;
-        background: none;
-        margin-top: -20px;
-        margin-bottom: -20px;
+        margin-bottom: 10px;
     }
     .fa-solid{
         left: 2px;
@@ -218,9 +272,23 @@ p{
     .cloumnflex{
         display: block;
     }
-    
+    .address input{
+        margin-bottom: 5px;
+    }
+    .right{
+        margin-top: 15px;
+    }
 }
 
 @media screen and (max-width: 768px) and (min-width: 427px) {
-    
+    .adduserdiv2{
+        height: 68vh;
+        overflow-y: scroll;
+    }
+    .adduserdiv2::-webkit-scrollbar{
+        display: none;
+    }
+    .address input{
+        margin-bottom: 5px;
+    }
 }

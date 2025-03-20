@@ -37,7 +37,7 @@
                     </div>
                     <div>
                         <label>Blood Group</label><br>
-                        <p>{{ empDetail?.bloodgroup.name }}</p>
+                        <p>{{ empDetail?.bloodgroup.name? empDetail?.bloodgroup.name : "Not provided" }}</p>
                     </div>
                 </div>
                 <div class="cloumnflex">
@@ -47,7 +47,7 @@
                     </div>
                     <div>
                         <label>Phone Number</label><br>
-                        <p>{{ empDetail?.phonenumber }}</p>
+                        <p>{{ empDetail?.phonenumber? empDetail?.phonenumber : "Not provided" }}</p>
                     </div>
                 </div>
                 
@@ -102,14 +102,41 @@
                     </div>
                 </div>
                 <div class="column">
-                    <label>Address</label><br>
-                    <p>{{ empDetail?.address }}</p>
+                    <h4>Address</h4>
+                    <div class="cloumnflex">
+                        <div>
+                            <label for="">AddressField1 <span>*</span></label><br>
+                            <p>{{ empDetail?.address.addressField1 }}</p>
+                        </div>
+                        <div>
+                            <label for="">AddressField2 <span>*</span></label><br>
+                            <p>{{ empDetail?.address.addressField2 }}</p>
+                        </div>
+                    </div>
+                    <div class="cloumnflex">
+                        <div>
+                            <label for="">Country <span>*</span></label><br>
+                            <p>{{ empDetail?.address.country.name }}</p>
+                        </div>
+                        <div>
+                            <label for="">State <span>*</span></label><br>
+                            <p>{{ empDetail?.address.state.name }}</p>
+                        </div>
+                    </div>
+                    <div class="cloumnflex">
+                        <div class="address">
+                            <label for="">ZipCode <span>*</span></label><br>
+                            <p>{{ empDetail?.address.zipCode }}</p>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <hr>
     <div class="right">
-        <p-button label="Cancal" [raised]="true" severity="secondary" (onClick)="closeDetail()"/>
+        <p-button label="Cancel" [raised]="true" severity="secondary" (onClick)="closeDetail()"/>
     </div>
 </div>

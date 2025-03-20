@@ -46,6 +46,8 @@ import { CardModule } from 'primeng/card';
 import { FileUploadModule } from 'primeng/fileupload';
 import { CalendarModule } from 'primeng/calendar';
 import { MessageModule } from 'primeng/message';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { SortEvent } from 'primeng/api';
 
 @NgModule({
     declarations:[
@@ -92,7 +94,8 @@ import { MessageModule } from 'primeng/message';
         CardModule,
         FileUploadModule,
         CalendarModule,
-        MessageModule
+        MessageModule,
+        RadioButtonModule
     ],
     providers:[
         provideAnimationsAsync(),

@@ -23,7 +23,8 @@ export class NoofemployeechartComponent implements OnInit{
 
   // Array For Attendance Count and EmployeeId and chart backgrounnd colour
   noOfEmployeeArray: number[] = []
-  deptIdArray: string[] = ['001','002','003','004','005','006','007','008','009','010']
+  deptIdArray: string[] = ['Software Development','Network Engineering','Cybersecurity','Database Administration','System Administration'
+                  ,'Cloud Computing','IT Support','Quality Assurance','Business Intelligence','DevOps']
   bgColor: string[] = []
 
   // Department Details Form 

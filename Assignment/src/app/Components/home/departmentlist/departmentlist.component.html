@@ -2,21 +2,22 @@
     <div> 
         <p-inputgroup>
             <p-button label="Search" size="large" severity="info"/>
-            <input pInputText placeholder="Search" size="large" #filter (keyup)="search()"/>
+            <input pInputText placeholder="Search" size="large" 
+                    [(ngModel)]="inputValue" (input)="Table.filterGlobal(inputValue, 'contains')"/>
         </p-inputgroup>
     </div>
 </div>
 
 <div class="deptlisttable" [ngClass]="{'close': icon}">
-    <p-table [value]="departmentData"
+    <p-table #Table [value]="departmentData"
             showGridlines
             [paginator]="arrbool"
             [scrollable]="true" 
             [tableStyle]="{ 'min-width': '50rem' }"
             [rows]="5"
             [rowsPerPageOptions]="array"
-            selectionMode="single"
-            (onPage)="onPageChange($event)">
+            (onPage)="onPageChange($event)"
+            [globalFilterFields]="['departmentid','departmentname']">
         <ng-template #header>
             <tr>
                 <th pSortableColumn="departmentid" style="min-width:160px">
@@ -52,7 +53,7 @@
             </tr>
         </ng-template>
         <ng-template #body let-user>
-            <tr (dblclick)="navigate(user.departmentid)">
+            <tr (click)="navigate(user.departmentid)">
                 <td>{{ user.departmentid }}</td>
                 <td>{{ user.departmentname }}</td>
                 <td>{{ user.noofemployees }}</td>
@@ -72,3 +73,5 @@
         </ng-template>
     </p-table>
 </div>
+
+<app-departmentdetail [deptId]="deptId" *ngIf="deptId" (closeForm)="closeForm($event)"/>

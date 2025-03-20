@@ -9,35 +9,39 @@
     </div>
     <hr>
     <div class="scrool">
-        <div>
-            <h5>Department Id</h5>
-            <p>{{ dept?.departmentid }}</p>
+        <div class="cloumnflex">
+            <div>
+                <h5>Department Id</h5>
+                <p>{{ dept?.departmentid }}</p>
+            </div>
+            <div>
+                <h5>Department Name</h5>
+                <p>{{ dept?.departmentname }}</p>
+            </div>
         </div>
-        <div>
-            <h5>Department Name</h5>
-            <p>{{ dept?.departmentname }}</p>
-        </div>
-        <div>
-            <h5>Manager Id</h5>
-            <p>{{ dept?.managerid }}</p>
-        </div>
-        <div>
-            <h5>No of Employee</h5>
-            <p>{{ dept?.noofemployees }}</p>
+        <div class="cloumnflex">
+            <div>
+                <h5>Manager Id</h5>
+                <p>{{ dept?.managerid }}</p>
+            </div>
+            <div>
+                <h5>No of Employee</h5>
+                <p>{{ dept?.noofemployees }}</p>
+            </div>
         </div>
         <div class="cloumnflex">
             <div>
                 <div>
-                    <h5>Create Source</h5>
+                    <h5>Created Source</h5>
                     <p>{{ dept?.createdsource }}</p>
                 </div>
                 <div>
-                    <h5>Create Source Type</h5>
+                    <h5>Created Source Type</h5>
                     <p>{{ dept?.createdsourcetype }}</p>
                 </div>
                 <div>
-                    <h5>Create Date & Time</h5>
-                    <p>{{ dept?.createddate | date: 'MMM d, y, h:mm a' }}</p>
+                    <h5>Created Date & Time</h5>
+                    <p class="date">{{ dept?.createddate | date: 'MMM d, y, h:mm a' }}</p>
                 </div>
             </div>
             <div>
@@ -51,7 +55,7 @@
                 </div>
                 <div>
                     <h5>Modified Date & Time</h5>
-                    <p>{{ dept?.modifieddate | date: 'MMM d, y, h:mm a' }}</p>
+                    <p class="date">{{ dept?.modifieddate | date: 'MMM d, y, h:mm a' }}</p>
                 </div>
             </div>
         </div>
@@ -59,7 +63,7 @@
     <hr>
     <div>
         <div class="gobackbtn">
-            <p-button label="Go Back" [raised]="true" severity="secondary" (onClick)="goback()"/>
+            <p-button label="Cancel" [raised]="true" severity="secondary" (onClick)="goback()"/>
         </div>
     </div>
 </div>

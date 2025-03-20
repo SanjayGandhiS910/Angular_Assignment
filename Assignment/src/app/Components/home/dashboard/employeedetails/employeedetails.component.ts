@@ -31,7 +31,7 @@ export class EmployeedetailsComponent implements OnInit{
   getEmpData(){
     this.empDetails.getUserData().subscribe(d => {
       this.empDetail = d.find( d => d.employeeid === this.employeeId)
-      this.url = this.empDetail.image
+      this.url = this.empDetail.image? this.empDetail.image : 'images/usersicon.png'
     })
   }
 

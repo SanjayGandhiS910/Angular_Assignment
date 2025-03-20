@@ -24,26 +24,43 @@ form{
     overflow-x: scroll;
     padding: 0;
     width: 100%;
-    height: 70vh;
-    /* display: grid;
-    place-items: center; */
+    height: 73vh;
 }
-.container{
-    margin: 0;
+.column-flex>div{
+    width: 100%;
+}
+.column-flex{
     display: flex;
+    column-gap: 20px;
 }
-.flex1{
-    margin-left: 250px;
+input{
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 25px;
+    border-radius: 0px ;
 }
-h4{
-    font-size: 18px;
+::ng-deep.p-inputtext{
+    border-radius: 0px !important;
+}
+::ng-deep.p-datepicker{
+    margin-top: 8px;
+    margin-bottom: 25px;
+    width: 100%;
+    border: none !important;
+    border-radius: 0px ;
+}
+::ng-deep.p-select{
+    margin-top: 8px;
+    margin-bottom: 25px;
+    width: 100%;
+    border-radius: 0px !important;
 }
 p{
-    margin-top: 10px;
+    margin-top: 8px;
+    margin-bottom: 25px;
     padding: 9px;
     background-color: rgb(239, 239, 239);
     margin-top: 8px;
-    margin-bottom: 8px;
     font-weight: 500;
     width: 100%;
 }
@@ -52,26 +69,6 @@ p{
 }
 .flex{
     display: flex;
-}
-.div{
-    display: flex;
-    align-items: center;
-    width: 200px;
-    height: 51px;
-    margin-bottom: 34px;
-}
-.div1{
-    width: 300px;
-}
-input{
-    width: 100%;
-}
-::ng-deep.p-datepicker{
-    width: 300px;
-    border: none !important;
-}
-::ng-deep.p-select{
-    width: 100%;
 }
 .flex::-webkit-scrollbar{
     display: none;
@@ -95,19 +92,24 @@ input{
     background-color: rgba(80, 80, 80, 0.489);
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 14;
 }
-
+span{
+    color: red;
+}
 .display{
     display: none;
 }
+.modifieddate ::ng-deep.p-datepicker{
+    margin-bottom: 3px;
+}
+.createddate ::ng-deep.p-datepicker{
+    margin-bottom: 3px;
+}
 
-@media screen and (max-height: 630px){
-    .scrool{
-        height: 65vh;
-    }
-    .flex3{
-        margin-top: 0px;
+@media screen and (max-height: 640px){
+    .modifieddate ::ng-deep.p-datepicker{
+        margin-bottom: 0px;
     }
 }
 
@@ -116,30 +118,14 @@ input{
 @media screen and (max-width: 320px){
     .scrool{
         display: block;
-        height: 65vh;
+        height: 71vh;
         font-size: 15px;
     }
-    .container{
+    .column-flex{
         display: block;
-    }
-    .flex1{
-        margin-left: 0;
-    }
-    .div{
-        width: 100px;
-    }
-    .div1{
-        width: 130px;
-        margin-top: -1px;
-    }
-    ::ng-deep.p-datepicker{
-        width: 130px;
     }
     h3{
         font-size: 15px;
-    }
-    h4{
-        font-size: 12px;
     }
     .head ::ng-deep.p-button{
         width: 25px;
@@ -157,30 +143,14 @@ input{
 @media screen and (max-width: 376px) and (min-width: 321px)  {
     .scrool{
         display: block;
-        height: 65vh;
+        height: 69.5vh;
         font-size: 15px;
     }
-    .container{
+    .column-flex{
         display: block;
-    }
-    .flex1{
-        margin-left: 0;
-    }
-    .div{
-        width: 100px;
-    }
-    .div1{
-        width: 200px;
-        margin-top: -1px;
-    }
-    ::ng-deep.p-datepicker{
-        width: 200px;
     }
     h3{
         font-size: 15px;
-    }
-    h4{
-        font-size: 12px;
     }
     .head ::ng-deep.p-button{
         width: 25px;
@@ -197,30 +167,14 @@ input{
 
 @media screen and (max-width: 426px) and (min-width: 376px) {
     .scrool{
-        height: 65vh;
+        height: 69.3vh;
         font-size: 15px;
     }
-    .container{
+    .column-flex{
         display: block;
     }
-    .flex1{
-        margin-left: 0;
-    }
-    .div{
-        width: 100px;
-    }
-    .div1{
-        width: 240px;
-        margin-top: -1px;
-    }
-    ::ng-deep.p-datepicker{
-        width: 240px;
-    }
     h3{
-        font-size: 16px;
-    }
-    h4{
-        font-size: 12px;
+        font-size: 15px;
     }
     .head ::ng-deep.p-button{
         width: 27px;
@@ -236,23 +190,14 @@ input{
 
 @media screen and (max-width: 768px) and (min-width: 427px) {
     .scrool{
-        height: 65vh;
+        height: 67.5vh;
         font-size: 15px;
     }
-    .container{
-        display: block;
+    .modifieddate ::ng-deep.p-datepicker{
+        margin-bottom: 0px;
     }
-    .flex1{
-        margin-left: 0;
-    }
-    .div{
-        width: 260px;
-    }
-    .div1{
-        width: 350px;
-    }
-    ::ng-deep.p-datepicker{
-        width: 350px;
+    .createddate ::ng-deep.p-datepicker{
+        margin-bottom: 3px;
     }
 }
 

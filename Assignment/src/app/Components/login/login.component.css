@@ -1,5 +1,5 @@
 .card{
-    width: 360px;
+    width: 450px;
 }
 form{
     position: fixed;
@@ -8,18 +8,30 @@ form{
     transform: translate(-50%,-50%);
     border: none;
     border-radius: 10px;
+    padding: 50px 30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 .header{
     text-align: center;
 }
 h3{
-    margin: 10px;
+    margin: 2px;
+    margin-top: 25px;
+    color: black;
 }
 p{
-    margin: 5px;
+    margin: 2px;
+    color: black;
+    font-weight: 450;
+    font-size: 17px;
 }
 label{
-    margin-top: 5px;
+    color: gray;
+    margin-top: 6px;
+    margin-bottom: 3px;
+}
+span{
+    color: red;
 }
 input{
     width: 100%;
@@ -51,16 +63,21 @@ input:focus{
 }
 ::ng-deep.p-card>div{
     width: 100%;
+    padding: 30px;
 }
 
 button{
-    background-color: lightskyblue;
+    background-color: rgb(28, 168, 255);
     width: 100%;
-    height: 30px;
+    height: 45px;
     border-radius: 2px;
     border: none;
     color: white;
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.disable{
+    background-color: lightskyblue;
 }
 
 .screen{
@@ -73,7 +90,8 @@ button{
 }
 
 .forgetpassword{
-    color: blue;
+    color: rgb(45, 45, 224);
+    font-weight: 480;
     cursor: pointer;
 }
 

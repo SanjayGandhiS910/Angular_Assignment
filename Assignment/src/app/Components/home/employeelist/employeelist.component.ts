@@ -1,17 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
 import { UserDetailsHttpService } from '../../../Services/http/userdetails.service';
-import { CommonModule } from '@angular/common';
-import { EmployeelistformComponent } from './employeelistform/employeelistform.component';
-import { DialogModule } from 'primeng/dialog';
 import { MessageService } from 'primeng/api';
-import { ToastModule } from 'primeng/toast';
-import { InputGroupModule } from 'primeng/inputgroup';
 import { ConfirmationService } from 'primeng/api';
 import { DepartmentListService } from '../../../Services/provideservice/deptlist.service';
-import { LoadingComponent } from '../shared-component/loading/loading.component';
 
 @Component({
   selector: 'app-employeelist',
@@ -49,8 +40,8 @@ export class EmployeelistComponent implements OnInit{
   // using this value to Define the card gap
   bool!: boolean;
 
-  // get value from input
-  @ViewChild('filter') filter!: ElementRef;
+  //input value
+  inputValue: string = ''
 
   constructor(private empData: UserDetailsHttpService,private messageService: MessageService,
           private confirmationService: ConfirmationService,private emitData: DepartmentListService){
@@ -62,6 +53,7 @@ export class EmployeelistComponent implements OnInit{
   ngOnInit(): void {
     this.getData()
     this.username = localStorage.getItem('username')
+    sessionStorage.setItem('currentPath','hrportal/employeelist')
   }
 
   // get the employee details
@@ -76,11 +68,14 @@ export class EmployeelistComponent implements OnInit{
   
   // open the Add Employee Form show
   openForm(){
+    this.inputValue = ""
+    this.formHeading = "Add User"
     this.addFormVisible = true
   }
 
   // open the edit employee form
   openEditForm(userData: any){
+    this.inputValue = ""
     this.formHeading = "Edit User"
     if(this.username === 'Admin'){
       this.editFormVisible = true
@@ -92,6 +87,7 @@ export class EmployeelistComponent implements OnInit{
 
   //open the View employee form
   openViewForm(userData: any){
+    this.inputValue = ""
     this.formHeading = "View User"
     this.viewVisible = true
     this.emp = userData
@@ -117,12 +113,10 @@ export class EmployeelistComponent implements OnInit{
 
   //Search for Employee Card Table based on Employee Name
   search(){
-    let value = this.filter.nativeElement.value
-    let l = value.length
-    if(value === ''){
+    if(this.inputValue === ''){
       this.employeeData = this.temp
     }else{
-      this.employeeData = this.temp.filter(d => (d.firstname + " " + d.lastname).toLocaleLowerCase().includes(value.toLocaleLowerCase()))
+      this.employeeData = this.temp.filter(d => (d.firstname + " " + d.lastname).toLocaleLowerCase().includes(this.inputValue.toLocaleLowerCase()))
     }
   }
 
@@ -147,9 +141,6 @@ export class EmployeelistComponent implements OnInit{
         accept: () => {
             this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' });
             this.deleteEmpData(id)
-        },
-        reject: () => {
-            this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
         },
     });
   }

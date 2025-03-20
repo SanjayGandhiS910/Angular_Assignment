@@ -8,6 +8,7 @@ import { EmployeeattendanceComponent } from './Components/home/employeeattendanc
 import { DepartmentlistComponent } from './Components/home/departmentlist/departmentlist.component';
 import { DepartmentdetailComponent } from './Components/home/departmentlist/departmentdetail/departmentdetail.component';
 import { LoginAuthService } from './Services/auth/loginauth.service';
+import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 
 export const routes1: Routes = [
     {
@@ -29,12 +30,16 @@ export const routes1: Routes = [
         path: 'hrportal',
         loadChildren: ()=>import('./Modules/homeroute.module')
             .then((path)=>path.HomeRouteModule)
+    },
+    {
+        path:'**',
+        component: PageNotFoundComponent
     }
 ];
 
 export const routes2: Routes = [
     {
-        path: 'hrportal',
+        path: '',
         component: HomeComponent,
         children:[
             {

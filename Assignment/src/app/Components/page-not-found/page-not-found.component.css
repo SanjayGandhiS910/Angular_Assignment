@@ -1,0 +1,15 @@
+.notfound{
+    display: grid;
+    place-content: center;
+    text-align: center;
+    margin-top: 150px;
+}
+span{
+    color: lightskyblue;
+}
+h1{
+    font-size: 250px;
+}
+p{
+    font-size: 30px;
+}

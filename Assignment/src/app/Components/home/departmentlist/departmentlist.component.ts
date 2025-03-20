@@ -4,6 +4,8 @@ import { Department } from '../../../Services/Syntax/syntax.service';
 import { Router } from '@angular/router';
 import { UserDetailsHttpService } from '../../../Services/http/userdetails.service';
 import { DepartmentListService } from '../../../Services/provideservice/deptlist.service';
+import { SortEvent } from 'primeng/api';
+import { LoginAuthService } from '../../../Services/auth/loginauth.service';
 
 @Component({
   selector: 'app-departmentlist',
@@ -13,6 +15,9 @@ import { DepartmentListService } from '../../../Services/provideservice/deptlist
 })
 export class DepartmentlistComponent implements OnInit{
 
+  @ViewChild('Table') tableSort!: any;
+
+  deptId!: string;
   // departmentData property to store thr all department details 
   departmentData!: Department[];
 
@@ -34,9 +39,8 @@ export class DepartmentlistComponent implements OnInit{
 
   //Paginator Page number show or not
   icon: boolean = false;
-
-  //Using filter property to get the input value
-  @ViewChild('filter') filter!: ElementRef
+  
+  inputValue: string = ''
 
   constructor(private dept: DepartmentHttpService, private route: Router, private empData: UserDetailsHttpService,
             private deptService: DepartmentListService
@@ -45,6 +49,7 @@ export class DepartmentlistComponent implements OnInit{
   ngOnInit(): void {
     this.getDepartmentData()
     this.getempData()
+    sessionStorage.setItem('currentPath','hrportal/departmentlist')
     setTimeout(()=>{
       if(this.arrLength <= 5)
         this.arrbool = false
@@ -74,16 +79,17 @@ export class DepartmentlistComponent implements OnInit{
 
   // click the table row to navigate  /hrportal/departmentlist/' + id
   navigate(id: string){
-    this.route.navigate(['/hrportal/departmentlist/' + id])
+    this.deptId = id
+    this.inputValue = ''
+    this.tableSort.filterGlobal('', 'contains')
   }
 
   //Search for Department list Table
   search(){
-    let value = this.filter.nativeElement.value
-    if(value === ''){
+    if(this.inputValue === ''){
       this.departmentData = this.temp
     }else{
-      this.departmentData = this.temp.filter(d => d.departmentid.includes(value.toLocaleLowerCase()))
+      this.departmentData = this.temp.filter(d => d.departmentid.includes(this.inputValue.toLocaleLowerCase()))
     }
   }
 
@@ -102,4 +108,11 @@ export class DepartmentlistComponent implements OnInit{
     else
       this.icon = false
   }
+
+  //get data form child component
+  closeForm(value: boolean){
+    this.deptId = ""
+  }
+
+  
 }

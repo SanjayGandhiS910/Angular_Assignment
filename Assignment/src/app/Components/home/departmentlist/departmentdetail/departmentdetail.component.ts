@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { DepartmentHttpService } from '../../../../Services/http/department.service';
@@ -15,6 +15,9 @@ import { LoadingComponent } from '../../shared-component/loading/loading.compone
   styleUrl: './departmentdetail.component.css'
 })
 export class DepartmentdetailComponent implements OnInit{
+
+  @Input() deptId!: string;
+  @Output() closeForm = new EventEmitter();
 
   // to store the department details
   dept!: Department | undefined;
@@ -46,7 +49,7 @@ export class DepartmentdetailComponent implements OnInit{
 
   // go back to /hrportal/departmentlist
   goback(){
-    this.route.navigate(['/hrportal/departmentlist'])
+    this.closeForm.emit(false)
   }
 
   // get the employees detail 
@@ -61,7 +64,7 @@ export class DepartmentdetailComponent implements OnInit{
     this.deptData.getDepartmentData().subscribe( (d: Department[]) => {
       this.getCount(d)
       setTimeout(() => {
-        this.dept = d.find(d => d.departmentid === id)
+        this.dept = d.find(d => d.departmentid === this.deptId)
         this.isLoading = false
       }, 100);
     })

@@ -29,7 +29,7 @@ export class DeptdetilComponent implements OnInit{
   // get the department detail based on department id 
   getData(){
     this.deptData.getDepartmentData().subscribe( d => {
-      this.dept = d.find( d => d.departmentid === this.deptId)
+      this.dept = d.find( d => d.departmentname === this.deptId)
     })
   }
 

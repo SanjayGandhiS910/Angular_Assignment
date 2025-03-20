@@ -1,7 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EmployeeAttendanceHttpService } from '../../../../Services/http/employeeattendance.service';
 import { UserDetailsHttpService } from '../../../../Services/http/userdetails.service';
+import { EmployeeAttendanceService } from '../../../../Services/provideservice/emp-attendance.service';
+import { MessageService } from 'primeng/api';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-employeeattendanceform',
@@ -9,7 +12,7 @@ import { UserDetailsHttpService } from '../../../../Services/http/userdetails.se
   templateUrl: './employeeattendanceform.component.html',
   styleUrl: './employeeattendanceform.component.css'
 })
-export class EmployeeattendanceformComponent implements OnInit{
+export class EmployeeattendanceformComponent implements OnInit,AfterViewInit{
 
   // to contain Employee Attendance form values
   @ViewChild('EmployeeAttendanceForm') EmployeeAttendanceForm!: NgForm;
@@ -39,9 +42,16 @@ export class EmployeeattendanceformComponent implements OnInit{
   // only for admin accesss
   username: boolean = true
 
-  constructor(private empAttendance: EmployeeAttendanceHttpService,private employeeData: UserDetailsHttpService){}
+  createdDate!: Date;
+  modifiedDate!: Date;
+
+  constructor(private empAttendance: EmployeeAttendanceHttpService,private employeeData: UserDetailsHttpService,
+      private employeeAttendanceService: EmployeeAttendanceService,private messageService: MessageService
+  ){}
 
   ngOnInit(): void {
+    this.createdDate = new Date();
+    this.modifiedDate = new Date();
     let check = localStorage.getItem('username')
     if(check == 'Admin'){
       this.username = false
@@ -54,24 +64,26 @@ export class EmployeeattendanceformComponent implements OnInit{
         this.setValues()
         this.setUpdateData()
       }
-    },200);
+    },);
     this.available = [
       { name: true },
       { name: false}
     ]
   }
 
-  // add new value in employee attendance table
-  onSubmitForm(){
-    let empNewData = this.EmployeeAttendanceForm.value
-    let a = new Date(this.EmployeeAttendanceForm.controls['checkin'].value)
-    let b = new Date(this.EmployeeAttendanceForm.controls['checkout'].value)
-    if(a>b){
-      alert("Check the check-in or check-out")
-    }else{
-      empNewData['departmentname'] = this.data
-      this.empAttendance.newEmployeeAttendance(empNewData)
-      this.closeForm.emit(false)
+  ngAfterViewInit(): void {
+    if(this.isEdit === undefined){
+      console.log('new')
+      setTimeout(() => {
+        this.EmployeeAttendanceForm.form.patchValue({
+          createdsource: "Admin",
+          createdsourcetype: "Admin",
+          createddate: this.createdDate,
+          modifiedsource: "Admin",
+          modifiedsourcetype: "Admin",
+          modifieddate: this.modifiedDate
+        })
+      },);
     }
   }
 
@@ -129,20 +141,44 @@ export class EmployeeattendanceformComponent implements OnInit{
     })
   }
 
+  // add new value in employee attendance table
+  onSubmitForm(){
+    let empNewData = this.EmployeeAttendanceForm.value
+    empNewData['departmentname'] = this.data
+    empNewData['employeeid'] = this.empId
+    empNewData['departmentid'] = this.deptId
+    empNewData['createdsource'] = "Admin"
+    empNewData['createdsourcetype'] = "Admin"
+    empNewData['createddate'] = this.createdDate
+    empNewData['modifiedsource'] = "Admin"
+    empNewData['modifiedsourcetype'] = "Admin"
+    empNewData['modifieddate'] = this.modifiedDate
+    //   this.empAttendance.newEmployeeAttendance(empNewData)
+    let close = this.employeeAttendanceService.addEmployeeAttendance(empNewData)
+    if(close){
+      this.closeForm.emit(false)
+    }
+  }
+
   // Edit the employee attendance data
   onEditForm(){
-    let a = new Date(this.EmployeeAttendanceForm.controls['checkin'].value)
-    let b = new Date(this.EmployeeAttendanceForm.controls['checkout'].value)
     if(!this.isEdit){
-      if(a>b){
-        alert('check the check in date')
-      }else{
         let id = this.editData.id
         let formData = this.EmployeeAttendanceForm.value
+        console.log(this.empDet.createsource)
+        formData['employeeid'] = this.empDet.employeeid
+        formData['departmentid'] = this.empDet.departmentid
         formData['departmentname'] = this.empDet.departmentname
-        this.empAttendance.editEmployeeAttendance(id,formData)
-        this.closeForm.emit(false)
-      }
+        formData['createdsource'] = this.empDet.createdsource
+        formData['createdsourcetype'] = this.empDet.createdsourcetype
+        formData['createddate'] = this.empDet.createddate
+        formData['modifiedsource'] = this.empDet.modifiedsource
+        formData['modifiedsourcetype'] = this.empDet.modifiedsourcetype
+        formData['modifieddate'] = new Date()
+        let close = this.employeeAttendanceService.editEmployeeAttendance(id,formData)
+        if(close){
+          this.closeForm.emit(false)
+        }
     }
     this.isEdit = false
   }

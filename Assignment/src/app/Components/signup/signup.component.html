@@ -2,7 +2,6 @@
 
 <form action="" (ngSubmit)="addUser()" #SignupForm="ngForm" class="card">
 
-    <p-card>
         <div class="header">
             <img src="images\Itorizon.png" 
                 alt="" height="60px" width="200px">
@@ -10,32 +9,26 @@
         </div>
 
         <div>
-            <label for="username">User Name</label>
+            <label for="username">User Name <span>*</span></label>
             <br>
             <input type="text" name="username" ngModel required/>
-            <br>
-            <small *ngIf="false">Enter your username to reset your password.</small>
         </div>
 
         <div>
-            <label for="password">Password</label>
+            <label for="password">Password <span>*</span></label>
             <br>
             <p-password [feedback]="false" [toggleMask]="true" name="password" ngModel required/>
-            <br>
-            <small *ngIf="false">Enter your username to reset your password.</small>
         </div>
 
         <div>
-            <label for="password">Confirm Password</label>
+            <label for="password">Confirm Password <span>*</span></label>
             <br>
             <p-password [feedback]="false" [toggleMask]="true" name="confirmpassword" ngModel required/>
-            <br>
-            <small *ngIf="false">Enter your username to reset your password.</small>
         </div>
 
         <div>
             <button type="submit"
-                    [disabled]="SignupForm.invalid">
+                    [disabled]="SignupForm.invalid" [ngClass]="{disable: SignupForm.invalid}">
                     Sign Up
             </button>
         </div>
@@ -44,7 +37,6 @@
             <p>Do have an account? <span class="login" routerLink="/login">Login</span></p>
         </div>
 
-    </p-card>
 </form>
 
 <p-toast position="top-center"/>

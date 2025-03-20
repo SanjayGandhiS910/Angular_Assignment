@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardchartComponent } from './dashboardchart/dashboardchart.component';
 import { NoofemployeechartComponent } from "./noofemployeechart/noofemployeechart.component";
 import { CommonModule } from '@angular/common';
+import { LoginAuthService } from '../../../Services/auth/loginauth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,5 +20,6 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username')
+    sessionStorage.setItem('currentPath','hrportal/dashboard')
   }
 }

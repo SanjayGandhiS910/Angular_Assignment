@@ -1,26 +1,31 @@
 <div class="screen"></div>
 
-<form action="" #UserForm="ngForm" class="adduserform">
+<form action="" #userForm="ngForm" class="adduserform">
     <div class="head">
         <h3>{{ formHeading }}</h3>
         <p-button icon="pi pi-times" severity="secondary" (onClick)="isCloseForm()"/>
     </div>
     <hr>
     <div class="adduserflex">
-        <div class="adduserdiv1">
+        <div class="adduserdiv1" [ngClass]="{addHeight: isView}">
             <div>
                 <img [src]="url" alt="">
             </div>
             <div *ngIf="!isView">
                 <input type="file" id="img" style="display: none;" (change)="selectFile($event)">
-                <label for="img"><i class="fa-solid fa-circle-plus"></i></label>
+                <label for="img" *ngIf="!selectedFile"><i class="fa-solid fa-circle-plus"></i></label>
+                <label for="" *ngIf="selectedFile"><i class="fa-solid fa-circle-minus" (click)="removeImage()"></i></label>
+            </div>
+            <div *ngIf="!isView">
+                <h6>Max File Size 2MB</h6>
+                <p>Supporting formates jpg,jpeg</p>
             </div>
         </div>
         <div class="adduserdiv2">
             <div class="adduserscrool">
                 <div class="column">
                     <div>
-                        <label for="">EmplyeeId</label><br>
+                        <label for="">EmplyeeId <span>*</span></label><br>
                         <input pInputText type="text" ngModel name="employeeid" required [disabled]="isEdit" *ngIf="!isView"/>
                         <small *ngIf="empIdExits"><p-message severity="error">EmployeeID already exits</p-message></small>
                         <p *ngIf="isView">{{ userData.employeeid }}</p>
@@ -28,81 +33,78 @@
                 </div>
                 <div class="cloumnflex">
                     <div>
-                        <label for="">First Name</label><br>
+                        <label for="">First Name <span>*</span></label><br>
                         <input pInputText type="text" ngModel name="firstname" required  *ngIf="!isView"/>
                         <p *ngIf="isView">{{ userData.firstname }}</p>
                     </div>
                     <div>
-                        <label for="">Last Name</label><br>
+                        <label for="">Last Name <span>*</span></label><br>
                         <input pInputText type="text" ngModel name="lastname" required  *ngIf="!isView"/>
                         <p *ngIf="isView">{{ userData.lastname }}</p>
                     </div>
                 </div>
                 <div class="cloumnflex">
                     <div>
-                        <label for="">Gender</label><br>
-                        <div *ngIf="!isView">
-                            <p-radiobutton value="male" inputId="ingredient1" ngModel name="gender" required />
-                            <label for="ingredient1" class="ml-2">Male</label>
-                        
-                            <p-radiobutton value="female" inputId="ingredient2" ngModel name="gender" required/>
-                            <label for="ingredient2" class="ml-2">Female</label>
+                        <label>Gender <span>*</span></label><br>
+                        <div *ngIf="!isView" class="gender">
+                            <div>
+                                <p-radiobutton value="male" inputId="ingredient1" ngModel name="gender" required />
+                                <label for="ingredient1">Male</label>
+                            </div>
+                            <div>
+                                <p-radiobutton value="female" inputId="ingredient2" ngModel name="gender" required/>
+                                <label for="ingredient2">Female</label>
+                            </div>
                         </div>
                         <p *ngIf="isView">{{ (userData.gender).toUpperCase() }}</p>
                     </div>
                     <div>
                         <label for="">Blood Group</label><br>
-                        <p-select [options]="bloodGroup" optionLabel="name" placeholder="-- Select --" ngModel name="bloodgroup" required *ngIf="!isView"/>
-                        <p *ngIf="isView">{{ userData.bloodgroup.name }}</p>
+                        <p-select [options]="bloodGroup" optionLabel="name" placeholder="-- Select --" ngModel name="bloodgroup" *ngIf="!isView"/>
+                        <p *ngIf="isView">{{ typeof userData.bloodgroup? userData.bloodgroup.name : 'Not provided' }}</p>
                     </div>
                 </div>
                 <div class="cloumnflex">
                     <div>
-                        <label for="">Email</label><br>
-                        <p-inputgroup *ngIf="!isView">
-                            <p-inputgroup-addon>
-                                <i class="pi pi-envelope"></i>
-                            </p-inputgroup-addon>
-                            <p-floatlabel>
-                                <input pInputText id="over_label" ngModel name="email" required="email" [readOnly]="isView"/>
-                            </p-floatlabel>
-                        </p-inputgroup>
+                        <label for="">Email <span>*</span></label><br>
+                        <input pInputText type="email" ngModel name="email" required  *ngIf="!isView" [readOnly]="isView"/>
                         <p *ngIf="isView">{{ userData.email }}</p>
                     </div>
                     <div>
                         <label for="">Phone Number</label><br>
-                        <p-inputgroup *ngIf="!isView">
+                        <p-inputgroup *ngIf="!isView" class="phonenumber">
                             <p-inputgroup-addon>
                                 <i class="pi pi-phone"></i>
                             </p-inputgroup-addon>
                             <p-floatlabel>
-                                <input pInputText id="over_label" ngModel name="phonenumber" required [readOnly]="isView"/>
+                                <input pInputText id="over_label" ngModel name="phonenumber" [readOnly]="isView" maxlength="10"/>
                             </p-floatlabel>
                         </p-inputgroup>
-                        <p *ngIf="isView">{{ userData.phonenumber }}</p>
+                        <p *ngIf="isView">{{ userData.phonenumber? userData.phonenumber : 'Not provided' }}</p>
                     </div>
                 </div>
                 
                 <div class="cloumnflex">
                     <div>
-                        <label for="icondisplay">Date of Birth</label><br>
+                        <label for="icondisplay">Date Of Birth <span>*</span></label><br>
                         <p-datepicker [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" ngModel name="dob" required *ngIf="!isView"/>
                         <p *ngIf="isView">{{ userData.dob| date }}</p>
                     </div>
                     <div>
-                        <label for="icondisplay">Date of Jioning</label><br>
+                        <label for="icondisplay">Date of Joining <span>*</span></label><br>
                         <p-datepicker [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" ngModel name="doj" required *ngIf="!isView"/>
                         <p *ngIf="isView">{{ userData.doj | date }}</p>
                     </div>
                 </div>
                 <div class="cloumnflex">
                     <div>
-                        <label for="">Department</label><br>
-                        <p-select [options]="department" optionLabel="name" placeholder="-- Select --" #checkPosition ngModel name="departmentname" required *ngIf="!isView"/>
+                        <label for="">Department <span>*</span></label><br>
+                        <p-select [options]="department" optionLabel="name" placeholder="-- Select --" #checkPosition ngModel name="departmentname" required *ngIf="!isView"
+                            (onChange)="showPosition($event)"/>
                         <p *ngIf="isView">{{ userData.departmentname.name }}</p>
                     </div>
                     <div>
-                        <label for="">Position</label><br>
+                        <label for="">Position <span>*</span></label><br>
                         <p-select [options]="position" optionLabel="name" placeholder="-- Select --" ngModel name="position" required *ngIf="!isView"/>
                         <p *ngIf="isView">{{ userData.position.name }}</p>
                     </div>
@@ -110,58 +112,94 @@
                 <div class="cloumnflex">
                     <div>
                         <div>
-                            <label for="">Create Source</label><br>
-                            <input type="text" pInputText ngModel name="createdsource" required [disabled]="isEdit" *ngIf="!isView">
+                            <label for="">Created Source <span>*</span></label><br>
+                            <input type="text" pInputText ngModel name="createdsource" required disabled *ngIf="!isView">
                             <p *ngIf="isView">{{ userData.createdsource }}</p>
                         </div>
                         <div>
-                            <label for="">Create Source Type</label><br>
-                            <input type="text" pInputText ngModel name="createdsourcetype" required [disabled]="isEdit" *ngIf="!isView">
+                            <label for="">Created Source Type <span>*</span></label><br>
+                            <input type="text" pInputText ngModel name="createdsourcetype" required disabled *ngIf="!isView">
                             <p *ngIf="isView">{{ userData.createdsourcetype }}</p>
                         </div>
                         <div>
-                            <label for="">Create Date & Time</label><br>
-                            <p-datepicker inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'" ngModel name="createddate" required [disabled]="isEdit" *ngIf="!isView"/>
-                            <p *ngIf="isView">{{ userData.createddate | date }}</p>
+                            <label for="">Created Date & Time <span>*</span></label><br>
+                            <p-datepicker inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'" ngModel name="createddate" required disabled *ngIf="!isView"/>
+                            <p *ngIf="isView">{{ userData.createddate | date: 'MMM d, y, h:mm a' }}</p>
                         </div>
                     </div>
-                    <div *ngIf="!(!isEdit && !isView)">
+                    <div>
                         <div>
-                            <label for="">Modified Source</label><br>
-                            <input type="text" pInputText ngModel name="modifiedsource" required *ngIf="!isView">
+                            <label for="">Modified Source <span>*</span></label><br>
+                            <input type="text" pInputText ngModel name="modifiedsource" required disabled *ngIf="!isView">
                             <p *ngIf="isView">{{ userData.modifiedsource }}</p>
                         </div>
                         <div>
-                            <label for="">Modified Source Type</label><br>
-                            <input type="text" pInputText ngModel name="modifiedsourcetype" required *ngIf="!isView">
+                            <label for="">Modified Source Type <span>*</span></label><br>
+                            <input type="text" pInputText ngModel name="modifiedsourcetype" required disabled *ngIf="!isView">
                             <p *ngIf="isView">{{ userData.modifiedsourcetype }}</p>
                         </div>
                         <div>
-                            <label for="">Modified Date & Time</label><br>
-                            <p-calendar inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'"  ngModel name="modifieddate" required *ngIf="!isView"/>
-                            <p *ngIf="isView">{{ userData.modifieddate | date }}</p>
+                            <label for="">Modified Date & Time <span>*</span></label><br>
+                            <p-calendar inputId="calendar-12h"  [showTime]="true" [hourFormat]="'12'"  ngModel name="modifieddate" required disabled *ngIf="!isView"/>
+                            <p *ngIf="isView">{{ userData.modifieddate | date: 'MMM d, y, h:mm a' }}</p>
                         </div>
                     </div>
                 </div>
-                <div class="column">
-                    <label for="">Address</label><br>
-                    <textarea rows="5" cols="30" pTextarea ngModel name="address" required [autoResize]="true" *ngIf="!isView"></textarea>
-                    <p *ngIf="isView">{{ userData.address }}</p>
+                <div class="column textarea" ngModelGroup="address">
+                    <h4>Address</h4>
+                    <div class="cloumnflex">
+                        <div>
+                            <label for="">AddressField1 <span>*</span></label><br>
+                            <input pInputText type="text" ngModel name="addressField1" required  *ngIf="!isView"/>
+                            <p *ngIf="isView">{{ userData.address.addressField1 }}</p>
+                        </div>
+                        <div>
+                            <label for="">AddressField2 <span>*</span></label><br>
+                            <input pInputText type="text" ngModel name="addressField2" required  *ngIf="!isView"/>
+                            <p *ngIf="isView">{{ userData.address.addressField2 }}</p>
+                        </div>
+                    </div>
+                    <div class="cloumnflex">
+                        <div>
+                            <label for="">Country <span>*</span></label><br>
+                            <p-select [options]="countries" optionLabel="name" placeholder="-- Select --" #checkPosition ngModel name="country" required *ngIf="!isView" 
+                                    (onChange)="showState($event)"/>
+                            <p *ngIf="isView">{{ userData.address.country.name }}</p>
+                        </div>
+                        <div>
+                            <label for="">State <span>*</span></label><br>
+                            <p-select [options]="states" optionLabel="name" placeholder="-- Select --" ngModel name="state" required *ngIf="!isView"/>
+                            <p *ngIf="isView">{{ userData.address.state.name }}</p>
+                        </div>
+                    </div>
+                    <div class="cloumnflex">
+                        <div class="address">
+                            <label for="">ZipCode <span>*</span></label><br>
+                            <input pInputText type="text" ngModel name="zipCode" required  *ngIf="!isView" [maxlength]="6"/>
+                            <p *ngIf="isView">{{ userData.address.zipCode }}</p>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <hr>
     <div class="right">
-        <p-button label="Cancal" [raised]="true" severity="secondary" (onClick)="isCloseForm()"/>
+
+        <p-button label="Cancel" [raised]="true" severity="secondary" (onClick)="isCloseForm()"/>
+
         <p-button label="Edit" [raised]="true" severity="info" 
-                [disabled]="UserForm.invalid" [ngClass]="{'display': !isView}"
+               [ngClass]="{'display': !isView}"
                 (onClick)="toEdit()" *ngIf="username === 'Admin'"/>
+
         <p-button label="Save" [raised]="true" severity="info" 
-                [disabled]="UserForm.invalid" [ngClass]="{'display': !isEdit}"
+        [disabled]="userForm.invalid" [ngClass]="{'display': !isEdit}"
                 (onClick)="updateEmp()" />
+
         <p-button label="Submit" [raised]="true" severity="info" 
-                [disabled]="UserForm.invalid" [ngClass]="{'display': isEdit || isView}"
+                [disabled]="userForm.invalid" [ngClass]="{'display': isEdit || isView}"
                 (onClick)="onSubmit()" />
     </div>
 </form>

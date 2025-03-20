@@ -2,8 +2,8 @@
     background-color: white;
     padding: 20px;
     position: fixed;
-    width: 99%;
-    height: 98%;
+    width: 50%;
+    height: 81%;
     border-radius: 10px;
     top: 50%;
     left: 50%;
@@ -22,13 +22,14 @@
 p{
     padding: 9px;
     background-color: rgb(239, 239, 239);
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 9px;
+    margin-bottom: 25px;
+    width: 100%;
 }
 
 .cloumnflex{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
     grid-column-gap: 10px;
 }
 
@@ -47,15 +48,29 @@ p{
     justify-content: end;
     margin-right: 10px;
 }
+.scrool{
+    overflow-x: scroll;
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
 
 .scrool::-webkit-scrollbar{
     display: none;
 }
 
+.date{
+    margin-bottom: 5px;
+}
+
 @media screen and (max-height: 640px){
     .scrool{
-        height: 68vh;
+        height: 69.5vh;
         overflow-y: scroll;
+    }
+    .departmentdetail{
+        width: 99%;
+        height: 98%;
     }
 }
 
@@ -65,6 +80,13 @@ p{
     .cloumnflex{
         display: block;
     }
+    .scrool{
+        height: 71vh;
+        overflow-y: scroll;
+    }
+    h5{
+        font-size: 16px;
+    }
 }
 
 /* Mobile View M */
@@ -72,6 +94,9 @@ p{
 @media screen and (max-width: 376px) and (min-width: 321px)  {
     .cloumnflex{
         display: block;
+    }
+    h5{
+        font-size: 16px;
     }
 }
 
@@ -81,9 +106,25 @@ p{
     .cloumnflex{
         display: block;
     }
+    h5{
+        font-size: 16px;
+    }
     
 }
 
 @media screen and (max-width: 768px) and (min-width: 427px) {
-    
+    h5{
+        font-size: 16px;
+    }
+    p{
+        margin-top: 7px;
+        margin-bottom: 23px;
+    }
+    .date{
+        margin-bottom: 0px;
+    }
+    .scrool{
+        height: 69vh;
+        overflow-y: scroll;
+    }
 }

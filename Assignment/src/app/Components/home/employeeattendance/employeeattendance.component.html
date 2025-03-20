@@ -2,7 +2,8 @@
     <div> 
         <p-inputgroup>
             <p-button label="Search" size="large" severity="info" />
-            <input pInputText placeholder="Search" size="large" #filter (keyup)="search()"/>
+            <input pInputText placeholder="Search" size="large" 
+            [(ngModel)]="inputValue" (input)="dt2.filterGlobal(inputValue, 'contains')"/>
         </p-inputgroup>
     </div>
     <div [ngClass]="{'btn2': username === 'Admin'}">
@@ -11,7 +12,7 @@
 </div>
 
 <div class="attTable" [class.close]="icon">
-    <p-table [value]="empAttendance"
+    <p-table  #dt2 [value]="empAttendance"
             showGridlines
             [scrollable]="true" 
             [tableStyle]="{ 'min-width': '50rem' }"
@@ -19,7 +20,8 @@
             [rows]="5"
             [rowsPerPageOptions]="array"
             selectionMode="single"
-            (onPage)="onPageChange($event)">
+            (onPage)="onPageChange($event)"
+            [globalFilterFields]="['employeeid','departmentid','departmentname.name','available.name']">
         <ng-template #header>
             <tr>
                 <th pSortableColumn="employeeid" style="min-width:150px">
@@ -34,8 +36,8 @@
                 <th pSortableColumn="departmentname.name" style="min-width:220px">
                     Department Name<span><p-sortIcon field="departmentname.name" /></span>
                 </th>
-                <th pSortableColumn="available" style="min-width:120px">
-                    Available<span><p-sortIcon field="available" /></span>
+                <th pSortableColumn="available.name" style="min-width:120px">
+                    Available<span><p-sortIcon field="available.name" /></span>
                 </th>
                 <th pSortableColumn="checkin" style="min-width:120px">
                     Check-in<span><p-sortIcon field="checkin" /></span>
@@ -52,8 +54,8 @@
                 <th pSortableColumn="createdsourcetype" style="min-width:200px">
                     Created Source Type<span><p-sortIcon field="createdsourcetype" /></span>
                 </th>
-                <th pSortableColumn="createddate" style="min-width:160px">
-                    Created Date<span><p-sortIcon field="createddate" /></span>
+                <th pSortableColumn="createddate" style="min-width:200px">
+                    Created Date & Time<span><p-sortIcon field="createddate" /></span>
                 </th>
                 <th pSortableColumn="modifiedsource" style="min-width:170px">
                     Modified Source<span><p-sortIcon field="modifiedsource" /></span>
@@ -61,8 +63,8 @@
                 <th pSortableColumn="modifiedsourcetype" style="min-width:210px">
                     Modified Source Type<span><p-sortIcon field="modifiedsourcetype" /></span>
                 </th>
-                <th pSortableColumn="modifieddate" style="min-width:160px">
-                    Modified Date<span><p-sortIcon field="modifieddate" /></span>
+                <th pSortableColumn="modifieddate" style="min-width:210px">
+                    Modified Date & Time<span><p-sortIcon field="modifieddate" /></span>
                 </th>
                 <th *ngIf="username == 'Admin'">
                     Action
@@ -81,10 +83,10 @@
                 <td>{{ user.attendancecount }}</td>
                 <td>{{ user.createdsource }}</td>
                 <td>{{ user.createdsourcetype }}</td>
-                <td>{{ user.createddate | date }}</td>
+                <td>{{ user.createddate | date: "MMM d, y h:mm a" }}</td>
                 <td>{{ user.modifiedsource }}</td>
                 <td>{{ user.modifiedsourcetype }}</td>
-                <td>{{ user.modifieddate | date }}</td>
+                <td>{{ user.modifieddate | date: "MMM d, y h:mm a" }}</td>
                 <td style="display: flex; column-gap: 2px; text-align: center;" *ngIf="username == 'Admin'">
                     <p-button icon="pi pi-pen-to-square" severity="secondary" (onClick)="editIcon(user)"/>
                     <p-button icon="pi pi-trash" severity="secondary" (click)="confirm($event,user.id)"/>
@@ -123,4 +125,4 @@
 
 <app-employeeattendanceform *ngIf="empDet" [empDet]="emp" [show]="true" (closeForm)="closeForm($event)" [isEdit]="isEditIcon" [editButtonShow]="true"/>
 
-<p-toast position="top-center" />
+<p-toast position="top-center" [style]="{'z-index': '9999'}"/>

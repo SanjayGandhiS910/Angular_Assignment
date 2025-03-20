@@ -1,3 +1,4 @@
+/* Search Bar and Add Button */
 .emplistflex{
     display: flex;
     justify-content: end;
@@ -14,12 +15,12 @@
     outline: none;
     border: 1px solid rgb(165, 165, 165) !important;
 }
-/* .adduserbtn{
-    margin-right: 10px;
-} */
 .addbtn{
     margin-left: 10px;
 }
+
+/* Card */
+/* All Card Main Div */
 .cards{
     display: flex;
     justify-content: flex-start;
@@ -40,10 +41,11 @@
     display: none;
 }
 .cards ::ng-deep.p-card{
-    width: 16rem;
+    width: 17rem;
     overflow: hidden;
-    height: 420px;
+    height: auto;
 }
+/* card */
 .empcard{
     height: 420px;
     border: none;
@@ -72,27 +74,47 @@ h5{
     font-weight: 400;
 }
 h6{
-    font-weight: 400;
+    font-weight: 300;
 }
 p{
     font-weight: 500;
+    font-size: 14px;
     margin: 0;
 }
 i{
-    color: gray;
+    width: 100%;
 }
 .para{
     margin-top: -5px;
 }
-.flex{
-    display: flex;
-    column-gap: 15px;
-    justify-content: flex-start;
-    text-align: start;
-    margin-top: 20px;
+.position{
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 18px;
 }
-
-.flex2{
+.email, .phonenumber{
+    height: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    gap: 20px;
+}
+.deptname{
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.grid{
+    margin-top: 15px;
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: 50% 50%;
+    text-align: start;
+}
+.flex{
     margin-top: 10px;
 }
 

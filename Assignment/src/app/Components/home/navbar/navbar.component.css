@@ -18,10 +18,11 @@
     column-gap: 10px;
     cursor: pointer;
     margin-left: 20px;
+    margin-top: 2px;
 }
 .colunm-flex:hover{
     background-color: lightgray;
-    border-radius: 50px 0 0 50px;
+    border-radius: 10px 0 0 10px;
 }
 h1{
     display: flex;
@@ -80,7 +81,7 @@ h1{
 }
 .active{
     background-color: white;
-    border-radius: 50px 0 0 50px;
+    border-radius: 10px 0 0 10px;
 }
 .hidden{
     visibility: hidden;

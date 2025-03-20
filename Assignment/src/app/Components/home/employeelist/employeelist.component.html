@@ -2,7 +2,7 @@
     <div> 
         <p-inputgroup>
             <p-button label="Search" size="large" severity="info"/>
-            <input pInputText placeholder="Search" size="large" #filter (keyup)="search()"/>
+            <input pInputText placeholder="Search" size="large" [(ngModel)]="inputValue" #filter (keyup)="search()"/>
         </p-inputgroup>
     </div>
     <div [ngClass]="{'addbtn': username === 'Admin'}" class="adduserbtn">
@@ -28,13 +28,14 @@
                 </p-overlayPanel>
             </div>
             <div style="text-align: center;">
-                <img [src]="item.image" alt="" width="150px" height="150px">
+                <img [src]="item.image" alt="" width="150px" height="150px" *ngIf="item.image !== undefined">
+                <img src="images/usersicon.png" alt="" width="150px" height="150px" *ngIf="item.image === undefined">
                 <h5>{{ item.firstname + " " + item.lastname}}</h5>
-                <p class="para">{{ item.position.name }}</p>
-                <div class="flex" >
+                <p class="para position">{{ item.position.name }}</p>
+                <div class="grid" >
                     <div>
                         <h6>Department</h6>
-                        <p class="para">{{ item.departmentname.short_name }}</p>
+                        <p class="para deptname" [title]="item.departmentname.name">{{ item.departmentname.name }}</p>
                     </div>
                     <div>
                         <h6>Hire Date</h6>
@@ -43,16 +44,18 @@
                 </div>
                 <div class="flex flex2" >
                     <div>
-                        <div>
-                            <i class="fa-solid fa-envelope"></i>
+                        <div class="email">
+                            <div>
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <p class="email"><a href="">{{ item.email }}</a></p>
                         </div>
-                        <div>
-                            <i class="fa-solid fa-mobile-screen"></i>
+                        <div class="phonenumber">
+                            <div>
+                                <i class="fa-solid fa-mobile-screen"></i>
+                            </div>
+                            <p class="phonenumber">{{ item.phonenumber }}</p>
                         </div>
-                    </div>
-                    <div>
-                        <p><a href="">{{ item.email }}</a></p>
-                        <p>{{ item.phonenumber }}</p>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,6 @@
 
 <form #LoginForm="ngForm"  class="card" (ngSubmit)="toLogin()">
 
-    <p-card>
         <div class="header">
             <img src="images\Itorizon.png" 
                 alt="" height="60px" width="200px">
@@ -11,28 +10,27 @@
         </div>
 
         <div>
-            <label for="username">User Name</label>
+            <label for="username">User Name <span>*</span></label>
             <br>
             <input  type="text" name="username" ngModel required/>
         </div>
 
         <div>
-            <label for="password">Password</label>
+            <label for="password">Password <span>*</span></label>
             <br>
             <p-password [feedback]="false" [toggleMask]="true" name="password" ngModel required/>
             <span class="forgetpassword">Forget Password?</span>
         </div>
 
         <div>
-            <button type="submit" [disabled]="LoginForm.invalid">
-                    LogIn
+            <button type="submit" [disabled]="LoginForm.invalid" [ngClass]="{disable: LoginForm.invalid}">
+                    Login
             </button>
         </div>
 
         <div>
             <p>Don't have an account? <span class="signup" routerLink="/signup">Sign up</span></p>
         </div>
-    </p-card>
 </form>
 
 <p-toast position="top-center"/>

@@ -18,12 +18,14 @@ import { SignupComponent } from "./Components/signup/signup.component";
 import { AppRouteModule } from "./Modules/approute.module";
 import { HomeModule } from "./Modules/home.module";
 import { PasswordModule } from 'primeng/password';
+import { PageNotFoundComponent } from "./Components/page-not-found/page-not-found.component";
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
-        SignupComponent
+        SignupComponent,
+        PageNotFoundComponent
     ],
     imports: [
         BrowserModule,
